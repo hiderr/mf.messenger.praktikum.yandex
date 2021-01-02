@@ -17,7 +17,10 @@
 Другая строка убедит пользователя в стабильности инфраструктуры и популярности проекта. Последний бейдж зовёт в чат проекта.
 
 ## Описание
-[App on Netlify](https://agitated-feynman-ef74ef.netlify.app)
+
+[Mockup](https://www.figma.com/file/Zrwzoirt0PzHxl8IliXiAZ/Messenger?node-id=0%3A1)
+
+[Deployed app](https://agitated-feynman-ef74ef.netlify.app)
 
 ## Установка
 
