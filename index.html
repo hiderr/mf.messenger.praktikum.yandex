@@ -1,10 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Hello</title>
-  <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="/static/css/login.css">
 </head>
 <body>
-    <div>Hello, my comrad!</div>
+<div class="wrapper">
+    <div class="login_box">
+        <h1 class="login_box_title">Вход</h1>
+        <form class="login_form login_form__margin">
+            <label class="login_form_label">Логин</label>
+            <input class="login_form_input">
+            <label class="login_form_label">Пароль</label>
+            <input class="login_form_input">
+        </form>
+        <div class="form_buttons">
+            <a class="login_link" href="/static/chat.html">Авторизоваться</a>
+            <a class="signin_link" href="/static/signin.html">Нет аккаунта?</a>
+        </div>
+    </div>
+</div>
 </body>
 </html>
