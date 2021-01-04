@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/chat.css">
     <script src="https://kit.fontawesome.com/accfeb1a6a.js" crossorigin="anonymous"></script>
+    <script src="js/chat.js"></script>
     <title>Chat</title>
 </head>
 <body>
@@ -165,9 +166,36 @@
         <div class="messages__header">
             <div class="messages__avatar"></div>
             <p class="messages__name">Андрей</p>
-            <div class="messages__menu"></div>
+            <div class="messages__menuBtn button"></div>
         </div>
         <div class="messages__main">
+
+            <div class="messages__menu messages__menu_users messages__menu_hidden">
+                <div class="messages__menu_item">
+                    <i class="fas fa-plus messages__icon messages__menu_item_icon_border messages__menu_item_icon"></i>
+                    <div class="messages__menu_item_text">Добавить пользователя</div>
+                </div>
+                <div class="messages__menu_item">
+                    <span class="messages__icon messages__menu_item_icon messages__menu_item_icon_border messages__menu_item_icon_remove_user">X</span>
+                    <div class="messages__menu_item_text">Удалить пользователя</div>
+                </div>
+            </div>
+
+            <div class="messages__menu messages__menu_attachments messages__menu_hidden">
+                <div class="messages__menu_item">
+                    <i class="fas fa-image messages__icon messages__menu_item_icon"></i>
+                    <div class="messages__menu_item_text">Фото или Видео</div>
+                </div>
+                <div class="messages__menu_item">
+                    <i class="far fa-file messages__icon messages__menu_item_icon"></i>
+                    <div class="messages__menu_item_text">Файл</div>
+                </div>
+                <div class="messages__menu_item">
+                    <i class="fas fa-location-arrow messages__icon messages__menu_item_icon"></i>
+                    <div class="messages__menu_item_text">Локация</div>
+                </div>
+            </div>
+
             <p class="messages__date">19 июня</p>
             <div class="message message__text message__text_from">
                 <p class="message__text_inner">Привет! Смотри, тут всплыл интересный кусок лунной космической истории —
@@ -192,9 +220,9 @@
             </div>
         </div>
         <div class="messages__footer">
-            <i class="fas fa-paperclip"></i>
+            <i class="fas fa-paperclip paperclip button"></i>
             <input class="search messages__search" type="text" placeholder="Сообщение">
-            <i class="fas fa-arrow-right"></i>
+            <i class="fas fa-arrow-right messages__icon button"></i>
         </div>
     </div>
 </div>

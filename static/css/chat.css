@@ -30,7 +30,7 @@ body {
 }
 
 .contacts__main::-webkit-scrollbar, .messages__main::-webkit-scrollbar {
-    width: 12px;
+    width: 5px;
 }
 
 .contacts__main::-webkit-scrollbar-track, .messages__main::-webkit-scrollbar-track {
@@ -164,24 +164,19 @@ body {
     color: #1E1E1E;
 }
 
-.messages__menu {
+.messages__menuBtn {
     position: absolute;
     right: 0;
 }
 
-.messages__menu:after {
+.messages__menuBtn:after {
     content: '\2807';
     font-size: 20px;
 }
 
-.messages__menu:hover {
-    cursor: pointer;
-}
-
 .messages__main {
     position: relative;
-    height: calc(100vh - 54px - 54px);
-    overflow-y: scroll;
+    height: calc(100vh - 54px - 54px - 12px);
 }
 
 .messages__footer {
@@ -197,12 +192,15 @@ body {
     color: #999999;
 }
 
-.fa-arrow-right {
+.messages__icon {
     font-size: 20px;
-    color: white;
-    background-color: #991B94;
     padding: 5px 7px;
     border-radius: 20px;
+}
+
+.fa-arrow-right {
+    color: white;
+    background-color: #991B94;
 }
 
 .messages__search {
@@ -215,7 +213,56 @@ body {
     text-align: center;
     font-size: 12px;
     color: #999999;
-    margin: 30px 0;
+}
+
+.messages__menu {
+    border-radius: 12px;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+.messages__menu_users {
+    top: 0;
+    right: 0;
+    width: 210px;
+    height: 90px;
+}
+
+.messages__menu_attachments {
+    width: 162px;
+    height: 135px;
+    bottom: 10px;
+    left: 0;
+}
+
+.messages__menu_hidden {
+    display: none;
+}
+
+.messages__menu_item {
+    height: 45px;
+    display: flex;
+    align-items: center;
+}
+
+.messages__menu_item_icon {
+    margin: 0 10px;
+    color: #991B94;
+}
+
+.messages__menu_item_icon_border {
+    border: 2px solid #991B94;
+}
+
+.messages__menu_item_icon_remove_user {
+    font-weight: 800;
+    padding: 3px 8px;
+}
+
+.messages__menu_item_text {
+    font-size: 12px;
+    color: #1E1E1E;
 }
 
 .message {
@@ -259,4 +306,13 @@ body {
     position: absolute;
     right: 41px;
     bottom: 10px;
+}
+
+.fa-file {
+    margin-right: 14px;
+    margin-left: 12px;
+}
+
+.button:hover {
+    cursor: pointer;
 }
