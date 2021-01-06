@@ -5,47 +5,47 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/profile.css">
     <script src="https://kit.fontawesome.com/accfeb1a6a.js" crossorigin="anonymous"></script>
-    <script src="js/profile.js"></script>
+    <script src="js/common.js"></script>
     <title>Profile</title>
 </head>
 <body>
 <div class="profile">
     <div class="profile__nav">
-        <a href="/static/chat.html"><i class="fas fa-arrow-left icon button"></i></a>
+        <a href="chat.html"><i class="fas fa-arrow-left icon button"></i></a>
     </div>
     <div class="profile__main">
-        <a class="link" href="/static/change_photo.html">
+        <a class="link" href="change_photo.html">
             <i class="fas fa-image profile__avatar">
                 <span class="profile__avatar_tooltip">Поменять аватар</span>
             </i>
         </a>
-        <div class="profile__form">
+        <form name="form" class="profile__form">
             <div class="form__row">
-                <p class="form__row_name">Почта</p>
-                <p class="form__row_value">pochta@yandex.ru</p>
+                <label class="form__row_name">Почта</label>
+                <input class="form__row_value form__input" type="email" name="email" value="pochta@yandex.ru"/>
             </div>
             <div class="form__row">
-                <p class="form__row_name">Логин</p>
-                <p class="form__row_value">ivanivanov</p>
+                <label class="form__row_name">Логин</label>
+                <input class="form__row_value form__input" type="text" name="login" value="ivanivanov"/>
             </div>
             <div class="form__row">
-                <p class="form__row_name">Имя</p>
-                <p class="form__row_value">Иван</p>
+                <label class="form__row_name">Имя</label>
+                <input class="form__row_value form__input" type="text" name="first_name" value="Иван"/>
             </div>
             <div class="form__row">
-                <p class="form__row_name">Фамилия</p>
-                <p class="form__row_value">Иванов</p>
+                <label class="form__row_name">Фамилия</label>
+                <input class="form__row_value form__input" type="text" name="second_name" value="Иванов"/>
             </div>
             <div class="form__row">
-                <p class="form__row_name">Имя в чате</p>
-                <p class="form__row_value">Иван</p>
+                <label class="form__row_name">Имя в чате</label>
+                <input class="form__row_value form__input" type="text" name="display_name" value="Иван"/>
             </div>
             <div class="form__row">
-                <p class="form__row_name">Телефон</p>
-                <p class="form__row_value">+7 (909) 967 30 30</p>
+                <label class="form__row_name">Телефон</label>
+                <input class="form__row_value form__input" type="tel" name="phone" value="+7 (909) 967 30 30" />
             </div>
-        </div>
-        <a class="link_button" href="/static/profile.html">Сохранить</a>
+        </form>
+        <a class="link_button" href="profile.html">Сохранить</a>
     </div>
 </div>
 </body>

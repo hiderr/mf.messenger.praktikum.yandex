@@ -3,34 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Sign In</title>
-    <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="stylesheet" href="/static/css/login.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+    <script src="js/common.js"></script>
 </head>
 <body>
-<div class="wrapper">
+<main class="wrapper">
     <div class="login_box login_box__higher">
         <h1 class="login_box_title">Регистрация</h1>
-        <form class="login_form">
+        <form name="form" class="login_form">
             <label class="login_form_label">Почта</label>
-            <input type="email" class="login_form_input">
+            <input type="email" class="form_input" name="email" value="pochta@yandex.ru">
             <label class="login_form_label">Логин</label>
-            <input type="text" class="login_form_input">
+            <input type="text" class="form_input" name="login" value="ivanivanov">
             <label class="login_form_label">Имя</label>
-            <input type="text" class="login_form_input">
+            <input type="text" class="form_input" name="first_name" value="Иван">
             <label class="login_form_label">Фамилия</label>
-            <input type="text" class="login_form_input">
+            <input type="text" class="form_input" name="second_name" value="Иванов">
             <label class="login_form_label">Телефон</label>
-            <input type="tel" class="login_form_input">
+            <input type="tel" class="form_input" name="phone" value="+7 (909) 967 30 30">
             <label class="login_form_label">Пароль</label>
-            <input type="password" class="login_form_input">
+            <input type="password" class="form_input" name="password" value="123456789">
             <label class="login_form_label">Пароль (ещё раз)</label>
-            <input type="password" class="login_form_input">
+            <input type="password" class="form_input" name="password_repeat" value="123456789">
         </form>
         <div class="form_buttons">
-            <a class="link_button" href="/static/chat.html">Зарегистрироваться</a>
-            <a class="signin_link" href="/index.html">Войти</a>
+            <a class="link" href="chat.html"><button class="link_button">Зарегистрироваться</button></a>
+            <a class="link text_link" href="/index.html">Войти</a>
         </div>
     </div>
-</div>
+</main>
 </body>
 </html>

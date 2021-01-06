@@ -57,13 +57,13 @@ body {
     color: #999999;
 }
 
-.login_form_input {
+.form_input {
     width: 100%;
     border: 0;
     border-bottom: 1px solid #991B94;
 }
 
-.login_form_input:focus {
+.form_input:focus {
     outline: none;
 }
 
@@ -72,11 +72,10 @@ body {
     text-align: center;
 }
 
-.signin_link {
+.text_link {
     width: 78px;
     height: 11px;
     font-size: 11px;
     line-height: 11px;
     color: #991B94;
-    text-decoration: none;
 }

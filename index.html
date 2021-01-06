@@ -7,20 +7,20 @@
     <link rel="stylesheet" href="/static/css/login.css">
 </head>
 <body>
-<div class="wrapper">
+<main class="wrapper">
     <div class="login_box">
         <h1 class="login_box_title">Вход</h1>
         <form class="login_form login_form__margin">
             <label class="login_form_label">Логин</label>
-            <input class="login_form_input">
-            <label class="login_form_label">Пароль</label>
-            <input class="login_form_input">
+            <input class="form_input" name="login">
+            <label class="login_form_label" name="password">Пароль</label>
+            <input class="form_input">
         </form>
         <div class="form_buttons">
-            <a class="link_button" href="/static/chat.html">Авторизоваться</a>
-            <a class="signin_link" href="/static/signin.html">Нет аккаунта?</a>
+            <a href="/static/chat.html" class="link"><button class="link_button">Авторизоваться</button></a>
+            <a class="text_link" href="/static/signin.html">Нет аккаунта?</a>
         </div>
     </div>
-</div>
+</main>
 </body>
 </html>

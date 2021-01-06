@@ -27,6 +27,8 @@ body {
 .contacts__main {
     height: calc(100vh - 95px);
     overflow-y: scroll;
+    padding: 0;
+    margin: 0;
 }
 
 .contacts__main::-webkit-scrollbar, .messages__main::-webkit-scrollbar {
@@ -164,12 +166,12 @@ body {
     color: #1E1E1E;
 }
 
-.messages__menuBtn {
+.messages__menu_button {
     position: absolute;
     right: 0;
 }
 
-.messages__menuBtn:after {
+.messages__menu_button:after {
     content: '\2807';
     font-size: 20px;
 }
@@ -244,6 +246,7 @@ body {
     height: 45px;
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .messages__menu_item_icon {
@@ -311,8 +314,4 @@ body {
 .fa-file {
     margin-right: 14px;
     margin-left: 12px;
-}
-
-.button:hover {
-    cursor: pointer;
 }
