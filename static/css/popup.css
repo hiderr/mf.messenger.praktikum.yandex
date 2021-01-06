@@ -1,3 +1,6 @@
+main {
+    width: 100%;
+}
 
 .overlay{
     position:fixed;
@@ -11,7 +14,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -33,7 +35,7 @@
 }
 
 .popup__header {
-    margin: 0;
+    margin: 0 0 50px 0;
     font-size: 15px;
     line-height: 20px;
     text-align: center;
@@ -41,12 +43,16 @@
 }
 
 .popup__link {
-    width: 122px;
+    display: block;
     font-size: 12px;
     line-height: 16px;
     text-align: center;
     text-decoration-line: underline;
     color: #991B94;
+}
+
+.popup__footer {
+    margin-top: auto;
 }
 
 .popup__uploaded_link {
@@ -62,5 +68,3 @@
     line-height: 11px;
     text-align: center;
 }
-
-.popup__error_message
