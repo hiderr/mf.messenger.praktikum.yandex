@@ -57,10 +57,6 @@ body {
     color: #999999;
 }
 
-.login_form__input {
-    text-align: left;
-}
-
 .form__input_wrapper{
     margin-bottom: 32px;
 }

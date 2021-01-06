@@ -53,6 +53,10 @@ body {
 
 .form__input {
     border: 0;
+    text-align: left;
+}
+
+.form__input_align_right {
     text-align: right;
 }
 
