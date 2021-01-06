@@ -1,0 +1,114 @@
+.profile {
+    height: 100vh;
+}
+
+.profile__nav {
+    position: relative;
+    width: 64px;
+    height: 100%;
+    background-color: #FBFBFB;
+    float: left;
+}
+
+.profile__main {
+    position: relative;
+    height: 100%;
+    width: 510px;
+    margin: 0 auto;
+    padding: 60px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.profile__avatar {
+    color: #CDCDCD;
+    font-size: 35px;
+    padding: 50px;
+    border-radius: 65px;
+    background-color: #EFEFEF;
+    position: relative;
+}
+
+.profile__main .profile__avatar { /* have to increase specificity to overwrite property display of font-awesome */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile__avatar:hover {
+    color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.5);
+}
+
+.profile__avatar_tooltip {
+    font-size: 13px;
+    width: 65px;
+    text-align: center;
+    color: #FFFFFF;
+    position: absolute;
+    visibility: hidden;
+}
+
+.profile__avatar:hover .profile__avatar_tooltip {
+    visibility: visible;
+}
+
+.profile__name {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 16px;
+    text-align: center;
+    color: #1E1E1E;
+}
+
+.profile__form {
+    width: 100%;
+}
+
+.form__input {
+    border: 0;
+}
+
+.form__input:focus {
+    outline: none;
+}
+
+.form__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 34px;
+    border-bottom: 1px solid #EAEAEA;
+    font-size: 13px;
+    line-height: 13px;
+}
+
+.form__row:last-child {
+    border: 0;
+}
+
+.form__row_name {
+    color: #1E1E1E;
+}
+
+.form__row_value {
+    color: #999999;
+}
+
+.form__pink_link {
+    color: #991B94;
+}
+
+.form__red_link {
+    color: #FF0000;
+}
+
+.fa-arrow-left {
+    color: white;
+    background-color: #991B94;
+    position: absolute;
+    top: 50%;
+    left: calc(50% - 16px);
+}

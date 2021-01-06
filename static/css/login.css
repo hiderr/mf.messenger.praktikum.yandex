@@ -43,6 +43,10 @@ body {
     color: #1E1E1E;
 }
 
+.login_form {
+    width: 100%;
+}
+
 .login_form__margin {
     margin-bottom: 120px;
 }
@@ -66,20 +70,6 @@ body {
 .form_buttons {
     width: 100%;
     text-align: center;
-}
-
-.login_link {
-    display: block;
-    margin: 0 auto 10px;
-    width: 280px;
-    height: 37px;
-    padding: 10px;
-    border: 0;
-    background-color: #991B94;
-    border-radius: 8px;
-    color: white;
-    font-size: 13px;
-    text-decoration: none;
 }
 
 .signin_link {

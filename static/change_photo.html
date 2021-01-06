@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/popup.css">
+    <script src="https://kit.fontawesome.com/accfeb1a6a.js" crossorigin="anonymous"></script>
+    <script src="js/profile.js"></script>
+    <title>Profile</title>
+</head>
+<body>
+<div class="profile">
+    <div class="overlay">
+        <div class="popup popup_offset">
+            <p class="popup__header">Загрузите файл</p>
+            <a class="popup__link" href="">Выбрать файл на компьютере</a>
+            <a href="" class="link_button">Поменять</a>
+        </div>
+    </div>
+    <div class="profile__nav">
+        <a href="/static/chat.html"><i class="fas fa-arrow-left icon button"></i></a>
+    </div>
+    <div class="profile__main">
+        <div>
+            <a class="link" href="/static/change_photo.html">
+                <i class="fas fa-image profile__avatar">
+                    <span class="profile__avatar_tooltip">Поменять аватар</span>
+                </i>
+            </a>
+            <p class="profile__name">Иван</p>
+        </div>
+        <div class="profile__form">
+            <div class="form__row">
+                <p class="form__row_name">Почта</p>
+                <p class="form__row_value">pochta@yandex.ru</p>
+            </div>
+            <div class="form__row">
+                <p class="form__row_name">Логин</p>
+                <p class="form__row_value">ivanivanov</p>
+            </div>
+            <div class="form__row">
+                <p class="form__row_name">Имя</p>
+                <p class="form__row_value">Иван</p>
+            </div>
+            <div class="form__row">
+                <p class="form__row_name">Фамилия</p>
+                <p class="form__row_value">Иванов</p>
+            </div>
+            <div class="form__row">
+                <p class="form__row_name">Имя в чате</p>
+                <p class="form__row_value">Иван</p>
+            </div>
+            <div class="form__row">
+                <p class="form__row_name">Телефон</p>
+                <p class="form__row_value">+7 (909) 967 30 30</p>
+            </div>
+        </div>
+        <div class="profile__form">
+            <div class="form__row">
+                <a class="link form__pink_link" href="/static/change_profile.html">Изменить данные</a>
+            </div>
+            <div class="form__row">
+                <a class="link form__pink_link" href="/static/change_password.html">Изменить пароль</a>
+            </div>
+            <div class="form__row">
+                <a class="link form__red_link" href="/index.html">Выйти</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

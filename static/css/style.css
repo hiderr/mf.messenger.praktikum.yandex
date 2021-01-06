@@ -1,0 +1,44 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: Inter, serif;
+    font-style: normal;
+    font-weight: 500;
+}
+
+html,
+body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+.icon {
+    font-size: 20px;
+    padding: 5px 7px;
+    border-radius: 20px;
+}
+
+.link_button {
+    text-align: center;
+    display: block;
+    margin: 0 auto 10px;
+    width: 280px;
+    height: 37px;
+    padding: 10px;
+    border: 0;
+    background-color: #991B94;
+    border-radius: 8px;
+    color: white;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.link {
+    text-decoration: none;
+}

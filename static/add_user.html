@@ -4,12 +4,24 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/chat.css">
+    <link rel="stylesheet" href="css/popup.css">
+    <link rel="stylesheet" href="css/login.css">
     <script src="https://kit.fontawesome.com/accfeb1a6a.js" crossorigin="anonymous"></script>
     <script src="js/chat.js"></script>
     <title>Chat</title>
 </head>
 <body>
 <div class="chat">
+    <div class="overlay">
+        <div class="popup">
+            <p class="popup__header">Добавить пользователя</p>
+            <form class="login_form">
+                <label class="login_form_label">Логин</label>
+                <input class="login_form_input">
+            </form>
+            <a href="/static/chat.html" class="link_button">Добавить</a>
+        </div>
+    </div>
     <div class="contacts">
         <div class="contacts__header">
             <div class="profile_link_wrapper">
@@ -174,11 +186,11 @@
             <div class="messages__menu messages__menu_users messages__menu_hidden">
                 <div class="messages__menu_item">
                     <i class="fas fa-plus icon messages__menu_item_icon_border messages__menu_item_icon"></i>
-                    <a class="link" href="/static/add_user.html"><div class="messages__menu_item_text">Добавить пользователя</div></a>
+                    <div class="messages__menu_item_text">Добавить пользователя</div>
                 </div>
                 <div class="messages__menu_item">
                     <span class="icon messages__menu_item_icon messages__menu_item_icon_border messages__menu_item_icon_remove_user">X</span>
-                    <a class="link" href="/static/remove_user.html"><div class="messages__menu_item_text">Удалить пользователя</div></a>
+                    <div class="messages__menu_item_text">Удалить пользователя</div>
                 </div>
             </div>
 
