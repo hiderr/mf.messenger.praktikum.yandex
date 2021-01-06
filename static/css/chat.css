@@ -166,9 +166,22 @@ body {
     color: #1E1E1E;
 }
 
-.messages__menu_button {
+.messages__menu_wrapper {
     position: absolute;
     right: 0;
+    width: 25px;
+    height: 25px;
+    border-radius: 13px;
+}
+
+.messages__menu_wrapper:hover, .messages__menu_wrapper_clicked {
+    background-color: #F5F5F5;
+}
+
+.messages__menu_button {
+    position: absolute;
+    left: 8px;
+    bottom: calc(1px / 2);
 }
 
 .messages__menu_button:after {
