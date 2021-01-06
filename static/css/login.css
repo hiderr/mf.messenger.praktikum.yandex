@@ -23,13 +23,12 @@ body {
 
 .login_box {
     position: relative;
+    display: flex;
+    flex-direction: column;
     width: 340px;
     height: 450px;
     padding: 30px;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 }
 
 .login_box.login_box__higher{
@@ -45,6 +44,7 @@ body {
 
 .login_form {
     width: 100%;
+    margin-top: 45px;
 }
 
 .login_form__margin {
@@ -57,17 +57,33 @@ body {
     color: #999999;
 }
 
-.form_input {
+.login_form__input {
+    text-align: left;
+}
+
+.form__input_wrapper{
+    margin-bottom: 32px;
+}
+
+.form__input {
     width: 100%;
     border: 0;
     border-bottom: 1px solid #991B94;
 }
 
-.form_input:focus {
+.form__input_error {
+    font-weight: normal;
+    font-style: normal;
+    font-size: 8px;
+    line-height: 8px;
+}
+
+.form__input:focus {
     outline: none;
 }
 
 .form_buttons {
+    margin-top: auto;
     width: 100%;
     text-align: center;
 }

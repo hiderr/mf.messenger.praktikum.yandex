@@ -63,3 +63,7 @@ body {
 .form__input:disabled {
     background-color: transparent;
 }
+
+.error_message {
+    color: #FF2F2F;
+}
