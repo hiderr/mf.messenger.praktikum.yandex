@@ -28,7 +28,12 @@
     left: calc(50% + 32px);
 }
 
+.popup_error_message {
+    height: 272px;
+}
+
 .popup__header {
+    margin: 0;
     font-size: 15px;
     line-height: 20px;
     text-align: center;
@@ -43,3 +48,23 @@
     text-decoration-line: underline;
     color: #991B94;
 }
+
+.popup__uploaded_link {
+    font-size: 14px;
+    color: #8D8D8D;
+    text-decoration: none;
+}
+
+.error_message {
+    color: #FF2F2F;
+}
+
+.footer_error {
+    margin-bottom: 0;
+    height: 11px;
+    font-size: 11px;
+    line-height: 11px;
+    text-align: center;
+}
+
+.popup__error_message
