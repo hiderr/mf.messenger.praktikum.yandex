@@ -270,11 +270,6 @@ body {
     border: 2px solid #991B94;
 }
 
-.messages__menu_item_icon_remove_user {
-    font-weight: 800;
-    padding: 3px 8px;
-}
-
 .messages__menu_item_text {
     font-size: 12px;
     color: #1E1E1E;

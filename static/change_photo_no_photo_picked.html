@@ -6,23 +6,25 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/profile.css">
     <link rel="stylesheet" href="css/popup.css">
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
     <script src="https://kit.fontawesome.com/accfeb1a6a.js" crossorigin="anonymous"></script>
+    <script src="js/change_photo.js"></script>
     <script src="js/profile.js"></script>
     <title>Profile</title>
 </head>
 <body>
+<script id="entry-template" type="text/x-handlebars-template">
 <div class="profile">
     <div class="overlay">
         <div class="popup popup_offset popup_error_message">
             <header>
-                <h1 class="popup__header">Загрузите файл</h1>
+                <h1 class="popup__header">{{title}}</h1>
             </header>
             <main>
-                <a class="popup__link" href="change_photo_uploaded.html">Выбрать файл на компьютере</a>
+                <a class="popup__link" href="{{link}}">{{link_text}}</a>
             </main>
             <footer class="popup__footer">
-                <button class="button link_button">Поменять</button>
-                <p class="error_message footer_error">Нужно выбрать файл</p>
+                <button class="button link_button">{{button_text}}</button>
             </footer>
         </div>
     </div>
@@ -77,5 +79,6 @@
         </div>
     </main>
 </div>
+</script>
 </body>
 </html>

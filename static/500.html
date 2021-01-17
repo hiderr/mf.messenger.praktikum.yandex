@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
-    <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="stylesheet" href="/static/css/error.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/error.css">
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script src="js/error.js"></script>
     <title>Error 500</title>
 </head>
 <body>
+<script id="entry-template" type="text/x-handlebars-template">
     <main>
         <div class="error">
-            <h1 class="error_code">500</h1>
-            <p class="error_message">Проблемы на нашей стороне</p>
-            <a href="/static/chat.html" class="link error_back">Назад к чатам</a>
+            <h1 class="error_code">{{error_code}}</h1>
+            <p class="error_message">{{error_message}}</p>
+            <a href="chat.html" class="link error_back">{{link_text}}</a>
         </div>
     </main>
+</script>
 </body>
 </html>

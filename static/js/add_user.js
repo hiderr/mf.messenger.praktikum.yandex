@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const template = Handlebars.compile(source);
     const context = {
         contacts: [
-            {name: "Андрей", selectedClass: "contact_selected", preview: "Набирай", time: "10:52", unread: 2},
+            {name: "Андрей", preview: "Набирай", time: "10:52", unread: 2},
             {name: "Братишка", preview: "Ну, давай, заскочу!", time: "22:15", unread: 2},
             {name: "Иван", preview: "Да, как в тот раз", time: "12:34", unread: 2},
             {name: "Ольга", preview: "Увидимся", time: "10:49", unread: 2},
@@ -17,31 +17,12 @@ document.addEventListener("DOMContentLoaded", () => {
             {name: "Антоха", preview: "Бро, такой трек записал... Чума просто!", time: "21:49", unread: 2},
             {name: "Константин", preview: "Заявление подписал", time: "22:49", unread: 2},
         ],
-        menu_actions: [
-            {icon: "fa-plus", link: "add_user.html", text: "Добавить пользователя"},
-            {icon: "fa-minus", link: "remove_user.html", text: "Удалить пользователя"},
-            {icon: "fa-trash-alt", text: "Удалить чат"}
-        ],
-        attachment_actions: [
-            {icon: "fa-image", text: "Фото или Видео"},
-            {icon: "fa-file", text: "Файл"},
-            {icon: "fa-location-arrow", text: "Локация"}
-        ]
+        popup_title: "Добавить пользователя",
+        popup_label: "Логин",
+        popup_input_value: "ivanivanov",
+        popup_button_link: "chat.html",
+        popup_button_text: "Добавить"
     };
     // execute the compiled template and print the output to the console
     document.querySelector("body").innerHTML = template(context);
-    console.log(template(context));
-
-    document.querySelector(".messages__menu_button").onclick = function () {
-        document.querySelector(".messages__menu").classList.toggle("messages__menu_hidden");
-        document.querySelector(".messages__menu_wrapper").classList.toggle("messages__menu_wrapper_clicked");
-    };
-    document.querySelector(".paperclip").onclick = function () {
-        document.querySelector(".messages__menu_attachments").classList.toggle("messages__menu_hidden");
-    };
-
-    document.querySelector(".contacts__main").onclick = function (e) {
-        document.querySelector(".contact_selected").classList.remove("contact_selected");
-        e.target.closest("li").classList.add("contact_selected");
-    };
 });

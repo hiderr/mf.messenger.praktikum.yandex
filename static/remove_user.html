@@ -7,233 +7,121 @@
     <link rel="stylesheet" href="css/chat.css">
     <link rel="stylesheet" href="css/popup.css">
     <link rel="stylesheet" href="css/login.css">
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
     <script src="https://kit.fontawesome.com/accfeb1a6a.js" crossorigin="anonymous"></script>
-    <script src="js/chat.js"></script>
+    <script src="js/remove_user.js"></script>
     <title>Chat</title>
 </head>
 <body>
-<div class="chat">
-    <div class="overlay">
-        <div class="popup">
-            <header>
-                <h1 class="popup__header">Удалить пользователя</h1>
+<script id="entry-template" type="text/x-handlebars-template">
+    <div class="chat">
+        <div class="overlay">
+            <div class="popup">
+                <header>
+                    <h1 class="popup__header">{{popup_title}}</h1>
+                </header>
+                <main>
+                    <form>
+                        <label class="login_form_label">{{popup_label}}</label>
+                        <input class="form__input" value="{{popup_input_value}}">
+                    </form>
+                </main>
+                <footer class="popup__footer">
+                    <a href="{{popup_button_link}}" class="link_button">{{popup_button_text}}</a>
+                </footer>
+            </div>
+        </div>
+        <div class="contacts">
+            <header class="contacts__header">
+                <div class="profile_link_wrapper">
+                    <a class="contact__profileLink" href="profile.html">Профиль</a>
+                </div>
+                <input class="search contact__search" type="text" placeholder="&#128269; Поиск">
             </header>
-            <main>
-                <form>
-                    <label class="login_form_label">Логин</label>
-                    <input class="form__input" value="ivanivanov">
-                </form>
-            </main>
-            <footer class="popup__footer">
-                <a href="chat.html" class="link_button">Удалить</a>
-            </footer>
+            <ul class="contacts__main">
+                {{#each contacts}}
+                <li class="contact {{selectedClass}}">
+                    <div class="contact__avatar"></div>
+                    <div class="contact_info">
+                        <h2 class="contact__name">{{name}}</h2>
+                        <p class="contact__preview">{{preview}}</p>
+                    </div>
+                    <div class="time_count">
+                        <p class="contact__time time">{{time}}</p>
+                        <p class="contact__count">{{unread}}</p>
+                    </div>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+        <div class="messages">
+            <div class="messages__header">
+                <div class="messages__avatar"></div>
+                <p class="messages__name">Андрей</p>
+                <div class="messages__menu_wrapper">
+                    <div class="messages__menu_button button"></div>
+                </div>
+            </div>
+            <div class="messages__main">
+
+                <div class="messages__menu messages__menu_users messages__menu_hidden">
+                    <div class="messages__menu_item">
+                        <i class="fas fa-plus icon messages__menu_item_icon_border messages__menu_item_icon"></i>
+                        <div class="messages__menu_item_text">Добавить пользователя</div>
+                    </div>
+                    <div class="messages__menu_item">
+                        <span class="icon messages__menu_item_icon messages__menu_item_icon_border messages__menu_item_icon_remove_user">X</span>
+                        <div class="messages__menu_item_text">Удалить пользователя</div>
+                    </div>
+                </div>
+
+                <div class="messages__menu messages__menu_attachments messages__menu_hidden">
+                    <div class="messages__menu_item">
+                        <i class="fas fa-image icon messages__menu_item_icon"></i>
+                        <div class="messages__menu_item_text">Фото или Видео</div>
+                    </div>
+                    <div class="messages__menu_item">
+                        <i class="far fa-file icon messages__menu_item_icon"></i>
+                        <div class="messages__menu_item_text">Файл</div>
+                    </div>
+                    <div class="messages__menu_item">
+                        <i class="fas fa-location-arrow icon messages__menu_item_icon"></i>
+                        <div class="messages__menu_item_text">Локация</div>
+                    </div>
+                </div>
+
+                <p class="messages__date">19 июня</p>
+                <div class="message message__text message__text_from">
+                    <p class="message__text_inner">Привет! Смотри, тут всплыл интересный кусок лунной космической
+                        истории —
+                        НАСА в
+                        какой-то момент
+                        попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что
+                        астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на
+                        поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.</p><br>
+                    <p class="message__text_inner">
+                        Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так
+                        никогда
+                        и
+                        не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000
+                        евро.</p>
+                </div>
+                <div class="message">
+                    <img src="img/camera.png" alt="">
+                </div>
+                <div class="message message__text message__text_to">
+                    <p class="message__text_inner">Ясно</p>
+                    <i class="fas fa-check-double"></i>
+                    <p class="message__time time">10:49</p>
+                </div>
+            </div>
+            <div class="messages__footer">
+                <i class="fas fa-paperclip paperclip button"></i>
+                <input class="search messages__search" type="text" placeholder="Сообщение">
+                <i class="fas fa-arrow-right icon button"></i>
+            </div>
         </div>
     </div>
-    <div class="contacts">
-        <header class="contacts__header">
-            <div class="profile_link_wrapper">
-                <a class="contact__profileLink" href="profile.html">Профиль</a>
-            </div>
-            <input class="search contact__search" type="text" placeholder="&#128269; Поиск">
-        </header>
-        <ul class="contacts__main">
-            <li class="contact contact_selected">
-                <div class="contact__avatar"></div>
-                <div class="contact_info">
-                    <h2 class="contact__name">Андрей</h2>
-                    <p class="contact__preview">Изображение</p>
-                </div>
-                <div class="time_count">
-                    <p class="contact__time time">10:49</p>
-                    <p class="contact__count">2</p>
-                </div>
-            </li>
-            <li class="contact">
-                <div class="contact__avatar"></div>
-                <div class="contact_info">
-                    <h2 class="contact__name">Андрей</h2>
-                    <p class="contact__preview">Изображение</p>
-                </div>
-                <div class="time_count">
-                    <p class="contact__time time">10:49</p>
-                    <p class="contact__count">2</p>
-                </div>
-            </li>
-            <li class="contact">
-                <div class="contact__avatar"></div>
-                <div class="contact_info">
-                    <h2 class="contact__name">Андрей</h2>
-                    <p class="contact__preview">Изображение</p>
-                </div>
-                <div class="time_count">
-                    <p class="contact__time time">10:49</p>
-                    <p class="contact__count">2</p>
-                </div>
-            </li>
-            <li class="contact">
-                <div class="contact__avatar"></div>
-                <div class="contact_info">
-                    <h2 class="contact__name">Андрей</h2>
-                    <p class="contact__preview">Изображение</p>
-                </div>
-                <div class="time_count">
-                    <p class="contact__time time">10:49</p>
-                    <p class="contact__count">2</p>
-                </div>
-            </li>
-            <li class="contact">
-                <div class="contact__avatar"></div>
-                <div class="contact_info">
-                    <h2 class="contact__name">Андрей</h2>
-                    <p class="contact__preview">Изображение</p>
-                </div>
-                <div class="time_count">
-                    <p class="contact__time time">10:49</p>
-                    <p class="contact__count">2</p>
-                </div>
-            </li>
-            <li class="contact">
-                <div class="contact__avatar"></div>
-                <div class="contact_info">
-                    <h2 class="contact__name">Андрей</h2>
-                    <p class="contact__preview">Изображение</p>
-                </div>
-                <div class="time_count">
-                    <p class="contact__time time">10:49</p>
-                    <p class="contact__count">2</p>
-                </div>
-            </li>
-            <li class="contact">
-                <div class="contact__avatar"></div>
-                <div class="contact_info">
-                    <h2 class="contact__name">Андрей</h2>
-                    <p class="contact__preview">Изображение</p>
-                </div>
-                <div class="time_count">
-                    <p class="contact__time time">10:49</p>
-                    <p class="contact__count">2</p>
-                </div>
-            </li>
-            <li class="contact">
-                <div class="contact__avatar"></div>
-                <div class="contact_info">
-                    <h2 class="contact__name">Андрей</h2>
-                    <p class="contact__preview">Изображение</p>
-                </div>
-                <div class="time_count">
-                    <p class="contact__time time">10:49</p>
-                    <p class="contact__count">2</p>
-                </div>
-            </li>
-            <li class="contact">
-                <div class="contact__avatar"></div>
-                <div class="contact_info">
-                    <h2 class="contact__name">Андрей</h2>
-                    <p class="contact__preview">Изображение</p>
-                </div>
-                <div class="time_count">
-                    <p class="contact__time time">10:49</p>
-                    <p class="contact__count">2</p>
-                </div>
-            </li>
-            <li class="contact">
-                <div class="contact__avatar"></div>
-                <div class="contact_info">
-                    <h2 class="contact__name">Андрей</h2>
-                    <p class="contact__preview">Изображение</p>
-                </div>
-                <div class="time_count">
-                    <p class="contact__time time">10:49</p>
-                    <p class="contact__count">2</p>
-                </div>
-            </li>
-            <li class="contact">
-                <div class="contact__avatar"></div>
-                <div class="contact_info">
-                    <h2 class="contact__name">Андрей</h2>
-                    <p class="contact__preview">Изображение</p>
-                </div>
-                <div class="time_count">
-                    <p class="contact__time time">10:49</p>
-                    <p class="contact__count">2</p>
-                </div>
-            </li>
-            <li class="contact">
-                <div class="contact__avatar"></div>
-                <div class="contact_info">
-                    <h2 class="contact__name">Андрей</h2>
-                    <p class="contact__preview">Изображение</p>
-                </div>
-                <div class="time_count">
-                    <p class="contact__time time">10:49</p>
-                    <p class="contact__count">2</p>
-                </div>
-            </li>
-        </ul>
-    </div>
-    <div class="messages">
-        <div class="messages__header">
-            <div class="messages__avatar"></div>
-            <p class="messages__name">Андрей</p>
-            <div class="messages__menu_button button"></div>
-        </div>
-        <div class="messages__main">
-
-            <div class="messages__menu messages__menu_users messages__menu_hidden">
-                <div class="messages__menu_item">
-                    <i class="fas fa-plus icon messages__menu_item_icon_border messages__menu_item_icon"></i>
-                    <div class="messages__menu_item_text">Добавить пользователя</div>
-                </div>
-                <div class="messages__menu_item">
-                    <span class="icon messages__menu_item_icon messages__menu_item_icon_border messages__menu_item_icon_remove_user">X</span>
-                    <div class="messages__menu_item_text">Удалить пользователя</div>
-                </div>
-            </div>
-
-            <div class="messages__menu messages__menu_attachments messages__menu_hidden">
-                <div class="messages__menu_item">
-                    <i class="fas fa-image icon messages__menu_item_icon"></i>
-                    <div class="messages__menu_item_text">Фото или Видео</div>
-                </div>
-                <div class="messages__menu_item">
-                    <i class="far fa-file icon messages__menu_item_icon"></i>
-                    <div class="messages__menu_item_text">Файл</div>
-                </div>
-                <div class="messages__menu_item">
-                    <i class="fas fa-location-arrow icon messages__menu_item_icon"></i>
-                    <div class="messages__menu_item_text">Локация</div>
-                </div>
-            </div>
-
-            <p class="messages__date">19 июня</p>
-            <div class="message message__text message__text_from">
-                <p class="message__text_inner">Привет! Смотри, тут всплыл интересный кусок лунной космической истории —
-                    НАСА в
-                    какой-то момент
-                    попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что
-                    астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на
-                    поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.</p><br>
-                <p class="message__text_inner">
-                    Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда
-                    и
-                    не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000
-                    евро.</p>
-            </div>
-            <div class="message">
-                <img src="img/camera.png" alt="">
-            </div>
-            <div class="message message__text message__text_to">
-                <p class="message__text_inner">Ясно</p>
-                <i class="fas fa-check-double"></i>
-                <p class="message__time time">10:49</p>
-            </div>
-        </div>
-        <div class="messages__footer">
-            <i class="fas fa-paperclip paperclip button"></i>
-            <input class="search messages__search" type="text" placeholder="Сообщение">
-            <i class="fas fa-arrow-right icon button"></i>
-        </div>
-    </div>
-</div>
+</script>
 </body>
 </html>

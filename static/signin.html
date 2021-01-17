@@ -6,33 +6,29 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/login.css">
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script src="js/signin.js"></script>
     <script src="js/common.js"></script>
 </head>
 <body>
-<main class="wrapper">
-    <div class="login_box login_box__higher">
-        <h1 class="login_box_title">Регистрация</h1>
-        <form name="form" class="login_form">
-            <label class="login_form_label">Почта</label>
-            <input type="email" class="form__input" name="email" value="pochta@yandex.ru">
-            <label class="login_form_label">Логин</label>
-            <input type="text" class="form__input" name="login" value="ivanivanov">
-            <label class="login_form_label">Имя</label>
-            <input type="text" class="form__input" name="first_name" value="Иван">
-            <label class="login_form_label">Фамилия</label>
-            <input type="text" class="form__input" name="second_name" value="Иванов">
-            <label class="login_form_label">Телефон</label>
-            <input type="tel" class="form__input" name="phone" value="+7 (909) 967 30 30">
-            <label class="login_form_label">Пароль</label>
-            <input type="password" class="form__input" name="password" value="123456789">
-            <label class="login_form_label">Пароль (ещё раз)</label>
-            <input type="password" class="form__input" name="password_repeat" value="123456789">
-        </form>
-        <div class="form_buttons">
-            <a class="link" href="chat.html"><button class="link_button">Зарегистрироваться</button></a>
-            <a class="link text_link" href="index.html">Войти</a>
+<script id="entry-template" type="text/x-handlebars-template">
+    <main class="wrapper">
+        <div class="login_box login_box__higher">
+            <h1 class="login_box_title">{{title}}</h1>
+            <form name="form" class="login_form">
+                {{#each form_rows}}
+                <label class="login_form_label">{{label}}</label>
+                <input type="{{type}}" class="form__input" name="{{name}}" value="{{value}}" placeholder="{{placeholder}}">
+                {{/each}}
+            </form>
+            <div class="form_buttons">
+                <a class="link" href="chat.html">
+                    <button class="link_button">{{button_text}}</button>
+                </a>
+                <a class="link text_link" href="index.html">{{link_text}}</a>
+            </div>
         </div>
-    </div>
-</main>
+    </main>
+</script>
 </body>
 </html>
