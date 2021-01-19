@@ -5,30 +5,14 @@
     <title>Sign In</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="blocks/Login/login.css">
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
-    <script src="js/signin.js"></script>
+    <script type="module" src="js/signin.js"></script>
     <script src="js/common.js"></script>
 </head>
 <body>
-<script id="entry-template" type="text/x-handlebars-template">
-    <main class="wrapper">
-        <div class="login_box login_box__higher">
-            <h1 class="login_box_title">{{title}}</h1>
-            <form name="form" class="login_form">
-                {{#each form_rows}}
-                <label class="login_form_label">{{label}}</label>
-                <input type="{{type}}" class="form__input" name="{{name}}" value="{{value}}" placeholder="{{placeholder}}">
-                {{/each}}
-            </form>
-            <div class="form_buttons">
-                <a class="link" href="chat.html">
-                    <button class="link_button">{{button_text}}</button>
-                </a>
-                <a class="link text_link" href="index.html">{{link_text}}</a>
-            </div>
-        </div>
-    </main>
-</script>
+<main class="wrapper">
+
+</main>
 </body>
 </html>

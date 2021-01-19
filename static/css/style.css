@@ -71,3 +71,15 @@ body {
 .error_message {
     color: #FF2F2F;
 }
+
+.hide {
+    display: none;
+}
+
+.readonly {
+    pointer-events: none;
+}
+
+.w100proc {
+    width: 100%;
+}

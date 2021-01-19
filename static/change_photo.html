@@ -4,83 +4,17 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/profile.css">
-    <link rel="stylesheet" href="css/popup.css">
+    <link rel="stylesheet" href="blocks/Profile/profile.css">
+    <link rel="stylesheet" href="components/Popup/popup.css">
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
     <script src="https://kit.fontawesome.com/accfeb1a6a.js" crossorigin="anonymous"></script>
-    <script src="js/change_photo.js"></script>
-    <script src="js/profile.js"></script>
+    <script type="module" src="js/profile.js"></script>
+    <script type="module" src="js/change_photo.js"></script>
     <title>Profile</title>
 </head>
 <body>
-<script id="entry-template" type="text/x-handlebars-template">
-    <div class="profile">
-        <div class="overlay">
-            <div class="popup popup_offset">
-                <header>
-                    <h1 class="popup__header">{{title}}</h1>
-                </header>
-                <main>
-                    <a class="popup__link" href="{{link}}">{{link_text}}</a>
-                </main>
-                <footer class="popup__footer">
-                    <a class="link" href="change_photo_no_photo_picked.html">
-                        <button class="button link_button">{{button_text}}</button>
-                    </a>
-                </footer>
-            </div>
-        </div>
-        <nav class="profile__nav">
-            <a href="chat.html"><i class="fas fa-arrow-left icon button"></i></a>
-        </nav>
-        <main class="profile__main">
-            <div>
-                <a class="link" href="change_photo.html">
-                    <i class="fas fa-image profile__avatar">
-                        <span class="profile__avatar_tooltip">Поменять аватар</span>
-                    </i>
-                </a>
-                <p class="profile__name">Иван</p>
-            </div>
-            <div class="profile__form">
-                <div class="form__row">
-                    <p class="form__row_name">Почта</p>
-                    <p class="form__row_value">pochta@yandex.ru</p>
-                </div>
-                <div class="form__row">
-                    <p class="form__row_name">Логин</p>
-                    <p class="form__row_value">ivanivanov</p>
-                </div>
-                <div class="form__row">
-                    <p class="form__row_name">Имя</p>
-                    <p class="form__row_value">Иван</p>
-                </div>
-                <div class="form__row">
-                    <p class="form__row_name">Фамилия</p>
-                    <p class="form__row_value">Иванов</p>
-                </div>
-                <div class="form__row">
-                    <p class="form__row_name">Имя в чате</p>
-                    <p class="form__row_value">Иван</p>
-                </div>
-                <div class="form__row">
-                    <p class="form__row_name">Телефон</p>
-                    <p class="form__row_value">+7 (909) 967 30 30</p>
-                </div>
-            </div>
-            <div class="profile__form">
-                <div class="form__row">
-                    <a class="link form__pink_link" href="change_profile.html">Изменить данные</a>
-                </div>
-                <div class="form__row">
-                    <a class="link form__pink_link" href="change_password.html">Изменить пароль</a>
-                </div>
-                <div class="form__row">
-                    <a class="link form__red_link" href="index.html">Выйти</a>
-                </div>
-            </div>
-        </main>
-    </div>
-</script>
+<div class="wrapper">
+    <div class="popup_wrapper"></div>
+</div>
 </body>
 </html>

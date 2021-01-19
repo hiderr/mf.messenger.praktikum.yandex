@@ -1,0 +1,5 @@
+export const template = `<form class="profile__form {{form_class}}">
+                {{#each form_rows}}
+                <div class="form__row"></div>
+                {{/each}}
+            </form>`;

@@ -4,45 +4,13 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="blocks/Profile/profile.css">
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
     <script src="https://kit.fontawesome.com/accfeb1a6a.js" crossorigin="anonymous"></script>
-    <script src="js/profile.js"></script>
+    <script type="module" src="js/profile.js"></script>
     <title>Profile</title>
 </head>
 <body>
-<script id="entry-template" type="text/x-handlebars-template">
-    <div class="profile">
-        <nav class="profile__nav">
-            <a href="chat.html"><i class="fas fa-arrow-left icon button"></i></a>
-        </nav>
-        <main class="profile__main">
-            <div>
-                <a class="link" href="change_photo.html">
-                    <i class="fas fa-image profile__avatar">
-                        <span class="profile__avatar_tooltip">{{avatar_tooltip}}</span>
-                    </i>
-                </a>
-                <p class="profile__name">{{profile_name}}</p>
-            </div>
-            <form class="profile__form">
-                {{#each form_rows}}
-                <div class="form__row">
-                    <p class="form__row_name">{{name}}</p>
-                    <input class="form__row_value form__input form__input_align_right" type="{{type}}"
-                           value="{{value}}" disabled/>
-                </div>
-                {{/each}}
-            </form>
-            <div class="profile__form">
-                {{#each form_buttons}}
-                <div class="form__row">
-                    <a class="link {{class}}" href="{{link}}">{{text}}</a>
-                </div>
-                {{/each}}
-            </div>
-        </main>
-    </div>
-</script>
+<div class="wrapper"></div>
 </body>
 </html>
