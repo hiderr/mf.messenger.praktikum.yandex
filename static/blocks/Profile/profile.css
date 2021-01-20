@@ -106,7 +106,7 @@
     left: calc(50% - 16px);
 }
 
-.error_message {
+.error_message_bottom {
     position: absolute;
     right: 0;
     top: 20px;

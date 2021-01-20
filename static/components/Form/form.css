@@ -1,0 +1,19 @@
+.login_form_label {
+    font-size: 9px;
+    line-height: 9px;
+    color: #999999;
+}
+
+.form__input_wrapper{
+    margin-bottom: 32px;
+}
+
+.form__input {
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid #991B94;
+}
+
+.form__input:focus {
+    outline: none;
+}

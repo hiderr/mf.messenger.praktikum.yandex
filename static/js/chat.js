@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     chatPage.eventBus().emit("clear_error_message", el);
                     if (el.tagName === "INPUT") {
                         const error_message = document.createElement("p");
-                        error_message.classList.add("error_message", "message__error");
+                        error_message.classList.add("error_message", "error_message_bottom", "error_message_small");
                         if (el.value === "") {
                             error_message.textContent = "Поле не может быть пустым";
                             el.parentElement.append(error_message);
