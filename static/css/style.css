@@ -70,6 +70,9 @@ body {
 
 .error_message {
     color: #FF2F2F;
+}
+
+.error_message_small {
     font-weight: normal;
     font-style: normal;
     font-size: 8px;

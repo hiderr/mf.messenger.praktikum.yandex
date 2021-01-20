@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 name: "validate_form_input", handler: (el) => {
                     if (el.tagName === "INPUT") {
                         const error_message = document.createElement("p");
-                        error_message.classList.add("error_message");
+                        error_message.classList.add("error_message", "error_message_small");
                         if (el.value === "") {
                             error_message.textContent = "Поле не может быть пустым";
                             el.parentElement.append(error_message);
