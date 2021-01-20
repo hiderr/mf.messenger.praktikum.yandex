@@ -310,6 +310,12 @@ body {
     bottom: 0;
 }
 
+.message__error {
+    position: absolute;
+    bottom: 37px;
+    left: 76px;
+}
+
 .fa-check-double {
     color: #991B94;
     font-size: 8px;

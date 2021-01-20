@@ -58,6 +58,15 @@ class Block {
 
     // Может переопределять пользователь, необязательно трогать
     componentDidMount(oldProps) {
+        const eventBus = this.eventBus();
+        if (oldProps.events) {
+            oldProps.events.forEach(item => {
+                eventBus.on(item.name, item.handler);
+                this._element.addEventListener(item.name, (e) => {
+                    eventBus.emit(item.name, e.target, e, eventBus);
+                }, true);
+            });
+        }
     }
 
     _componentDidUpdate(oldProps, newProps) {
@@ -89,7 +98,7 @@ class Block {
         const block = this.render();
         const template = document.createElement('template');
         template.innerHTML = block.trim();
-        this._element = template.content.firstChild;
+        this._element.appendChild(template.content.firstChild);
     }
 
     // Может переопределять пользователь, необязательно трогать

@@ -67,13 +67,6 @@ body {
     border-bottom: 1px solid #991B94;
 }
 
-.form__input_error {
-    font-weight: normal;
-    font-style: normal;
-    font-size: 8px;
-    line-height: 8px;
-}
-
 .form__input:focus {
     outline: none;
 }

@@ -58,7 +58,7 @@ export const template = `<div class="chat {{chat_class}}">
             <footer class="messages__footer">
                 <button class="button paperclip"><i class="fas fa-paperclip"></i></button>
                 <input class="search messages__search" type="text" placeholder="Сообщение" name="message">
-                <button class="button"><i class="fas fa-arrow-right icon"></i></button>
+                <button class="button send"><i class="fas fa-arrow-right icon"></i></button>
             </footer>
         </div>
     </div>`;

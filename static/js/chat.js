@@ -41,21 +41,57 @@ document.addEventListener("DOMContentLoaded", () => {
             { icon: "fa-image", text: "Фото или Видео" },
             { icon: "fa-file", text: "Файл" },
             { icon: "fa-location-arrow", text: "Локация" }
+        ],
+        events: [
+            {
+                name: "click", handler: (el) => {
+                    if (el.matches(".messages__menu_button")) {
+                        document.querySelector(".messages__menu").classList.toggle("messages__menu_hidden");
+                        el.parentElement.classList.toggle("messages__menu_wrapper_clicked");
+                    }
+                    if (el.parentElement.matches(".paperclip")) {
+                        document.querySelector(".messages__menu_attachments").classList.toggle("messages__menu_hidden");
+                    }
+                    if (el.closest(".contact")) {
+                        document.querySelector(".contact_selected").classList.remove("contact_selected");
+                        // @ts-ignore
+                        el.closest("li").classList.add("contact_selected");
+                    }
+                    if (el.parentElement.matches(".send")) {
+                        chatPage.eventBus().emit("validate_message", document.querySelector("[name='message']"));
+                    }
+                }
+            },
+            {
+                name: "validate_message", handler: (el) => {
+                    chatPage.eventBus().emit("clear_error_message", el);
+                    if (el.tagName === "INPUT") {
+                        const error_message = document.createElement("p");
+                        error_message.classList.add("error_message", "message__error");
+                        if (el.value === "") {
+                            error_message.textContent = "Поле не может быть пустым";
+                            el.parentElement.append(error_message);
+                        }
+                        if (el.type === "text" && el.value.match(new RegExp("[^\\w\\s]", "gi"))) {
+                            error_message.textContent = "Нельзя использовать специальные символы";
+                            el.parentElement.append(error_message);
+                        }
+                    }
+                }
+            },
+            {
+                name: "clear_error_message", handler: (el) => {
+                    if (el.tagName === "INPUT") {
+                        const inputWrapper = el.parentElement;
+                        if (inputWrapper.querySelector(".error_message")) {
+                            inputWrapper.removeChild(inputWrapper.querySelector(".error_message"));
+                        }
+                    }
+                }
+            }
         ]
     };
     const chatPage = new ChatPage(context);
     render(".wrapper", chatPage);
-    document.querySelector(".messages__menu_button").addEventListener("click", () => {
-        document.querySelector(".messages__menu").classList.toggle("messages__menu_hidden");
-        document.querySelector(".messages__menu_wrapper").classList.toggle("messages__menu_wrapper_clicked");
-    });
-    document.querySelector(".paperclip").addEventListener("click", () => {
-        document.querySelector(".messages__menu_attachments").classList.toggle("messages__menu_hidden");
-    });
-    document.querySelector(".contacts__main").addEventListener("click", (e) => {
-        document.querySelector(".contact_selected").classList.remove("contact_selected");
-        // @ts-ignore
-        e.target.closest("li").classList.add("contact_selected");
-    });
 });
 //# sourceMappingURL=chat.js.map

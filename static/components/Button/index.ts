@@ -4,7 +4,7 @@ import {template} from "./template.js";
 
 class Button extends Block {
     constructor(props) {
-        super("button", props);
+        super("div", props);
     }
 
     render() {

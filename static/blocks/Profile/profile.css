@@ -68,6 +68,7 @@
 }
 
 .form__row {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -103,4 +104,10 @@
     position: absolute;
     top: 50%;
     left: calc(50% - 16px);
+}
+
+.error_message {
+    position: absolute;
+    right: 0;
+    top: 20px;
 }
