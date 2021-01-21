@@ -1,7 +1,7 @@
-import ChatPage from "../dist/blocks/Chat/index.js";
-import Popup from "../dist/components/Popup/index.js";
-import Form from "../dist/components/Form/index.js";
-import Button from "../dist/components/Button/index.js";
+import ChatPage from "../blocks/Chat/index.js";
+import Popup from "../components/Popup/index.js";
+import Form from "../components/Form/index.js";
+import Button from "../components/Button/index.js";
 import render from "../utils/renderDOM.js";
 
 (() => {
