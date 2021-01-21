@@ -2,7 +2,7 @@ import ProfilePage from "../blocks/Profile/index.js";
 import Form from "../components/Form/index.js";
 import render from "../utils/renderDOM.js";
 
-document.addEventListener("DOMContentLoaded", () => {
+(() => {
     const context = {
         avatar_tooltip: "Поменять аватар",
         profile_name: "Иван"
@@ -39,4 +39,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const formFooter = new Form(formFooterContext);
     render(".footer", formFooter);
-});
+})();

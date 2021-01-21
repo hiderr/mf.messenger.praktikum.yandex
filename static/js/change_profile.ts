@@ -3,7 +3,7 @@ import Form from "../components/Form/index.js";
 import Button from "../components/Button/index.js";
 import render from "../utils/renderDOM.js";
 
-document.addEventListener("DOMContentLoaded", () => {
+(() => {
     const context = {
         avatar_tooltip: "Поменять аватар"
     };
@@ -101,4 +101,4 @@ document.addEventListener("DOMContentLoaded", () => {
         ]
     });
     render(".footer", button);
-});
+})();

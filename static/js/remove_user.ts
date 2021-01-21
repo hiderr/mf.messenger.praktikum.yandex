@@ -4,7 +4,7 @@ import Form from "../components/Form/index.js";
 import Button from "../components/Button/index.js";
 import render from "../utils/renderDOM.js";
 
-document.addEventListener("DOMContentLoaded", () => {
+(() => {
     const chatContext = {
         chat_class: "w100proc",
         profile_link_text: "Профиль",
@@ -76,4 +76,4 @@ document.addEventListener("DOMContentLoaded", () => {
         link: "chat.html"
     });
     render(".popup__footer", button);
-});
+})();

@@ -2,7 +2,7 @@ import Button from "../components/Button/index.js";
 import Popup from "../components/Popup/index.js";
 import render from "../utils/renderDOM.js";
 
-document.addEventListener("DOMContentLoaded", () => {
+(() => {
     const popupContext = {
         title: "Загрузите файл",
         title_class: "",
@@ -49,4 +49,4 @@ document.addEventListener("DOMContentLoaded", () => {
         error_message.textContent = "Нужно выбрать файл";
         footer.append(error_message);
     }
-});
+})();

@@ -1,7 +1,7 @@
 import ChatPage from "../blocks/Chat/index.js";
 import render from "../utils/renderDOM.js";
 
-document.addEventListener("DOMContentLoaded", () => {
+(() => {
     const context = {
         profile_link_text: "Профиль",
         search_placeholder: "Поиск",
@@ -97,4 +97,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const chatPage = new ChatPage(context);
     render(".wrapper", chatPage);
-});
+})();

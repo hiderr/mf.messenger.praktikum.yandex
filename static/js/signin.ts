@@ -3,7 +3,7 @@ import SigninPage from "../blocks/Signin/index.js";
 import Button from "../components/Button/index.js";
 import render from "../utils/renderDOM.js";
 
-document.addEventListener("DOMContentLoaded", () => {
+(() => {
     const context = {
         title: "Регистрация",
         link_text: "Войти"
@@ -115,4 +115,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const button = new Button(buttonContext);
     render(".button_wrapper", button);
-});
+})();

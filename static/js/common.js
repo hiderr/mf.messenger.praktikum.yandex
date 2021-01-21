@@ -6,9 +6,9 @@ function convertFormDataToObject(formData) {
     }
     return obj;
 }
-document.addEventListener("DOMContentLoaded", () => {
+(() => {
     // @ts-ignore
     let form = document.forms.form, formData = new FormData(form);
     console.log(convertFormDataToObject(formData));
-});
+})();
 //# sourceMappingURL=common.js.map

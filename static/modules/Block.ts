@@ -82,11 +82,11 @@ class Block {
     }
 
     setProps = nextProps => {
-        const oldProps = Object.assign({}, this.props);
+        const oldProps = (<any>Object).assign({}, this.props);
         if (!nextProps) {
             return;
         }
-        Object.assign(this.props, nextProps);
+        (<any>Object).assign(this.props, nextProps);
         this.eventBus().emit(Block.EVENTS.FLOW_CDU, oldProps, nextProps);
     };
 
