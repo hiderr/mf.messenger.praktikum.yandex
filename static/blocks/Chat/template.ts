@@ -12,11 +12,12 @@ export const template = `<div class="chat {{chat_class}}">
                     <div class="contact__avatar"></div>
                     <div class="contact_info">
                         <h2 class="contact__name">{{name}}</h2>
-                        <p class="contact__preview">{{preview}}</p>
+                        <span class="contact__preview">{{preview}}</span>
                     </div>
                     <div class="time_count">
-                        <p class="contact__time time">{{time}}</p>
-                        <p class="contact__count">{{unread}}</p>
+                        <time class="contact__time time">{{time}}</time>
+                        <span class="contact__count">{{unread}}</span>
+                        <span />
                     </div>
                 </li>
                 {{/each}}
@@ -34,25 +35,29 @@ export const template = `<div class="chat {{chat_class}}">
 
                 <div class="messages__menu messages__menu_users messages__menu_hidden">
                     {{#each menu_actions}}
-                    <a class="link messages__menu_item" href="{{link}}">
-                        <i class="fas {{icon}} icon messages__menu_item_icon_border messages__menu_item_icon"></i>
-                        <p class="messages__menu_item_text">{{text}}</p>
-                    </a>
+                    <button class="button">
+                        <a class="link messages__menu_item" href="{{link}}">
+                            <i class="fas {{icon}} icon messages__menu_item_icon_border messages__menu_item_icon"></i>
+                            <p class="messages__menu_item_text">{{text}}</p>
+                        </a>
+                    </button>
                     {{/each}}
                 </div>
 
                 <div class="messages__menu messages__menu_attachments messages__menu_hidden">
                     {{#each attachment_actions}}
-                    <div class="messages__menu_item">
-                        <i class="fas {{icon}} icon messages__menu_item_icon"></i>
-                        <p class="messages__menu_item_text">{{text}}</p>
-                    </div>
+                    <button class="button">
+                        <div class="messages__menu_item">
+                            <i class="fas {{icon}} icon messages__menu_item_icon"></i>
+                            <p class="messages__menu_item_text">{{text}}</p>
+                        </div>
+                    </button>
                     {{/each}}
                 </div>
 
                 <p class="messages__date">{{messages_date}}</p>
                 {{#each messages}}
-                <div class="message {{class}}"><p class="message__text_inner">{{content}}</p>{{#if to}}<i class="fas fa-check-double"></i><p class="message__time time">{{time}}</p>{{/if}}</div>
+                <div class="message {{class}}"><p class="message__text_inner">{{content}}</p>{{#if to}}<i class="fas fa-check-double"></i><time class="message__time time">{{time}}</time>{{/if}}</div>
                 {{/each}}
             </main>
             <footer class="messages__footer">

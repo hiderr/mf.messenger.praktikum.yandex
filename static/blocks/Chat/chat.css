@@ -118,6 +118,13 @@ body {
     color: #999999;
 }
 
+.time_count {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-around;
+}
+
 .time {
     font-size: 9px;
     text-align: right;
@@ -234,7 +241,7 @@ body {
     border-radius: 12px;
     position: absolute;
     background-color: white;
-    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .messages__menu_users {
@@ -307,7 +314,7 @@ body {
     color: #991B94;
     position: absolute;
     right: 15px;
-    bottom: 0;
+    bottom: 9px;
 }
 
 .error_message_bottom {

@@ -22,9 +22,9 @@
   },
   "homepage": "https://github.com/hiderr/mf.messenger.praktikum.yandex#readme",
   "devDependencies": {
-    "express": "^4.17.1"
+    "express": "4.17.1"
   },
   "dependencies": {
-    "handlebars": "^4.7.6"
+    "handlebars": "4.7.6"
   }
 }
