@@ -1,7 +1,6 @@
-import Form from "../components/Form/index.js";
-import SigninPage from "../blocks/Signin/index.js";
-import Button from "../components/Button/index.js";
-import render from "../utils/renderDOM.js";
+import {Form} from "../components/Form/index.js";
+import {SigninPage} from "../blocks/Signin/index.js";
+import {Button} from "../components/Button/index.js";
 
 (() => {
     const context = {
@@ -10,7 +9,7 @@ import render from "../utils/renderDOM.js";
     };
 
     const loginPage = new SigninPage(context);
-    render(".wrapper", loginPage);
+    loginPage.render(".wrapper");
 
     const formContext = {
         form_valid: null,
@@ -92,7 +91,7 @@ import render from "../utils/renderDOM.js";
     };
 
     const form = new Form(formContext);
-    render(".login_form", form);
+    form.render(".login_form");
 
     const buttonContext = {
         className: "link_button",
@@ -114,5 +113,5 @@ import render from "../utils/renderDOM.js";
     };
 
     const button = new Button(buttonContext);
-    render(".button_wrapper", button);
+    button.render(".button_wrapper");
 })();

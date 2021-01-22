@@ -1,10 +1,6 @@
 class EventBus {
     listeners = {};
 
-    constructor() {
-
-    }
-
     on(event, callback) {
         if (!this.listeners[event]) {
             this.listeners[event] = [];
@@ -15,7 +11,7 @@ class EventBus {
 
     off(event, callback) {
         if (!this.listeners[event]) {
-            throw new Error(`Нет события: ${event}`);
+            console.log(`Нет события: ${event}`);
         }
 
         this.listeners[event] = this.listeners[event].filter(
@@ -25,7 +21,7 @@ class EventBus {
 
     emit(event, ...args) {
         if (!this.listeners[event]) {
-            throw new Error(`Нет события: ${event}`);
+            console.log(`Нет события: ${event}`);
         }
 
         this.listeners[event].forEach(function(listener) {

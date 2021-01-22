@@ -8,12 +8,12 @@ class Block {
         FLOW_RENDER: "flow:render"
     };
 
-    _element = null;
-    _meta = null;
+    private _element = null;
+    private readonly _meta = null;
     props = null;
     eventBus = null;
 
-    /** JSDoc
+    /** TSDoc
      * @param {string} tagName
      * @param {Object} props
      *
@@ -43,7 +43,7 @@ class Block {
 
     _createResources() {
         const {tagName} = this._meta;
-        this._element = this._createDocumentElement(tagName);
+        this._element = document.createElement(tagName);
     }
 
     init() {
@@ -58,12 +58,11 @@ class Block {
 
     // Может переопределять пользователь, необязательно трогать
     componentDidMount(oldProps) {
-        const eventBus = this.eventBus();
         if (oldProps.events) {
             oldProps.events.forEach(item => {
-                eventBus.on(item.name, item.handler);
+                this.eventBus().on(item.name, item.handler);
                 this._element.addEventListener(item.name, (e) => {
-                    eventBus.emit(item.name, e.target, e, eventBus);
+                    this.eventBus().emit(item.name, e.target, e, this.eventBus());
                 }, true);
             });
         }
@@ -95,14 +94,16 @@ class Block {
     }
 
     _render() {
-        const block = this.render();
-        const template = document.createElement('template');
-        template.innerHTML = block.trim();
-        this._element.appendChild(template.content.firstChild);
+
     }
 
     // Может переопределять пользователь, необязательно трогать
-    render(): any {
+    render(stringTemplate, query): void {
+        const root = document.querySelector(query);
+        const template = document.createElement('template');
+        template.innerHTML = stringTemplate.trim();
+        this.element.appendChild(template.content.firstChild);
+        root.appendChild(this.element);
     }
 
     getContent() {
@@ -123,11 +124,6 @@ class Block {
                 throw new Error("Нет доступа");
             }
         });
-    }
-
-    _createDocumentElement(tagName) {
-        // Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков
-        return document.createElement(tagName);
     }
 
     show() {

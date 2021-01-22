@@ -54,7 +54,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                     if (el.closest(".contact")) {
                         document.querySelector(".contact_selected").classList.remove("contact_selected");
-                        // @ts-ignore
                         el.closest("li").classList.add("contact_selected");
                     }
                     if (el.parentElement.matches(".send")) {

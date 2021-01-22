@@ -7,7 +7,6 @@ function convertFormDataToObject(formData) {
     return obj;
 }
 (() => {
-    // @ts-ignore
     let form = document.forms.form, formData = new FormData(form);
     console.log(convertFormDataToObject(formData));
 })();

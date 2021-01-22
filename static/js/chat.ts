@@ -1,5 +1,4 @@
-import ChatPage from "../blocks/Chat/index.js";
-import render from "../utils/renderDOM.js";
+import {ChatPage} from "../blocks/Chat/index.js";
 
 (() => {
     const context = {
@@ -55,7 +54,6 @@ import render from "../utils/renderDOM.js";
                     }
                     if (el.closest(".contact")) {
                         document.querySelector(".contact_selected").classList.remove("contact_selected");
-                        // @ts-ignore
                         el.closest("li").classList.add("contact_selected");
                     }
                     if (el.parentElement.matches(".send")) {
@@ -96,5 +94,5 @@ import render from "../utils/renderDOM.js";
     };
 
     const chatPage = new ChatPage(context);
-    render(".wrapper", chatPage);
+    chatPage.render(".wrapper");
 })();

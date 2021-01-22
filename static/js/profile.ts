@@ -1,6 +1,5 @@
-import ProfilePage from "../blocks/Profile/index.js";
-import Form from "../components/Form/index.js";
-import render from "../utils/renderDOM.js";
+import {ProfilePage} from "../blocks/Profile/index.js";
+import {Form} from "../components/Form/index.js";
 
 (() => {
     const context = {
@@ -22,7 +21,7 @@ import render from "../utils/renderDOM.js";
                         <input class="form__row_value form__input form__input_align_right" type="{{type}}" value="{{value}}" {{#if ../form_disabled}}disabled{{/if}}/>`
     };
 
-    const formFooterContext = {
+    const form2Context = {
         form_rows: [
             {class: "form__pink_link", link: "change_profile.html", text: "Изменить данные"},
             {class: "form__pink_link", link: "change_password.html", text: "Изменить пароль"},
@@ -32,11 +31,11 @@ import render from "../utils/renderDOM.js";
     };
 
     const profilePage = new ProfilePage(context);
-    render(".wrapper", profilePage);
+    profilePage.render(".wrapper");
 
     const form = new Form(formContext);
-    render(".middle", form);
+    form.render(".middle");
 
-    const formFooter = new Form(formFooterContext);
-    render(".footer", formFooter);
+    const form2 = new Form(form2Context);
+    form2.render(".footer");
 })();

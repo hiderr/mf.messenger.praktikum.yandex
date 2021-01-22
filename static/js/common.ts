@@ -1,14 +1,14 @@
 function convertFormDataToObject(formData) {
     let obj = {};
-    return formData.entries().reduce((obj, [key, value]) => {
+    for (let entry of formData.entries()) {
+        let [key, value] = entry;
         obj[key] = value;
-        return obj;
-    }, obj);
+    }
+    return obj;
 }
 
 (() => {
-    // @ts-ignore
-    const form = document.forms.form,
+    const form = document.forms.namedItem("form"),
         formData = new FormData(form);
 
     console.log(convertFormDataToObject(formData));

@@ -1,8 +1,7 @@
-import ChatPage from "../blocks/Chat/index.js";
-import Popup from "../components/Popup/index.js";
-import Form from "../components/Form/index.js";
-import Button from "../components/Button/index.js";
-import render from "../utils/renderDOM.js";
+import {ChatPage} from "../blocks/Chat/index.js";
+import {Popup} from "../components/Popup/index.js";
+import {Form} from "../components/Form/index.js";
+import {Button} from "../components/Button/index.js";
 
 (() => {
     const chatContext = {
@@ -50,14 +49,14 @@ import render from "../utils/renderDOM.js";
     };
 
     const chat = new ChatPage(chatContext);
-    render(".wrapper", chat);
+    chat.render(".wrapper");
 
     const popupContext = {
         title: "Добавить пользователя"
     };
 
     const popup = new Popup(popupContext);
-    render(".popup_wrapper", popup);
+    popup.render(".popup_wrapper");
 
     const formContext = {
         form_rows: [
@@ -68,12 +67,12 @@ import render from "../utils/renderDOM.js";
     };
 
     const form = new Form(formContext);
-    render(".popup__middle", form);
+    form.render(".popup__middle");
 
     const button = new Button({
         className: "link_button",
         text: "Добавить",
         link: "chat.html"
     });
-    render(".popup__footer", button);
+    button.render(".popup__footer");
 })();

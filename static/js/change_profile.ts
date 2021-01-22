@@ -1,24 +1,24 @@
-import ProfilePage from "../blocks/Profile/index.js";
-import Form from "../components/Form/index.js";
-import Button from "../components/Button/index.js";
-import render from "../utils/renderDOM.js";
+import {ProfilePage} from "../blocks/Profile/index.js";
+import {Form} from "../components/Form/index.js";
+import {Button} from "../components/Button/index.js";
 
 (() => {
     const context = {
         avatar_tooltip: "Поменять аватар"
     };
     const profilePage = new ProfilePage(context);
-    render(".wrapper", profilePage);
+    profilePage.render(".wrapper");
 
     const formContext = {
+        form_name: "form",
         form_valid: null,
         form_rows: [
-            {label: "Почта", type: "email", value: "pochta"},
+            {label: "Почта", type: "email", name: "email", value: "pochta"},
             {label: "Логин", type: "text", name: "login", value: "ivanivanov@"},
-            {label: "Имя", type: "text", value: "Иван"},
-            {label: "Фамилия", type: "text", value: "Иванов"},
-            {label: "Имя в чате", type: "text", value: "Иван"},
-            {label: "Телефон", type: "tel", value: "+7 (909) 967 30 30"},
+            {label: "Имя", type: "text", name: "first_name", value: "Иван"},
+            {label: "Фамилия", type: "text", name: "last_name", value: "Иванов"},
+            {label: "Имя в чате", type: "text", name: "nickname", value: "Иван"},
+            {label: "Телефон", type: "tel", name: "phone", value: "+7 (909) 967 30 30"},
         ],
         row_template: `<p class="form__row_name">{{label}}</p>
                         <input class="form__row_value form__input form__input_align_right" type="{{type}}" name="{{name}}" value="{{value}}" {{#if ../form_disabled}}disabled{{/if}}/>`,
@@ -69,7 +69,7 @@ import render from "../utils/renderDOM.js";
             },
             {
                 name: "validate_form", handler: (el, context, eventBus) => {
-                    const inputs = el.querySelectorAll("input").forEach(item => {
+                    el.querySelectorAll("input").forEach(item => {
                         eventBus.emit("focus", item);
                         eventBus.emit("blur", item);
                     });
@@ -80,7 +80,7 @@ import render from "../utils/renderDOM.js";
         ]
     };
     const form = new Form(formContext);
-    render(".middle", form);
+    form.render(".middle");
 
     const button = new Button({
         className: "link_button",
@@ -100,5 +100,5 @@ import render from "../utils/renderDOM.js";
             }
         ]
     });
-    render(".footer", button);
+    button.render(".footer");
 })();

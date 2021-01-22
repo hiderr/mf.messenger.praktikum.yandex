@@ -1,7 +1,6 @@
-import ProfilePage from "../blocks/Profile/index.js";
-import Form from "../components/Form/index.js";
-import Button from "../components/Button/index.js";
-import render from "../utils/renderDOM.js";
+import {ProfilePage} from "../blocks/Profile/index.js";
+import {Form} from "../components/Form/index.js";
+import {Button} from "../components/Button/index.js";
 
 (() => {
     const context = {
@@ -83,10 +82,10 @@ import render from "../utils/renderDOM.js";
     };
 
     const profilePage = new ProfilePage(context);
-    render(".wrapper", profilePage);
+    profilePage.render(".wrapper");
 
     const form = new Form(formContext);
-    render(".middle", form);
+    form.render(".middle");
 
     const button = new Button({
         className: "link_button",
@@ -106,5 +105,5 @@ import render from "../utils/renderDOM.js";
             }
         ]
     });
-    render(".footer", button);
+    button.render(".footer");
 })();

@@ -1,6 +1,4 @@
-import Button from "../components/Button/index.js";
-import ErrorPage from "../blocks/Error/index.js";
-import render from "../utils/renderDOM.js";
+import {ErrorPage} from "../blocks/Error/index.js";
 
 (() => {
     let context = {
@@ -17,5 +15,5 @@ import render from "../utils/renderDOM.js";
         }
     }
     const errorPage = new ErrorPage(context);
-    render(".wrapper", errorPage);
+    errorPage.render(".wrapper");
 })();

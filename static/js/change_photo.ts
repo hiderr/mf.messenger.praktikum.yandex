@@ -1,6 +1,5 @@
-import Button from "../components/Button/index.js";
-import Popup from "../components/Popup/index.js";
-import render from "../utils/renderDOM.js";
+import {Button} from "../components/Button/index.js";
+import {Popup} from "../components/Popup/index.js";
 
 (() => {
     const popupContext = {
@@ -36,10 +35,10 @@ import render from "../utils/renderDOM.js";
     }
 
     const popup = new Popup(popupContext);
-    render(".popup_wrapper", popup);
+    popup.render(".popup_wrapper");
 
     const button = new Button(buttonContext);
-    render(".popup__footer", button);
+    button.render(".popup__footer");
 
     if (window.location.pathname === "/change_photo_no_photo_picked.html") {
         const error_message = document.createElement("p");
