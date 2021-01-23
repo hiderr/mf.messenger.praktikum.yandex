@@ -1,4 +1,4 @@
-export const { compile } = Handlebars;
-export default (template, context) => {
+const { compile } = Handlebars;
+export const compiler = (template, context) => {
     return compile(template)(context);
 };

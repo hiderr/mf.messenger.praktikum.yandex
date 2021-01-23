@@ -1,13 +1,25 @@
-import compile from "../../utils/templator.js";
+import {compiler} from "../../utils/templator.js";
 import {template} from "./template.js";
-import Block from "../../modules/Block.js";
+import {Block} from "../../modules/Block.js";
+
+interface TypeProps {
+    chat_class?: string,
+    profile_link_text: string,
+    search_placeholder: string,
+    contacts: object[],
+    messages_date: string,
+    messages: object[],
+    menu_actions: object[],
+    attachment_actions: object[],
+    events?: object[]
+}
 
 export class ChatPage extends Block {
-    constructor(props) {
+    constructor(props: TypeProps) {
         super("div", props);
     }
 
-    render(selector) {
-        super.render(compile(template, this.props), selector);
+    render(selector: string) {
+        super.render(compiler(template, this.props), selector);
     }
 }

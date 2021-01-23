@@ -1,13 +1,19 @@
-import compile from "../../utils/templator.js";
+import {compiler} from "../../utils/templator.js";
 import {template} from "./template.js";
-import Block from "../../modules/Block.js";
+import {Block} from "../../modules/Block.js";
+
+interface TypeProps {
+    title?: string,
+    avatar_tooltip: string,
+    profile_name?: string
+}
 
 export class ProfilePage extends Block {
-    constructor(props) {
+    constructor(props: TypeProps) {
         super("div", props);
     }
 
-    render(selector) {
-        super.render(compile(template, this.props), selector);
+    render(selector: string) {
+        super.render(compiler(template, this.props), selector);
     }
 }

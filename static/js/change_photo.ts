@@ -2,7 +2,7 @@ import {Button} from "../components/Button/index.js";
 import {Popup} from "../components/Popup/index.js";
 
 (() => {
-    const popupContext = {
+    const popupProps = {
         title: "Загрузите файл",
         title_class: "",
         link: "change_photo_uploaded.html",
@@ -11,33 +11,33 @@ import {Popup} from "../components/Popup/index.js";
         link_class: ""
     };
 
-    const buttonContext = {
+    const buttonProps = {
         className: "link_button",
         link: "change_photo_no_photo_picked.html",
         text: 'Поменять'
     };
 
     if (window.location.pathname === "/change_photo.html") {
-        popupContext.title = "Файл загружен";
+        popupProps.title = "Файл загружен";
     }
     if (window.location.pathname === "/change_photo_uploaded.html") {
-        popupContext.link_class = "popup__uploaded_link";
-        popupContext.title = "Файл загружен";
-        popupContext.link_text = "pic.jpg";
-        buttonContext.link = "change_photo_error.html";
+        popupProps.link_class = "popup__uploaded_link";
+        popupProps.title = "Файл загружен";
+        popupProps.link_text = "pic.jpg";
+        buttonProps.link = "change_photo_error.html";
     }
     if (window.location.pathname === "/change_photo_error.html") {
-        popupContext.title = "Ошибка, попробуйте ещё раз";
-        popupContext.title_class = "error_message";
+        popupProps.title = "Ошибка, попробуйте ещё раз";
+        popupProps.title_class = "error_message";
     }
     if (window.location.pathname === "/change_photo_no_photo_picked.html") {
-        popupContext.error_message_text = "Нужно выбрать файл";
+        popupProps.error_message_text = "Нужно выбрать файл";
     }
 
-    const popup = new Popup(popupContext);
+    const popup = new Popup(popupProps);
     popup.render(".popup_wrapper");
 
-    const button = new Button(buttonContext);
+    const button = new Button(buttonProps);
     button.render(".popup__footer");
 
     if (window.location.pathname === "/change_photo_no_photo_picked.html") {

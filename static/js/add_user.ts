@@ -4,7 +4,7 @@ import {Form} from "../components/Form/index.js";
 import {Button} from "../components/Button/index.js";
 
 (() => {
-    const chatContext = {
+    const chat = new ChatPage({
         chat_class: "w100proc",
         profile_link_text: "Профиль",
         search_placeholder: "Поиск",
@@ -46,27 +46,25 @@ import {Button} from "../components/Button/index.js";
             {icon: "fa-file", text: "Файл"},
             {icon: "fa-location-arrow", text: "Локация"}
         ]
-    };
-
-    const chat = new ChatPage(chatContext);
+    });
     chat.render(".wrapper");
 
-    const popupContext = {
+    const popup = new Popup({
         title: "Добавить пользователя"
-    };
-
-    const popup = new Popup(popupContext);
+    });
     popup.render(".popup_wrapper");
 
-    const formContext = {
+    const form = new Form({
+        form_valid: true,
+        form_disabled: false,
+        form_name: "form",
         form_rows: [
             {label: "Логин", type: "text", name: "login", value: "ivanivanov"}
         ],
         row_template: `<label class="login_form_label">{{label}}</label>
-                    <input class="form__input" type="{{type}}" name="{{name}}" value="{{value}}"/>`
-    };
-
-    const form = new Form(formContext);
+                    <input class="form__input" type="{{type}}" name="{{name}}" value="{{value}}"/>`,
+        events: []
+    });
     form.render(".popup__middle");
 
     const button = new Button({

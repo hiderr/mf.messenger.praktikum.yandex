@@ -1,7 +1,7 @@
-class EventBus {
+export class EventBus {
     listeners = {};
 
-    on(event, callback) {
+    on(event, callback): void {
         if (!this.listeners[event]) {
             this.listeners[event] = [];
         }
@@ -9,7 +9,7 @@ class EventBus {
         this.listeners[event].push(callback);
     }
 
-    off(event, callback) {
+    off(event, callback): void {
         if (!this.listeners[event]) {
             console.log(`Нет события: ${event}`);
         }
@@ -19,7 +19,7 @@ class EventBus {
         );
     }
 
-    emit(event, ...args) {
+    emit(event, ...args): void {
         if (!this.listeners[event]) {
             console.log(`Нет события: ${event}`);
         }
@@ -29,5 +29,3 @@ class EventBus {
         });
     }
 }
-
-export default EventBus;

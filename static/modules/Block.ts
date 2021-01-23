@@ -1,17 +1,22 @@
-import EventBus from "./EventBus.js";
+import {EventBus} from "./EventBus.js";
+import {Validation} from "./Validation.js";
 
-class Block {
+export class Block {
     static EVENTS = {
         INIT: "init",
         FLOW_CDM: "flow:component-did-mount",
         FLOW_CDU: "flow:component-did-update",
-        FLOW_RENDER: "flow:render"
+        FLOW_RENDER: "flow:render",
+        VALIDATE_FORM: "validate_form_input",
+        VALIDATE_FORM_ON_SUBMIT: "validate_form_on_submit",
+        CLEAR_INPUT_ERROR: "clear_error_message"
     };
 
     private _element = null;
     private readonly _meta = null;
     props = null;
     eventBus = null;
+    validation = null;
 
     /** TSDoc
      * @param {string} tagName
@@ -29,35 +34,39 @@ class Block {
         this.props = this._makePropsProxy(props);
 
         this.eventBus = () => eventBus;
+        this.validation = new Validation();
 
         this._registerEvents(eventBus);
         eventBus.emit(Block.EVENTS.INIT);
     }
 
-    _registerEvents(eventBus) {
+    _registerEvents(eventBus): void {
         eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
         eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
+        eventBus.on(Block.EVENTS.VALIDATE_FORM, this._validateFormInputs.bind(this));
+        eventBus.on(Block.EVENTS.VALIDATE_FORM_ON_SUBMIT, this._validateFormOnSubmit.bind(this));
+        eventBus.on(Block.EVENTS.CLEAR_INPUT_ERROR, this._clearInputErrors.bind(this));
     }
 
-    _createResources() {
+    _createResources(): void {
         const {tagName} = this._meta;
         this._element = document.createElement(tagName);
     }
 
-    init() {
+    init(): void {
         this._createResources();
         this.eventBus().emit(Block.EVENTS.FLOW_CDM);
     }
 
-    _componentDidMount() {
+    _componentDidMount(): void {
         this.componentDidMount(this.props);
         this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
 
     // Может переопределять пользователь, необязательно трогать
-    componentDidMount(oldProps) {
+    componentDidMount(oldProps): void {
         if (oldProps.events) {
             oldProps.events.forEach(item => {
                 this.eventBus().on(item.name, item.handler);
@@ -68,7 +77,7 @@ class Block {
         }
     }
 
-    _componentDidUpdate(oldProps, newProps) {
+    _componentDidUpdate(oldProps, newProps): void {
         const response = this.componentDidUpdate(oldProps, newProps);
         if (response) {
             this._render();
@@ -80,16 +89,7 @@ class Block {
         return JSON.stringify(oldProps) !== JSON.stringify(newProps);
     }
 
-    setProps = nextProps => {
-        const oldProps = (<any>Object).assign({}, this.props);
-        if (!nextProps) {
-            return;
-        }
-        (<any>Object).assign(this.props, nextProps);
-        this.eventBus().emit(Block.EVENTS.FLOW_CDU, oldProps, nextProps);
-    };
-
-    get element() {
+    get element(): HTMLElement {
         return this._element;
     }
 
@@ -106,11 +106,11 @@ class Block {
         root.appendChild(this.element);
     }
 
-    getContent() {
+    getContent(): HTMLElement {
         return this.element;
     }
 
-    _makePropsProxy(props) {
+    _makePropsProxy(props): WindowProxy {
         // Можно и так передать this
         // Такой способ больше не применяется с приходом ES6+
         const self = this;
@@ -126,13 +126,23 @@ class Block {
         });
     }
 
-    show() {
+    show(): void {
         this.getContent().style.display = "block";
     }
 
-    hide() {
+    hide(): void {
         this.getContent().style.display = "none";
     }
-}
 
-export default Block;
+    _validateFormInputs(el): void {
+        this.validation.validateFormInputs(el);
+    }
+
+    _validateFormOnSubmit(el, context, eventBus): void {
+        this.validation.validateFormOnSubmit(el, context, eventBus);
+    }
+
+    _clearInputErrors(el): void {
+        this.validation.clearErrorMessage(el);
+    }
+}

@@ -3,16 +3,16 @@ import {SigninPage} from "../blocks/Signin/index.js";
 import {Button} from "../components/Button/index.js";
 
 (() => {
-    const context = {
+    const signinPage = new SigninPage({
         title: "Регистрация",
         link_text: "Войти"
-    };
+    });
+    signinPage.render(".wrapper");
 
-    const loginPage = new SigninPage(context);
-    loginPage.render(".wrapper");
-
-    const formContext = {
-        form_valid: null,
+    const formProps = {
+        form_valid: true,
+        form_disabled: false,
+        form_name: "form",
         form_rows: [
             {label: "Почта", type: "email", name: "email", value: "pochta", placeholder: "Почта"},
             {label: "Логин", type: "text", name: "login", value: "ivanivanov@", placeholder: "Логин"},
@@ -25,39 +25,6 @@ import {Button} from "../components/Button/index.js";
         row_template: `<label class="login_form_label">{{label}}</label>
                 <input type="{{type}}" class="form__input" name="{{name}}" value="{{value}}" placeholder="{{placeholder}}">`,
         events: [
-            {
-                name: "validate_form_input", handler: (el) => {
-                    if (el.tagName === "INPUT") {
-                        const error_message = document.createElement("p");
-                        error_message.classList.add("error_message", "error_message_small");
-
-                        if (el.value === "") {
-                            error_message.textContent = "Поле не может быть пустым";
-                            el.parentElement.append(error_message);
-                        }
-
-                        if (el.type === "email" && !el.value.match(new RegExp("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$", "gi"))) {
-                            error_message.textContent = "Неккоректный формат email";
-                            el.parentElement.append(error_message);
-                        }
-
-                        if (el.name === "login" && el.value.match(new RegExp("[^\\w\\s]", "gi"))) {
-                            error_message.textContent = "Нельзя использовать специальные символы";
-                            el.parentElement.append(error_message);
-                        }
-                    }
-                }
-            },
-            {
-                name: "clear_error_message", handler: (el) => {
-                    if (el.tagName === "INPUT") {
-                        const inputWrapper = el.parentElement;
-                        if (inputWrapper.querySelector(".error_message")) {
-                            inputWrapper.removeChild(inputWrapper.querySelector(".error_message"));
-                        }
-                    }
-                }
-            },
             {
                 name: "input", handler: (...args) => {
                     const el = args[0];
@@ -76,24 +43,14 @@ import {Button} from "../components/Button/index.js";
                     const el = args[0];
                     form.eventBus().emit("clear_error_message", el);
                 }
-            },
-            {
-                name: "validate_form", handler: (el, context, eventBus) => {
-                    const inputs = el.querySelectorAll("input").forEach(item => {
-                        eventBus.emit("focus", item);
-                        eventBus.emit("blur", item);
-                    });
-                    const error_message = el.querySelector(".error_message");
-                    context.form_valid = !error_message;
-                }
             }
         ]
     };
 
-    const form = new Form(formContext);
+    const form = new Form(formProps);
     form.render(".login_form");
 
-    const buttonContext = {
+    const button = new Button({
         className: "link_button",
         text: "Зарегистрироваться",
         link: "chat.html",
@@ -102,16 +59,14 @@ import {Button} from "../components/Button/index.js";
                 name: "click", handler: (...args) => {
                     const e = args[1],
                         eventBus = form.eventBus();
-                    eventBus.emit("validate_form", form.element, formContext, eventBus);
-                    if (formContext.form_valid === false) {
+                    eventBus.emit("validate_form_on_submit", form.element, formProps, eventBus);
+                    if (formProps.form_valid === false) {
                         e.preventDefault();
                         return e;
                     }
                 }
             }
         ]
-    };
-
-    const button = new Button(buttonContext);
+    });
     button.render(".button_wrapper");
 })();

@@ -1,7 +1,7 @@
 import {ChatPage} from "../blocks/Chat/index.js";
 
 (() => {
-    const context = {
+    const chatPage = new ChatPage({
         profile_link_text: "Профиль",
         search_placeholder: "Поиск",
         contacts: [
@@ -79,20 +79,8 @@ import {ChatPage} from "../blocks/Chat/index.js";
                         }
                     }
                 }
-            },
-            {
-                name: "clear_error_message", handler: (el) => {
-                    if (el.tagName === "INPUT") {
-                        const inputWrapper = el.parentElement;
-                        if (inputWrapper.querySelector(".error_message")) {
-                            inputWrapper.removeChild(inputWrapper.querySelector(".error_message"));
-                        }
-                    }
-                }
             }
         ]
-    };
-
-    const chatPage = new ChatPage(context);
+    });
     chatPage.render(".wrapper");
 })();
