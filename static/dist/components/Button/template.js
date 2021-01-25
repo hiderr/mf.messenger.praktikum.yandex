@@ -1,2 +1,0 @@
-export const template = `<a class="link" href="{{link}}"><button class="{{className}}">{{text}}</button></a>`;
-//# sourceMappingURL=template.js.map
