@@ -1,5 +1,5 @@
 function convertFormDataToObject(formData) {
-    let obj = {};
+    const obj = {};
     for (let entry of formData.entries()) {
         let [key, value] = entry;
         obj[key] = value;
