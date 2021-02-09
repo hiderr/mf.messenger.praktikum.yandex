@@ -9,6 +9,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     width: 340px;
     height: 450px;
     padding: 30px;
@@ -28,7 +29,6 @@
 
 .login_form {
     width: 100%;
-    margin-top: 45px;
 }
 
 .login_form__margin {
@@ -36,7 +36,6 @@
 }
 
 .form_buttons {
-    margin-top: auto;
     width: 100%;
     text-align: center;
 }

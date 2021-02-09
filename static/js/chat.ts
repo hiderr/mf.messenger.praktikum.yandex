@@ -1,4 +1,5 @@
 import {ChatPage} from "../blocks/Chat/index.js";
+import {template} from "../blocks/Chat/template.js";
 
 (() => {
     const chatPage = new ChatPage({
@@ -82,5 +83,6 @@ import {ChatPage} from "../blocks/Chat/index.js";
             }
         ]
     });
-    chatPage.render(".wrapper");
+    let root = document.getElementById('root');
+    root.innerHTML = chatPage.render();
 })();

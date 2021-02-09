@@ -1,42 +1,43 @@
 import {ProfilePage} from "../blocks/Profile/index.js";
 import {Form} from "../components/Form/index.js";
+import {Input} from "../components/Input/index.js";
+import {Link} from "../components/Link/index.js";
+import {Avatar} from "../components/Avatar/index.js";
 
 (() => {
     const profilePage = new ProfilePage({
-        avatar_tooltip: "Поменять аватар",
-        profile_name: "Иван"
+        children: [
+            new Avatar({
+                tooltip: "Поменять аватар",
+                title: "Иван"
+            }),
+            new Form({
+                className: "w100proc",
+                form_valid: true,
+                form_name: "form",
+                children: [
+                    new Input({labelClassName: "form__row_name", className: "form__row_value form__input form__input_align_right", disabled: true, label: "Почта", name: "Почта", type: "email", value: "pochta@yandex.ru"}),
+                    new Input({labelClassName: "form__row_name", className: "form__row_value form__input form__input_align_right", disabled: true, label: "Логин", name: "Логин", type: "text", value: "ivanivanov"}),
+                    new Input({labelClassName: "form__row_name", className: "form__row_value form__input form__input_align_right", disabled: true, label: "Имя", name: "Имя", type: "text", value: "Иван"}),
+                    new Input({labelClassName: "form__row_name", className: "form__row_value form__input form__input_align_right", disabled: true, label: "Фамилия", name: "Фамилия", type: "text", value: "Иванов"}),
+                    new Input({labelClassName: "form__row_name", className: "form__row_value form__input form__input_align_right", disabled: true, label: "Имя в чате", name: "Имя в чате", type: "text", value: "Иван"}),
+                    new Input({labelClassName: "form__row_name", className: "form__row_value form__input form__input_align_right", disabled: true, label: "Телефон", name: "Телефон", type: "tel", value: "+7 (909) 967 30 30"}),
+                ],
+                events: []
+            }),
+            new Form({
+                className: "w100proc",
+                form_valid: true,
+                form_name: "form",
+                children: [
+                    new Link({className: "form__pink_link", href: "change_profile.html", text: "Изменить данные"}),
+                    new Link({className: "form__pink_link", href: "change_password.html", text: "Изменить пароль"}),
+                    new Link({className: "form__red_link", href: "index.html", text: "Выйти"}),
+                ],
+                events: []
+            })
+        ]
     });
-    profilePage.render(".wrapper");
-
-    const form = new Form({
-        form_disabled: true,
-        form_valid: true,
-        form_name: "form",
-        form_rows: [
-            {name: "Почта", type: "email", value: "pochta@yandex.ru"},
-            {name: "Логин", type: "text", value: "ivanivanov"},
-            {name: "Имя", type: "text", value: "Иван"},
-            {name: "Фамилия", type: "text", value: "Иванов"},
-            {name: "Имя в чате", type: "text", value: "Иван"},
-            {name: "Телефон", type: "tel", value: "+7 (909) 967 30 30"},
-        ],
-        row_template: `<p class="form__row_name">{{name}}</p>
-                        <input class="form__row_value form__input form__input_align_right" type="{{type}}" value="{{value}}" {{#if ../form_disabled}}disabled{{/if}}/>`,
-        events: []
-    });
-    form.render(".middle");
-
-    const form2 = new Form({
-        form_disabled: false,
-        form_valid: true,
-        form_name: "form",
-        form_rows: [
-            {class: "form__pink_link", link: "change_profile.html", text: "Изменить данные"},
-            {class: "form__pink_link", link: "change_password.html", text: "Изменить пароль"},
-            {class: "form__red_link", link: "index.html", text: "Выйти"},
-        ],
-        row_template: `<a class="link {{class}}" href="{{link}}">{{text}}</a>`,
-        events: []
-    });
-    form2.render(".footer");
+    let root = document.getElementById('root');
+    root.innerHTML = profilePage.render();
 })();

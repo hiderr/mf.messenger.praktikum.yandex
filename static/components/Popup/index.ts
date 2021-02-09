@@ -1,17 +1,14 @@
-import {compiler} from "../../utils/templator.js";
 import {template} from "./template.js";
-import {Block} from "../../modules/Block.js";
+import {Group} from "../../modules/Group.js";
 
 interface TypeProps {
-    title: string
+    children?: any[],
+    title?: string
 }
 
-export class Popup extends Block {
+export class Popup extends Group {
     constructor(props: TypeProps) {
-        super("div", props);
-    }
-
-    render(selector: string) {
-        super.render(compiler(template, this.props), selector);
+        super(props);
+        this.template = template;
     }
 }

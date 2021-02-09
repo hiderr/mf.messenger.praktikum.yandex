@@ -1,18 +1,13 @@
-import {compiler} from "../../utils/templator.js";
 import {template} from "./template.js";
-import {Block} from "../../modules/Block.js";
+import {Group} from "../../modules/Group.js";
 
 interface TypeProps {
-    title: string,
-    link_text: string
+    children: any[]
 }
 
-export class LoginPage extends Block {
+export class LoginPage extends Group {
     constructor(props: TypeProps) {
-        super("div", props);
-    }
-
-    render(selector: string) {
-        super.render(compiler(template, this.props), selector);
+        super(props);
+        this.template = template;
     }
 }

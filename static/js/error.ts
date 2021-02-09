@@ -15,5 +15,5 @@ import {ErrorPage} from "../blocks/Error/index.js";
         }
     }
     const errorPage = new ErrorPage(props);
-    errorPage.render(".wrapper");
+    // errorPage.render(".wrapper");
 })();

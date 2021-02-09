@@ -1,5 +1,6 @@
 import {EventBus} from "./EventBus.js";
 import {Validation} from "./Validation.js";
+import {compiler} from "../utils/templator.js";
 
 export class Block {
     static EVENTS = {
@@ -14,6 +15,7 @@ export class Block {
 
     private _element = null;
     private readonly _meta = null;
+    template = "";
     props = null;
     eventBus = null;
     validation = null;
@@ -98,12 +100,8 @@ export class Block {
     }
 
     // Может переопределять пользователь, необязательно трогать
-    render(stringTemplate, query): void {
-        const root = document.querySelector(query);
-        const template = document.createElement('template');
-        template.innerHTML = stringTemplate.trim();
-        this.element.appendChild(template.content.firstChild);
-        root.appendChild(this.element);
+    render(): string {
+        return compiler(this.template, this.props);
     }
 
     getContent(): HTMLElement {

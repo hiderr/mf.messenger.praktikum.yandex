@@ -1,24 +1,20 @@
 import {LoginPage} from "../blocks/Login/index.js";
 import {Form} from "../components/Form/index.js";
 import {Button} from "../components/Button/index.js";
+import {Input} from "../components/Input/index.js";
+import {Link} from "../components/Link/index.js";
+import {Title} from "../components/Title/index.js";
+import {Wrapper} from "../components/Wrapper/index.js";
 
 (() => {
-    const loginPage = new LoginPage({
-        title: "Вход",
-        link_text: "Нет аккаунта?",
-    });
-    loginPage.render(".wrapper");
-
-    const formProps = {
-        form_valid: true,
-        form_disabled: false,
+    const form = new Form({
+        className: "login_form",
         form_name: "form",
-        form_rows: [
-            {name: "login", type: "text", label: "Логин", value: "ivanivanov", placeholder: "Логин"},
-            {name: "password", type: "password", label: "Пароль", value: "", placeholder: "Пароль"},
+        form_valid: true,
+        children: [
+            new Input({labelClassName: "login_form_label", className: "form__input", name: "login", type: "text", label: "Логин", value: "ivanivanov", placeholder: "Логин"}),
+            new Input({labelClassName: "login_form_label", className: "form__input", name: "password", type: "password", label: "Пароль", value: "", placeholder: "Пароль"}),
         ],
-        row_template: `<div class="form__input_wrapper"><label class="login_form_label">{{label}}</label>
-                    <input class="form__input" type="{{type}}" name="{{name}}" value="{{value}}" placeholder="{{placeholder}}"></div>`,
         events: [
             {
                 name: "input", handler: (...args) => {
@@ -40,28 +36,45 @@ import {Button} from "../components/Button/index.js";
                 }
             }
         ]
-    };
+    });
 
-    const form = new Form(formProps);
-    form.render(".login_form");
-
-    const button = new Button({
-        className: "link_button",
-        text: "Авторизоваться",
-        link: "chat.html",
-        events: [
-            {
-                name: "click", handler: (...args) => {
-                    const e = args[1],
-                        eventBus = form.eventBus();
-                    eventBus.emit("validate_form_on_submit", form.element, formProps, eventBus);
-                    if (formProps.form_valid === false) {
-                        e.preventDefault();
-                        return e;
-                    }
-                }
-            }
+    const loginPage = new LoginPage({
+        children: [
+            new Title({
+                className: "login_box_title",
+                text: "Вход"
+            }),
+            form,
+            new Wrapper({
+                className: "form_buttons",
+                children: [
+                    new Button({
+                        className: "link_button",
+                        text: "Авторизоваться",
+                        link: "chat.html",
+                        events: [
+                            {
+                                name: "click", handler: (...args) => {
+                                    /*const e = args[1],
+                                        eventBus = form.eventBus();
+                                    eventBus.emit("validate_form_on_submit", form.element, formProps, eventBus);
+                                    if (formProps.form_valid === false) {
+                                        e.preventDefault();
+                                        return e;
+                                    }*/
+                                }
+                            }
+                        ]
+                    }),
+                    new Link({
+                        className: "text_link",
+                        href: "signin.html",
+                        text: "Нет аккаунта?"
+                    })
+                ]
+            })
         ]
     });
-    button.render(".button_wrapper");
+    let root = document.getElementById('root');
+    root.innerHTML = loginPage.render();
 })();

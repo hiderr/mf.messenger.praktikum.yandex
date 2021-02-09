@@ -1,23 +1,27 @@
-import {Block} from "../../modules/Block.js";
-import {compiler} from "../../utils/templator.js";
 import {template} from "./template.js";
+import {Group} from "../../modules/Group.js";
+import {compiler} from "../../utils/templator.js";
 
 interface TypeProps {
-    form_disabled: boolean,
-    form_name: string,
+    className?: string,
+    form_name?: string,
     form_valid: boolean,
-    form_rows: object[],
-    row_template: string,
-    events: object[]
+    children: object[],
+    events?: object[]
 }
 
-export class Form extends Block {
+export class Form extends Group {
     constructor(props: TypeProps) {
-        super("div", props);
+        super(props);
+        this.template = template;
     }
 
-    render(selector: string) {
-        let tmpl = template.replace(`<div class="form__row"></div>`, `<div class="form__row">${this["props"].row_template}</div>`);
-        super.render(compiler(tmpl, this.props), selector);
-    }
+    render(): string {
+        let result = '';
+        for (let c of this.props.children) {
+            let childTemplate = `<div class="form__row">${c.render()}</div>`;
+            result += childTemplate;
+        }
+        return compiler(this.template.replace("{{CHILDREN}}", result), this.props);
+    };
 }

@@ -51,6 +51,14 @@ body {
     text-decoration: none;
 }
 
+.text_link {
+    width: 78px;
+    height: 11px;
+    font-size: 11px;
+    line-height: 11px;
+    color: #991B94;
+}
+
 .form__input {
     border: 0;
     text-align: left;
@@ -81,6 +89,10 @@ body {
 
 .hide {
     display: none;
+}
+
+.align_center {
+    text-align: center;
 }
 
 .readonly {

@@ -2,6 +2,9 @@ import {ChatPage} from "../blocks/Chat/index.js";
 import {Popup} from "../components/Popup/index.js";
 import {Form} from "../components/Form/index.js";
 import {Button} from "../components/Button/index.js";
+import {Title} from "../components/Title/index.js";
+import {Wrapper} from "../components/Wrapper/index.js";
+import {Input} from "../components/Input/index.js";
 
 (() => {
     const chat = new ChatPage({
@@ -47,30 +50,35 @@ import {Button} from "../components/Button/index.js";
             {icon: "fa-location-arrow", text: "Локация"}
         ]
     });
-    chat.render(".wrapper");
 
     const popup = new Popup({
-        title: "Удалить пользователя"
+        children: [
+            new Title({
+                text: "Удалить пользователя",
+                className: "popup__header"
+            }),
+            new Form({
+                form_valid: true,
+                form_name: "form",
+                children: [
+                    new Input({labelClassName: "login_form_label", className: "form__input", label: "Логин", type: "text", name: "login", value: "ivanivanov"})
+                ]
+            }),
+            new Button({
+                className: "link_button",
+                text: "Удалить",
+                link: "chat.html"
+            })
+        ]
     });
-    popup.render(".popup_wrapper");
 
-    const form = new Form({
-        form_valid: true,
-        form_disabled: false,
-        form_name: "form",
-        form_rows: [
-            {label: "Логин", type: "text", name: "login", value: "ivanivanov"}
-        ],
-        row_template: `<label class="login_form_label">{{label}}</label>
-                    <input class="form__input" type="{{type}}" name="{{name}}" value="{{value}}"/>`,
-        events: []
+    const addUser = new Wrapper({
+        children: [
+            popup,
+            chat
+        ]
     });
-    form.render(".popup__middle");
 
-    const button = new Button({
-        className: "link_button",
-        text: "Удалить",
-        link: "chat.html"
-    });
-    button.render(".popup__footer");
+    let root = document.getElementById('root');
+    root.innerHTML = addUser.render();
 })();

@@ -1,13 +1,13 @@
-import {template} from "./template.js";
 import {Block} from "../../modules/Block.js";
+import {template} from "./template.js";
 
 interface TypeProps {
-    error_code: string,
-    error_message: string,
-    link_text: string
+    tooltip: string,
+    title: string,
+    hide_title?: boolean
 }
 
-export class ErrorPage extends Block {
+export class Avatar extends Block {
     constructor(props: TypeProps) {
         super("div", props);
         this.template = template;
