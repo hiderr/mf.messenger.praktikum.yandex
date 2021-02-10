@@ -1,5 +1,6 @@
 import {EventBus} from "./EventBus.js";
 import {Validation} from "./Validation.js";
+import {Router} from "./Router.js";
 import {compiler} from "../utils/templator.js";
 
 export class Block {
@@ -20,6 +21,7 @@ export class Block {
     eventBus = null;
     validation = null;
     pathCSS = "";
+    router: Router;
 
     /** TSDoc
      * @param {string} tagName
@@ -37,6 +39,7 @@ export class Block {
 
         this.eventBus = new EventBus();
         this.validation = new Validation();
+        this.router = new Router();
 
         this._registerEvents(this.eventBus);
         this.eventBus.emit(Block.EVENTS.INIT);
@@ -47,14 +50,13 @@ export class Block {
         eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
         eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
-        eventBus.on(Block.EVENTS.VALIDATE_FORM, this._validateFormInputs.bind(this));
-        eventBus.on(Block.EVENTS.VALIDATE_FORM_ON_SUBMIT, this._validateFormOnSubmit.bind(this));
-        eventBus.on(Block.EVENTS.CLEAR_INPUT_ERROR, this._clearInputErrors.bind(this));
+        eventBus.on(Block.EVENTS.VALIDATE_FORM, this.validation.validateFormInputs.bind(this));
+        eventBus.on(Block.EVENTS.VALIDATE_FORM_ON_SUBMIT, this.validation.validateFormOnSubmit.bind(this));
+        eventBus.on(Block.EVENTS.CLEAR_INPUT_ERROR, this.validation.clearErrorMessage.bind(this));
     }
 
-    _createResources(): void {
-        const {tagName} = this._meta;
-        this._element = document.createElement(tagName);
+    setDOMElement(element): void {
+        this._element = element;
     }
 
     loadCss(path): void {
@@ -69,7 +71,6 @@ export class Block {
     }
 
     init(): void {
-        this._createResources();
         this.eventBus.emit(Block.EVENTS.FLOW_CDM);
     }
 
@@ -80,14 +81,7 @@ export class Block {
 
     // Может переопределять пользователь, необязательно трогать
     componentDidMount(oldProps): void {
-        if (oldProps.events) {
-            oldProps.events.forEach(item => {
-                this.eventBus.on(item.name, item.handler);
-                this._element.addEventListener(item.name, (e) => {
-                    this.eventBus.emit(item.name, e.target, e, this.eventBus);
-                }, true);
-            });
-        }
+
     }
 
     _componentDidUpdate(oldProps, newProps): void {
@@ -120,8 +114,8 @@ export class Block {
         return this.element;
     }
 
-    getProps(): object{
-        return this.props;
+    getProps(name): object {
+        return (name) ? this.props[name] : this.props;
     }
 
     setProps = nextProps => {
@@ -156,15 +150,13 @@ export class Block {
         this.getContent().style.display = "none";
     }
 
-    _validateFormInputs(el): void {
-        this.validation.validateFormInputs(el);
-    }
-
-    _validateFormOnSubmit(el, context, eventBus): void {
-        this.validation.validateFormOnSubmit(el, context, eventBus);
-    }
-
-    _clearInputErrors(el): void {
-        this.validation.clearErrorMessage(el);
+    initEvents(): void {
+        if (this.props.events){
+            this.props.events.forEach(event => {
+                document.querySelectorAll(event.selector).forEach(element => {
+                    element.addEventListener(event.name, (e) => event.handler(e, this));
+                })
+            });
+        }
     }
 }

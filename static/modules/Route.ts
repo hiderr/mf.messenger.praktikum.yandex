@@ -30,13 +30,9 @@ export default class Route {
         return pathname === this._pathname;
     }
 
-    render() {
-        if (!this._block) {
-            this._block = new this._blockClass(this._props);
-            render(this._props.rootQuery, this._block);
-            return;
-        }
-
-        this._block.show();
+    render(): void {
+        this._block = new this._blockClass(this._props);
+        this._block.setDOMElement(render(this._props.rootQuery, this._block));
+        this._block.initEvents();
     }
 }

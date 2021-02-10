@@ -4,6 +4,7 @@ import {Input} from "../../components/Input/index.js";
 import {Link} from "../../components/Link/index.js";
 
 export const PropsProfile = {
+    className: "w100proc",
     back_button_link: "/chat",
     children: [
         new Avatar({
@@ -21,8 +22,7 @@ export const PropsProfile = {
                 new Input({labelClassName: "form__row_name", className: "form__row_value form__input form__input_align_right", disabled: true, label: "Фамилия", name: "Фамилия", type: "text", value: "Иванов"}),
                 new Input({labelClassName: "form__row_name", className: "form__row_value form__input form__input_align_right", disabled: true, label: "Имя в чате", name: "Имя в чате", type: "text", value: "Иван"}),
                 new Input({labelClassName: "form__row_name", className: "form__row_value form__input form__input_align_right", disabled: true, label: "Телефон", name: "Телефон", type: "tel", value: "+7 (909) 967 30 30"}),
-            ],
-            events: []
+            ]
         }),
         new Form({
             className: "w100proc",
@@ -32,8 +32,39 @@ export const PropsProfile = {
                 new Link({className: "form__pink_link", href: "/change_profile", text: "Изменить данные"}),
                 new Link({className: "form__pink_link", href: "/change_password", text: "Изменить пароль"}),
                 new Link({className: "form__red_link", href: "/", text: "Выйти"}),
-            ],
-            events: []
+            ]
         })
+    ],
+    events: [
+        {
+            selector: "[href='/chat']", name: "click", handler: (event, Block) => {
+                event.preventDefault();
+                Block.router.go("/chat");
+            }
+        },
+        {
+            selector: "[href='/change_photo']", name: "click", handler: (event, Block) => {
+                event.preventDefault();
+                Block.router.go("/change_photo");
+            }
+        },
+        {
+            selector: "[href='/change_profile']", name: "click", handler: (event, Block) => {
+                event.preventDefault();
+                Block.router.go("/change_profile");
+            }
+        },
+        {
+            selector: "[href='/change_password']", name: "click", handler: (event, Block) => {
+                event.preventDefault();
+                Block.router.go("/change_password");
+            }
+        },
+        {
+            selector: "[href='/']", name: "click", handler: (event, Block) => {
+                event.preventDefault();
+                Block.router.go("/");
+            }
+        }
     ]
 };

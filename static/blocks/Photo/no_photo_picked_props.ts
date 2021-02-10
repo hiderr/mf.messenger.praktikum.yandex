@@ -10,8 +10,7 @@ import {PropsTitle} from "./title_props.js";
 import {PropsLink} from "./link_props.js";
 import {PropsButton} from "./button_props.js";
 import {PropsMessage} from "./message_props.js";
-
-PropsMessage.text = "Нужно выбрать файл";
+import {merge} from "../../utils/merge.js";
 
 export const PropsNoPhotoPicked = {
     className: "",
@@ -24,11 +23,25 @@ export const PropsNoPhotoPicked = {
                     className: "popup__footer align_center",
                     children: [
                         new Button(PropsButton),
-                        new Message(PropsMessage)
+                        new Message(merge(PropsMessage, {text: "Нужно выбрать файл"}))
                     ]
                 })
             ]
         }),
         new ProfilePage(PropsProfile)
+    ],
+    events: [
+        {
+            selector: "[href='/photo_uploaded']", name: "click", handler: (event, Block) => {
+                event.preventDefault();
+                Block.router.go("/photo_uploaded");
+            }
+        },
+        {
+            selector: "[href='/no_photo_picked']", name: "click", handler: (event, Block) => {
+                event.preventDefault();
+                Block.router.go("/no_photo_picked");
+            }
+        },
     ]
 };

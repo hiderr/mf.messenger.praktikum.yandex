@@ -11,23 +11,6 @@ import {PropsLink} from "./link_props.js";
 import {PropsButton} from "./button_props.js";
 import {PropsMessage} from "./message_props.js";
 
-/*if (window.location.pathname === "/change_photo.html") {
-    propsTitle.text = "Файл загружен";
-}
-if (window.location.pathname === "/change_photo_uploaded.html") {
-    propsTitle.text = "Файл загружен";
-    propsLink.className = "popup__uploaded_link";
-    propsLink.text = "pic.jpg";
-    propsButton.link = "change_photo_error.html";
-}
-if (window.location.pathname === "/change_photo_error.html") {
-    propsMessage.text = "Ошибка, попробуйте ещё раз";
-    propsLink.className = "popup__link";
-}
-if (window.location.pathname === "/change_photo_no_photo_picked.html") {
-    propsMessage.text = "Нужно выбрать файл";
-}*/
-
 export const PropsChangePhoto = {
     className: "",
     children: [
@@ -45,5 +28,19 @@ export const PropsChangePhoto = {
             ]
         }),
         new ProfilePage(PropsProfile)
+    ],
+    events: [
+        {
+            selector: "[href='/photo_uploaded']", name: "click", handler: (event, Block) => {
+                event.preventDefault();
+                Block.router.go("/photo_uploaded");
+            }
+        },
+        {
+            selector: "[href='/no_photo_picked']", name: "click", handler: (event, Block) => {
+                event.preventDefault();
+                Block.router.go("/no_photo_picked");
+            }
+        },
     ]
 };

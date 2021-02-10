@@ -80,27 +80,6 @@ export const PropsSignin = {
                     value: "123456789",
                     placeholder: "Пароль (ещё раз)"
                 }),
-            ],
-            events: [
-                {
-                    name: "input", handler: (...args) => {
-                        const el = args[0];
-                        if (el.tagName === "INPUT") {
-                            el["previousElementSibling"].hidden = el["value"] === "";
-                        }
-                    }
-                }, {
-                    name: "blur", handler: (...args) => {
-                        const el = args[0];
-                        // form.eventBus().emit("validate_form_input", el);
-                    }
-                },
-                {
-                    name: "focus", handler: (...args) => {
-                        const el = args[0];
-                        // form.eventBus().emit("clear_error_message", el);
-                    }
-                }
             ]
         }),
         new Wrapper({
@@ -131,5 +110,31 @@ export const PropsSignin = {
                 })
             ]
         })
+    ],
+    events: [
+        {
+            selector: "form input", name: "input", handler: (event) => {
+                const el = event.target;
+                if (el.tagName === "INPUT") {
+                    el["previousElementSibling"].hidden = el["value"] === "";
+                }
+            }
+        },
+        {
+            selector: "button", name: "click", handler: (...args) => {
+                const [event, Block] = args;
+                event.preventDefault();
+                if (Block.validation.validateFormOnSubmit()) {
+                    Block.router.go("/chat");
+                }
+            }
+        },
+        {
+            selector: ".text_link", name: "click", handler: (...args) => {
+                const [event, Block] = args;
+                event.preventDefault();
+                Block.router.go("/");
+            }
+        }
     ]
 };

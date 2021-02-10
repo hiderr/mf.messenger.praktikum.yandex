@@ -1,4 +1,11 @@
 export class Validation {
+    hideInputLabel(e): void {
+        const el = e.target;
+        if (el.tagName === "INPUT") {
+            el["previousElementSibling"].hidden = el["value"] === "";
+        }
+    }
+
     validateFormInputs(el): void {
         if (el.tagName === "INPUT") {
             const error_message = document.createElement("p");
@@ -19,20 +26,39 @@ export class Validation {
                 el.parentElement.append(error_message);
             }
 
-            if (el.name === "newPasswordRepeat" && el.value !== (<HTMLInputElement>document.querySelector("[name='newPassword']")).value){
+            if (el.name === "newPasswordRepeat" && el.value !== (<HTMLInputElement>document.querySelector("[name='newPassword']")).value) {
                 error_message.textContent = "Пароли не совпадают";
                 el.parentElement.append(error_message);
             }
         }
     }
 
-    validateFormOnSubmit(el, context, eventBus): void {
-        el.querySelectorAll("input").forEach(item => {
-            eventBus.emit("focus", item);
-            eventBus.emit("blur", item);
+    validateMessage(el): boolean {
+        this.clearErrorMessage(el);
+        if (el.tagName === "INPUT") {
+            const error_message = document.createElement("p");
+            error_message.classList.add("error_message", "error_message_bottom", "error_message_small");
+
+            if (el.value === "") {
+                error_message.textContent = "Поле не может быть пустым";
+                el.parentElement.append(error_message);
+            }
+
+            if (el.type === "text" && el.value.match(new RegExp("[^\\w\\s]", "gi"))) {
+                error_message.textContent = "Нельзя использовать специальные символы";
+                el.parentElement.append(error_message);
+            }
+        }
+        return !document.querySelector(".error_message");
+    }
+
+    validateFormOnSubmit(): boolean {
+        document.querySelectorAll("form input").forEach(input => {
+            this.clearErrorMessage(input);
+            this.validateFormInputs(input);
         });
-        const error_message = el.querySelector(".error_message");
-        context.form_valid = !error_message;
+        const error_message = document.querySelector(".error_message");
+        return !error_message;
     }
 
     clearErrorMessage(el): void {

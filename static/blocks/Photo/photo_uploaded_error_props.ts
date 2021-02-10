@@ -10,9 +10,7 @@ import {PropsTitle} from "./title_props.js";
 import {PropsLink} from "./link_props.js";
 import {PropsButton} from "./button_props.js";
 import {PropsMessage} from "./message_props.js";
-
-PropsMessage.text = "Ошибка, попробуйте ещё раз";
-PropsLink.className = "popup__link";
+import {merge} from "../../utils/merge.js";
 
 export const PropsPhotoUploadedError = {
     className: "",
@@ -20,16 +18,30 @@ export const PropsPhotoUploadedError = {
         new Popup({
             children: [
                 new Title(PropsTitle),
-                new Link(PropsLink),
+                new Link(merge(PropsLink, {className: "popup__link"})),
                 new Wrapper({
                     className: "popup__footer align_center",
                     children: [
                         new Button(PropsButton),
-                        new Message(PropsMessage)
+                        new Message(merge(PropsMessage, {text: "Ошибка, попробуйте ещё раз"}))
                     ]
                 })
             ]
         }),
         new ProfilePage(PropsProfile)
+    ],
+    events: [
+        {
+            selector: "[href='/photo_uploaded']", name: "click", handler: (event, Block) => {
+                event.preventDefault();
+                Block.router.go("/photo_uploaded");
+            }
+        },
+        {
+            selector: "[href='/photo_uploaded_error']", name: "click", handler: (event, Block) => {
+                event.preventDefault();
+                Block.router.go("/photo_uploaded_error");
+            }
+        },
     ]
 };

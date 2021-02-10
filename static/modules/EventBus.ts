@@ -1,14 +1,5 @@
 export class EventBus {
     listeners = {};
-    private static __instance: any;
-
-    /*constructor(){
-        if (EventBus.__instance) {
-            return EventBus.__instance;
-        }
-
-        EventBus.__instance = this;
-    }*/
 
     on(event, callback): void {
         if (!this.listeners[event]) {
@@ -33,7 +24,7 @@ export class EventBus {
             console.log(`Нет события: ${event}`);
         }
 
-        this.listeners[event].forEach(function(listener) {
+        this.listeners[event].forEach(function (listener) {
             listener(...args);
         });
     }

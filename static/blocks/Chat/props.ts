@@ -1,4 +1,5 @@
 export const PropsChat = {
+    chat_class: "w100proc",
     profile_link_text: "Профиль",
     search_placeholder: "Поиск",
     contacts: [
@@ -30,8 +31,8 @@ export const PropsChat = {
         },
     ],
     menu_actions: [
-        {icon: "fa-plus", link: "add_user.html", text: "Добавить пользователя"},
-        {icon: "fa-minus", link: "remove_user.html", text: "Удалить пользователя"},
+        {icon: "fa-plus", link: "add_user", text: "Добавить пользователя"},
+        {icon: "fa-minus", link: "remove_user", text: "Удалить пользователя"},
         {icon: "fa-trash-alt", text: "Удалить чат"}
     ],
     attachment_actions: [
@@ -41,7 +42,8 @@ export const PropsChat = {
     ],
     events: [
         {
-            name: "click", handler: (el) => {
+            selector: ".chat", name: "click", handler: (event, Block) => {
+                const el = event.target;
                 if (el.matches(".messages__menu_button")) {
                     document.querySelector(".messages__menu").classList.toggle("messages__menu_hidden");
                     el.parentElement.classList.toggle("messages__menu_wrapper_clicked");
@@ -53,28 +55,27 @@ export const PropsChat = {
                     document.querySelector(".contact_selected").classList.remove("contact_selected");
                     el.closest("li").classList.add("contact_selected");
                 }
-                if (el.parentElement.matches(".send")) {
-                    // chatPage.eventBus().emit("validate_message", document.querySelector("[name='message']"));
+                if (el.parentElement.matches(".send")){
+                    Block.validation.validateMessage(document.querySelector(".messages__search"));
                 }
             }
         },
         {
-            name: "validate_message", handler: (el) => {
-                // chatPage.eventBus().emit("clear_error_message", el);
-                if (el.tagName === "INPUT") {
-                    const error_message = document.createElement("p");
-                    error_message.classList.add("error_message", "error_message_bottom", "error_message_small");
-
-                    if (el.value === "") {
-                        error_message.textContent = "Поле не может быть пустым";
-                        el.parentElement.append(error_message);
-                    }
-
-                    if (el.type === "text" && el.value.match(new RegExp("[^\\w\\s]", "gi"))) {
-                        error_message.textContent = "Нельзя использовать специальные символы";
-                        el.parentElement.append(error_message);
-                    }
-                }
+            selector: "[href='add_user']", name: "click", handler: (event, Block) => {
+                event.preventDefault();
+                Block.router.go("/add_user");
+            }
+        },
+        {
+            selector: "[href='remove_user']", name: "click", handler: (event, Block) => {
+                event.preventDefault();
+                Block.router.go("/remove_user");
+            }
+        },
+        {
+            selector: "[href='profile']", name: "click", handler: (event, Block) => {
+                event.preventDefault();
+                Block.router.go("/profile");
             }
         }
     ]

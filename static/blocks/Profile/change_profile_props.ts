@@ -3,6 +3,7 @@ import {Button} from "../../components/Button/index.js";
 import {Form} from "../../components/Form/index.js";
 import {Input} from "../../components/Input/index.js";
 import {PropsForm} from "../../components/Form/props.js";
+import {merge} from "../../utils/merge.js";
 
 export const PropsChangeProfile = {
     back_button_link: "profile",
@@ -11,8 +12,7 @@ export const PropsChangeProfile = {
             tooltip: "Поменять аватар",
             title: ""
         }),
-        new Form(Object.assign(PropsForm,{
-            children: [
+        new Form(merge(PropsForm, {children: [
                 new Input({
                     labelClassName: "form__row_name",
                     className: "form__row_value form__input form__input_align_right",
@@ -61,25 +61,27 @@ export const PropsChangeProfile = {
                     name: "phone",
                     value: "+7 (909) 967 30 30"
                 }),
-            ]
-        })),
+            ]})),
         new Button({
             className: "link_button",
             text: "Сохранить",
-            link: "/profile",
-            events: [
-                {
-                    name: "click", handler: (...args) => {
-                        /*const e = args[1],
-                            eventBus = form.eventBus();
-                        eventBus.emit("validate_form_on_submit", form.element, PropsForm, eventBus);
-                        if (PropsForm.form_valid === false) {
-                            e.preventDefault();
-                            return e;
-                        }*/
-                    }
-                }
-            ]
+            link: "/profile"
         })
+    ],
+    events: [
+        {
+            selector: "[href='/profile']", name: "click", handler: (event, Block) => {
+                event.preventDefault();
+                if (Block.validation.validateFormOnSubmit()) {
+                    Block.router.go("/profile");
+                }
+            }
+        },
+        {
+            selector: "[href='/change_photo']", name: "click", handler: (event, Block) => {
+                event.preventDefault();
+                Block.router.go("/change_photo");
+            }
+        }
     ]
 };

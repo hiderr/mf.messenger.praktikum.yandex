@@ -29,5 +29,14 @@ export const PropsRemoveUser = {
             ]
         }),
         new ChatPage(PropsChat)
+    ],
+    events: [
+        {
+            selector: "button", name: "click", handler: (...args) => {
+                const [event, Block] = args;
+                event.preventDefault();
+                Block.router.go("/chat");
+            }
+        },
     ]
 };

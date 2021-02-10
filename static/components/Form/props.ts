@@ -17,5 +17,6 @@ export const PropsForm = {
                 // form.eventBus().emit("clear_error_message", el);
             }
         }
-    ]
+    ],
+    children: []
 };

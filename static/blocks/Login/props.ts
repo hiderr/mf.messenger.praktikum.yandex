@@ -34,27 +34,6 @@ export const PropsLogin = {
                     value: "",
                     placeholder: "Пароль"
                 }),
-            ],
-            events: [
-                {
-                    name: "input", handler: (...args) => {
-                        const el = args[0];
-                        if (el.tagName === "INPUT") {
-                            el["previousElementSibling"].hidden = el["value"] === "";
-                        }
-                    }
-                }, {
-                    name: "blur", handler: (...args) => {
-                        const el = args[0];
-                        // form.eventBus().emit("validate_form_input", el);
-                    }
-                },
-                {
-                    name: "focus", handler: (...args) => {
-                        const el = args[0];
-                        // form.eventBus().emit("clear_error_message", el);
-                    }
-                }
             ]
         }),
         new Wrapper({
@@ -63,22 +42,7 @@ export const PropsLogin = {
                 new Button({
                     className: "link_button",
                     text: "Авторизоваться",
-                    link: "chat",
-                    events: [
-                        {
-                            name: "click", handler: (...args) => {
-                                const e = args[1],
-                                    button = e.target,
-                                    eventBus = button.eventBus();
-
-                                // eventBus.emit("validate_form_on_submit", form.element, form, eventBus);
-                                /*if (formProps.form_valid === false) {
-                                    e.preventDefault();
-                                    return e;
-                                }*/
-                            }
-                        }
-                    ]
+                    link: "chat"
                 }),
                 new Link({
                     className: "text_link",
@@ -87,5 +51,31 @@ export const PropsLogin = {
                 })
             ]
         })
+    ],
+    events: [
+        {
+            selector: "form input", name: "input", handler: (event) => {
+                const el = event.target;
+                if (el.tagName === "INPUT") {
+                    el["previousElementSibling"].hidden = el["value"] === "";
+                }
+            }
+        },
+        {
+            selector: "button", name: "click", handler: (...args) => {
+                const [event, Block] = args;
+                event.preventDefault();
+                if (Block.validation.validateFormOnSubmit()) {
+                    Block.router.go("/chat");
+                }
+            }
+        },
+        {
+            selector: ".text_link", name: "click", handler: (...args) => {
+                const [event, Block] = args;
+                event.preventDefault();
+                Block.router.go("/signin");
+            }
+        }
     ]
 };

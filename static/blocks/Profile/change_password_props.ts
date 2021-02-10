@@ -40,22 +40,19 @@ export const PropsChangePassword = {
             ]
         })),
         new Button({
-            link: "profile.html",
+            link: "/profile",
             text: "Сохранить",
-            className: "link_button",
-            events: [
-                {
-                    name: "click", handler: (...args) => {
-                        /*const e = args[1],
-                            eventBus = form.eventBus();
-                        eventBus.emit("validate_form_on_submit", form.element, formProps, eventBus);
-                        if (formProps.form_valid === false) {
-                            e.preventDefault();
-                            return e;
-                        }*/
-                    }
-                }
-            ]
+            className: "link_button"
         })
+    ],
+    events: [
+        {
+            selector: "[href='/profile']", name: "click", handler: (event, Block) => {
+                event.preventDefault();
+                if (Block.validation.validateFormOnSubmit()) {
+                    Block.router.go("/profile");
+                }
+            }
+        },
     ]
 };
