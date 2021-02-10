@@ -1,0 +1,42 @@
+import {Router} from "../modules/Router.js";
+import {LoginPage} from "../blocks/Login/index.js";
+import {SigninPage} from "../blocks/Signin/index.js";
+import {ChatPage} from "../blocks/Chat/index.js";
+import {ProfilePage} from "../blocks/Profile/index.js";
+import {ErrorPage} from "../blocks/Error/index.js";
+import {Wrapper} from "../components/Wrapper/index.js";
+import {PropsLogin} from "../blocks/Login/props.js";
+import {PropsSignin} from "../blocks/Signin/props.js";
+import {PropsChat} from "../blocks/Chat/props.js";
+import {PropsProfile} from "../blocks/Profile/props.js";
+import {PropsChangeProfile} from "../blocks/Profile/change_profile_props.js";
+import {PropsChangePassword} from "../blocks/Profile/change_password_props.js";
+import {PropsChangePhoto} from "../blocks/Photo/change_photo_props.js";
+import {PropsNoPhotoPicked} from "../blocks/Photo/no_photo_picked_props.js";
+import {PropsPhotoUploaded} from "../blocks/Photo/photo_uploaded_props.js";
+import {PropsPhotoUploadedError} from "../blocks/Photo/photo_uploaded_error_props.js";
+import {PropsAddUser} from "../blocks/User/add_user_props.js";
+import {PropsRemoveUser} from "../blocks/User/remove_user_props.js";
+import {PropsError404} from "../blocks/Error/404_props.js";
+import {PropsError500} from "../blocks/Error/500_props.js";
+
+(() => {
+    const router = new Router();
+    const rootQuery = {rootQuery: "#root"};
+
+    router.use("/", LoginPage, Object.assign(PropsLogin, rootQuery));
+    router.use("/signin", SigninPage, Object.assign(PropsSignin, rootQuery));
+    router.use("/chat", ChatPage, Object.assign(PropsChat, rootQuery));
+    router.use("/profile", ProfilePage, Object.assign(PropsProfile, rootQuery));
+    router.use("/change_profile", ProfilePage, Object.assign(PropsChangeProfile, rootQuery));
+    router.use("/change_password", ProfilePage, Object.assign(PropsChangePassword, rootQuery));
+    router.use("/change_photo", Wrapper, Object.assign(PropsChangePhoto, rootQuery));
+    router.use("/no_photo_picked", Wrapper, Object.assign(PropsNoPhotoPicked, rootQuery));
+    router.use("/photo_uploaded", Wrapper, Object.assign(PropsPhotoUploaded, rootQuery));
+    router.use("/photo_uploaded_error", Wrapper, Object.assign(PropsPhotoUploadedError, rootQuery));
+    router.use("/add_user", Wrapper, Object.assign(PropsAddUser, rootQuery));
+    router.use("/remove_user", Wrapper, Object.assign(PropsRemoveUser, rootQuery));
+    router.use("/404", ErrorPage, Object.assign(PropsError404, rootQuery));
+    router.use("/500", ErrorPage, Object.assign(PropsError500, rootQuery));
+    router.start();
+})();

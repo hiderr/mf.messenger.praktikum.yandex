@@ -9,5 +9,6 @@ export class LoginPage extends Group {
     constructor(props: TypeProps) {
         super(props);
         this.template = template;
+        this.pathCSS = "blocks/Login/login.css";
     }
 }

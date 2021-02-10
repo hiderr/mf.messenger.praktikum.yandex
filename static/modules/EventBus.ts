@@ -1,5 +1,14 @@
 export class EventBus {
     listeners = {};
+    private static __instance: any;
+
+    /*constructor(){
+        if (EventBus.__instance) {
+            return EventBus.__instance;
+        }
+
+        EventBus.__instance = this;
+    }*/
 
     on(event, callback): void {
         if (!this.listeners[event]) {

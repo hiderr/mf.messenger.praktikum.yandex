@@ -2,7 +2,7 @@ export const template = `<div class="chat {{chat_class}}">
         <nav class="contacts">
             <header class="contacts__header">
                 <div class="profile_link_wrapper">
-                    <a class="contact__profileLink" href="profile.html">{{profile_link_text}}</a>
+                    <a class="contact__profileLink" href="profile">{{profile_link_text}}</a>
                 </div>
                 <input class="search contact__search" type="text" placeholder="&#128269; {{search_placeholder}}">
             </header>

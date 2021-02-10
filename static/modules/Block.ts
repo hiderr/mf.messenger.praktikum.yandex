@@ -19,6 +19,7 @@ export class Block {
     props = null;
     eventBus = null;
     validation = null;
+    pathCSS = "";
 
     /** TSDoc
      * @param {string} tagName
@@ -27,7 +28,6 @@ export class Block {
      * @returns {void}
      */
     constructor(tagName = "div", props = {}) {
-        const eventBus = new EventBus();
         this._meta = {
             tagName,
             props
@@ -35,11 +35,11 @@ export class Block {
 
         this.props = this._makePropsProxy(props);
 
-        this.eventBus = () => eventBus;
+        this.eventBus = new EventBus();
         this.validation = new Validation();
 
-        this._registerEvents(eventBus);
-        eventBus.emit(Block.EVENTS.INIT);
+        this._registerEvents(this.eventBus);
+        this.eventBus.emit(Block.EVENTS.INIT);
     }
 
     _registerEvents(eventBus): void {
@@ -57,23 +57,34 @@ export class Block {
         this._element = document.createElement(tagName);
     }
 
+    loadCss(path): void {
+        const head = document.getElementsByTagName('HEAD')[0];
+        if (!Array.from(head.children).some(item => item.getAttribute("href") && item.getAttribute("href").indexOf(path) > -1)) {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = `/public/${path}`;
+            head.appendChild(link);
+        }
+    }
+
     init(): void {
         this._createResources();
-        this.eventBus().emit(Block.EVENTS.FLOW_CDM);
+        this.eventBus.emit(Block.EVENTS.FLOW_CDM);
     }
 
     _componentDidMount(): void {
         this.componentDidMount(this.props);
-        this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
+        this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
     }
 
     // Может переопределять пользователь, необязательно трогать
     componentDidMount(oldProps): void {
         if (oldProps.events) {
             oldProps.events.forEach(item => {
-                this.eventBus().on(item.name, item.handler);
+                this.eventBus.on(item.name, item.handler);
                 this._element.addEventListener(item.name, (e) => {
-                    this.eventBus().emit(item.name, e.target, e, this.eventBus());
+                    this.eventBus.emit(item.name, e.target, e, this.eventBus);
                 }, true);
             });
         }
@@ -96,17 +107,30 @@ export class Block {
     }
 
     _render() {
-
+        this.loadCss(this.pathCSS);
     }
 
     // Может переопределять пользователь, необязательно трогать
     render(): string {
+        this._render();
         return compiler(this.template, this.props);
     }
 
     getContent(): HTMLElement {
         return this.element;
     }
+
+    getProps(): object{
+        return this.props;
+    }
+
+    setProps = nextProps => {
+        if (!nextProps) {
+            return;
+        }
+
+        Object.assign(this.props, nextProps);
+    };
 
     _makePropsProxy(props): WindowProxy {
         // Можно и так передать this

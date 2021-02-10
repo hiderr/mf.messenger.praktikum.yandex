@@ -10,5 +10,6 @@ export class Popup extends Group {
     constructor(props: TypeProps) {
         super(props);
         this.template = template;
+        this.pathCSS = "components/Popup/popup.css";
     }
 }

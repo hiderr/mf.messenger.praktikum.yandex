@@ -1,10 +1,11 @@
-import Route from "./Route";
+import Route from "./Route.js";
 
-class Router {
+export class Router {
     private static __instance: any;
     private routes: Route[];
     history: History;
-    private _currentRoute: object;
+    private _currentRoute: Route;
+
     constructor() {
         if (Router.__instance) {
             return Router.__instance;
@@ -17,14 +18,13 @@ class Router {
         Router.__instance = this;
     }
 
-    use(pathname, block) {
-        const route = new Route(pathname, block, {});
+    use(pathname, block, props) {
+        const route = new Route(pathname, block, props);
         this.routes.push(route);
         return this;
     }
 
     start() {
-        // Реагируем на изменения в адресной строке и вызываем перерисовку
         window.onpopstate = event => {
             this._onRoute(event.currentTarget.location.pathname);
         };
@@ -39,9 +39,10 @@ class Router {
         }
 
         if (this._currentRoute) {
-            // this._currentRoute.leave();
+            this._currentRoute.leave();
         }
 
+        this._currentRoute = route;
         route.render();
     }
 
@@ -54,5 +55,3 @@ class Router {
         return this.routes.find(route => route.match(pathname));
     }
 }
-
-export default Router;

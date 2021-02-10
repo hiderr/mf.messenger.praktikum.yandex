@@ -16,5 +16,6 @@ export class Input extends Block {
     constructor(props: TypeProps) {
         super("div", props);
         this.template = template;
+        this.pathCSS = "components/Input/input.css";
     }
 }

@@ -5,5 +5,6 @@ export class SigninPage extends Group {
     constructor(props) {
         super(props);
         this.template = template;
+        this.pathCSS = "blocks/Login/login.css";
     }
 }

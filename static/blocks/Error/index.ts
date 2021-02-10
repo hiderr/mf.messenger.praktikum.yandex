@@ -11,5 +11,6 @@ export class ErrorPage extends Block {
     constructor(props: TypeProps) {
         super("div", props);
         this.template = template;
+        this.pathCSS = "blocks/Error/error.css";
     }
 }

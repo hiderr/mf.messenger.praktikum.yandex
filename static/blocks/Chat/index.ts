@@ -17,5 +17,6 @@ export class ChatPage extends Block {
     constructor(props: TypeProps) {
         super("div", props);
         this.template = template;
+        this.pathCSS = "blocks/Chat/chat.css";
     }
 }

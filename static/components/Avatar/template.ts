@@ -1,5 +1,5 @@
 export const template = `<div>
-                <a class="link" href="change_photo.html">
+                <a class="link" href="/change_photo">
                     <i class="fas fa-image profile__avatar">
                         <span class="profile__avatar_tooltip">{{tooltip}}</span>
                     </i>
