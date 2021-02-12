@@ -1,0 +1,43 @@
+@use "../../css/base"
+
+.wrapper
+  height: 100%
+  display: flex
+  justify-content: center
+  align-items: center
+
+.login_box
+  position: relative
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  width: 340px
+  height: 450px
+  padding: 30px
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5)
+
+  &.login_box__higher
+    height: 615px
+
+.login_box_title
+  font-size: 20px
+  line-height: 20px
+  text-align: center
+  color: #1E1E1E
+
+.login_form
+  width: 100%
+
+.login_form__margin
+  margin-bottom: 120px
+
+.form_buttons
+  width: 100%
+  text-align: center
+
+.text_link
+  width: 78px
+  height: 11px
+  font-size: 11px
+  line-height: 11px
+  color: base.$primary-color

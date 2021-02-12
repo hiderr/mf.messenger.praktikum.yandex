@@ -1,0 +1,284 @@
+@use "../../css/base"
+
+$border-color: #EAEAEA
+$light-gray: #EFEFEF
+
+.contacts
+  width: 300px
+  float: left
+  border-right: base.$border-size solid #EAEAEA
+
+.contacts__header
+  padding: 14px 10px 0
+
+.contacts__main
+  height: calc(100vh - 95px)
+  overflow-y: scroll
+  padding: 0
+  margin: 0
+
+  &::-webkit-scrollbar
+    width: 5px
+
+.messages__main::-webkit-scrollbar
+  width: 5px
+
+.contacts__main::-webkit-scrollbar-track, .messages__main::-webkit-scrollbar-track
+  -webkit-box-shadow: inset 0 0 6px rgba(234, 234, 234, 0.3)
+  border-radius: 10px
+
+.contacts__main::-webkit-scrollbar-thumb, .messages__main::-webkit-scrollbar-thumb
+  border-radius: 10px
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2)
+
+.contact
+  height: 72px
+  border-top: base.$border-size solid #EAEAEA
+  border-bottom: base.$border-size solid #EAEAEA
+  padding: 0 10px
+  display: grid
+  grid-template-columns: 1fr 4fr 1fr
+
+  &:hover
+    cursor: pointer
+
+.contact_selected
+  background-color: #E4EDFD
+
+.contact__profileLink
+  text-decoration: none
+  float: right
+  margin: 0 0 20px 0
+  color: #999999
+  font-size: 12px
+
+  &:after
+    content: " >"
+
+.search
+  width: 100%
+  border: 0
+  background-color: #EFEFEF
+  height: 32px
+
+  &:focus
+    outline: none
+
+.contact__search
+  border-radius: 5px
+  text-align: center
+  margin: 0 0 14px 0
+
+.contact__avatar
+  width: 47px
+  height: 47px
+  border: base.$border-size solid #EFEFEF
+  border-radius: 47px
+  margin: 13px 10px 13px 0
+  background: #EFEFEF
+
+.contact__name
+  font-weight: 600
+  font-size: 13px
+  color: #1E1E1E
+  margin: 13px 0 5px 0
+
+.contact__preview
+  font-size: 12px
+  line-height: 15px
+  color: #999999
+  margin: 0
+
+.contact__time
+  color: #999999
+
+.time_count
+  display: flex
+  flex-direction: column
+  align-items: flex-end
+  justify-content: space-around
+
+.time
+  font-size: 9px
+  text-align: right
+
+.contact__count
+  float: right
+  text-align: center
+  margin: 0
+  font-size: 11px
+  color: #FFFFFF
+  background-color: base.$primary-color
+  width: 20px
+  height: 20px
+  border-radius: 20px
+  padding: 3px
+
+.messages
+  position: relative
+  width: calc(100% - 300px)
+  float: left
+  padding: 0 20px
+
+.messages__header
+  position: relative
+  height: 54px
+  border-bottom: base.$border-size solid #EAEAEA
+  display: flex
+  align-items: center
+
+.messages__avatar
+  width: 34px
+  height: 34px
+  border: base.$border-size solid #EFEFEF
+  border-radius: 34px
+  margin-right: 10px
+  background: #EFEFEF
+
+.messages__name
+  font-weight: 600
+  font-size: 13px
+  color: #1E1E1E
+
+.messages__menu_wrapper
+  position: absolute
+  right: 0
+  width: 25px
+  height: 25px
+  border-radius: 13px
+
+  &:hover
+    background-color: #F5F5F5
+
+.messages__menu_wrapper_clicked
+  background-color: #F5F5F5
+
+.messages__menu_button
+  position: absolute
+  left: 8px
+  bottom: calc(base.$border-size / 2)
+
+  &:after
+    content: '\2807'
+    font-size: 20px
+
+.messages__main
+  position: relative
+  height: calc(100vh - 54px - 54px - 12px)
+
+.messages__footer
+  width: 100%
+  height: 54px
+  border-top: base.$border-size solid #EAEAEA
+  display: flex
+  align-items: center
+
+.fa-paperclip
+  font-size: 28px
+  color: #999999
+
+.messages__icon
+  font-size: 20px
+  padding: 5px 7px
+  border-radius: 20px
+
+.fa-arrow-right
+  color: white
+  background-color: base.$primary-color
+
+.messages__search
+  margin: 0 10px
+  padding: 0 20px
+  border-radius: 30px
+
+.messages__date
+  text-align: center
+  font-size: 12px
+  color: #999999
+
+.messages__menu
+  border-radius: 12px
+  position: absolute
+  background-color: white
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5)
+
+.messages__menu_users
+  top: 0
+  right: 0
+  width: 210px
+
+.messages__menu_attachments
+  width: 162px
+  height: 135px
+  bottom: 10px
+  left: 0
+
+.messages__menu_hidden
+  display: none
+
+.messages__menu_item
+  height: 45px
+  display: flex
+  align-items: center
+  cursor: pointer
+
+.messages__menu_item_icon
+  margin: 0 10px
+  color: base.$primary-color
+
+.messages__menu_item_icon_border
+  border: 2 * base.$border-size solid #991B94
+
+.messages__menu_item_text
+  font-size: 12px
+  color: #1E1E1E
+
+.message
+  margin-bottom: 10px
+  font-size: 15px
+  border-radius: 20px
+
+.message__text
+  padding: 10px
+
+.message__text_from
+  background-color: #F8F8F8
+  width: 400px
+  color: #1E1E1E
+
+.message__text_to
+  background-color: #E4EDFD
+  position: absolute
+  right: 0
+  bottom: 0
+  width: 114px
+
+.message__text_inner
+  margin: 0
+
+.message__time
+  color: base.$primary-color
+  position: absolute
+  right: 15px
+  bottom: 9px
+
+.error_message_bottom
+  position: absolute
+  bottom: 37px
+  left: 76px
+
+.fa-check-double
+  color: base.$primary-color
+  font-size: 8px
+  position: absolute
+  right: 41px
+  bottom: 10px
+
+.fa-file
+  margin-right: 14px
+  margin-left: 12px
+
+.login_form_label
+  font-size: 9px
+  line-height: 9px
+  color: #999999

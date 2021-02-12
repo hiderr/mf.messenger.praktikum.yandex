@@ -30,7 +30,9 @@ export class ChatController {
         })
             .then((xhr: XMLHttpRequest) => {
                 if (xhr.status === 204) return;
-                alert(xhr.responseText);
+                if (xhr.status !== 200) {
+                    alert(xhr.responseText);
+                }
                 if (xhr.status === 200) {
                     options.success();
                 }

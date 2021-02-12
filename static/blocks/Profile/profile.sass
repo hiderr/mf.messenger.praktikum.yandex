@@ -1,0 +1,108 @@
+@use "../../css/base"
+
+.profile
+  height: 100vh
+
+.profile__nav
+  position: relative
+  width: 64px
+  height: 100%
+  background-color: #FBFBFB
+  float: left
+
+.profile__main
+  position: relative
+  height: 100%
+  width: 510px
+  margin: 0 auto
+  padding: 60px 0
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: space-around
+
+  > div:not(:first-child)
+    width: 100%
+
+.profile__avatar
+  color: #CDCDCD
+  font-size: 35px
+  padding: 50px
+  border-radius: 65px
+  background-color: #EFEFEF
+  position: relative
+
+.profile__avatar_img, .profile__avatar_bg
+  width: 130px
+  border-radius: 65px
+
+.profile__main .profile__avatar_wrapper
+  /* have to increase specificity to overwrite property display of font-awesome
+  display: flex
+  align-items: center
+  justify-content: center
+
+.profile__avatar_bg:hover
+  color: rgba(0, 0, 0, 0.5)
+  background-color: rgba(0, 0, 0, 0.5)
+
+  .profile__avatar_img
+    opacity: 0.3
+
+.profile__avatar_tooltip
+  font-size: 13px
+  width: 65px
+  text-align: center
+  color: #FFFFFF
+  position: absolute
+  visibility: hidden
+
+.profile__avatar_bg:hover ~ .profile__avatar_tooltip
+  visibility: visible
+
+.profile__name
+  font-weight: 600
+  font-size: 16px
+  line-height: 16px
+  text-align: center
+  color: #1E1E1E
+
+.profile__form
+  width: 100%
+
+.form__row
+  position: relative
+  display: flex
+  align-items: center
+  justify-content: space-between
+  height: 34px
+  border-bottom: base.$border-size solid #EAEAEA
+  font-size: 13px
+  line-height: 13px
+
+  &:last-child
+    border: 0
+
+.form__row_name
+  color: #1E1E1E
+
+.form__row_value
+  color: #999999
+
+.form__pink_link
+  color: base.$primary-color
+
+.form__red_link
+  color: #FF0000
+
+.fa-arrow-left
+  color: white
+  background-color: base.$primary-color
+  position: absolute
+  top: 50%
+  left: calc(50% - 16px)
+
+.error_message
+  position: absolute
+  right: 0
+  top: 20px
