@@ -51,6 +51,12 @@ export const PropsChangePassword = {
     ],
     events: [
         {
+            selector: "[href='/chat']", name: "click", handler: (event, Block) => {
+                event.preventDefault();
+                Block.router.go("/chat");
+            }
+        },
+        {
             selector: "[href='/profile']", name: "click", handler: (event, Block) => {
                 event.preventDefault();
                 if (Block.validation.validateFormOnSubmit()) {
@@ -62,5 +68,11 @@ export const PropsChangePassword = {
                 }
             }
         },
+        {
+            selector: "[href='/change_photo']", name: "click", handler: (event, Block) => {
+                event.preventDefault();
+                Block.router.go("/change_photo");
+            }
+        }
     ]
 };

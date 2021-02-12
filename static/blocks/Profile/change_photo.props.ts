@@ -94,8 +94,8 @@ export const PropsChangePhoto = {
                 } else {
                     ProfileController.uploadAvatar({
                         success: () => {
+                            chooseFileLink.parentElement.classList.remove("hide");
                             Block.router.go("/profile");
-                            chooseFileLink.classList.remove("hide");
                         }
                     });
                 }
