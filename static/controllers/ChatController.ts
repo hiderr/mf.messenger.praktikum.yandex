@@ -1,7 +1,7 @@
-import {collectFormData} from "../../utils/collectFormData.js";
-import {ChatAPI} from "../../api/chat-api.js";
-import {Store} from "../../modules/Store.js";
-import {mergeDeep} from "../../utils/mergeDeep.js";
+import {collectFormData} from "../utils/collectFormData.js";
+import {ChatAPI} from "../api/chat-api.js";
+import {Store} from "../modules/Store.js";
+import {mergeDeep} from "../utils/mergeDeep.js";
 
 const chatAPI = new ChatAPI();
 const store = new Store();
@@ -16,7 +16,7 @@ export class ChatController {
                 }
                 if (xhr.status === 200) {
                     store.set("chatProps", {chats: JSON.parse(xhr.response)});
-                    store.eventBus.emit("dataReceived");
+                    store.eventBus.emit("chatDataReceived");
                 }
             }).catch(chatAPI.handleErrors);
     }

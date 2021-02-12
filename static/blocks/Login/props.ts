@@ -4,7 +4,7 @@ import {Title} from "../../components/Title/index.js";
 import {Wrapper} from "../../components/Wrapper/index.js";
 import {Button} from "../../components/Button/index.js";
 import {Link} from "../../components/Link/index.js";
-import {LoginController} from "./controller.js";
+import {LoginController} from "../../controllers/LoginController.js";
 
 export const PropsLogin = {
     children: [

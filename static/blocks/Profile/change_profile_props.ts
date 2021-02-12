@@ -4,14 +4,17 @@ import {Form} from "../../components/Form/index.js";
 import {Input} from "../../components/Input/index.js";
 import {PropsForm} from "../../components/Form/props.js";
 import {merge} from "../../utils/merge.js";
-import {ProfileController} from "./controller.js";
+import {ProfileController} from "../../controllers/ProfileController.js";
 
 export const PropsChangeProfile = {
     back_button_link: "/chat",
     children: [
         new Avatar({
+            url: "",
+            urlPath: "profileProps.info.avatar",
             tooltip: "Поменять аватар",
-            title: ""
+            title: "",
+            titlePath: "profileProps.info.first_name"
         }),
         new Form(merge(PropsForm, {
             children: [
@@ -21,7 +24,8 @@ export const PropsChangeProfile = {
                     label: "Почта",
                     type: "email",
                     name: "email",
-                    value: "pochta@mail.ru"
+                    value: "",
+                    valuePath: "profileProps.info.email"
                 }),
                 new Input({
                     labelClassName: "form__row_name",
@@ -29,7 +33,8 @@ export const PropsChangeProfile = {
                     label: "Логин",
                     type: "text",
                     name: "login",
-                    value: "hidegerr"
+                    value: "",
+                    valuePath: "profileProps.info.login"
                 }),
                 new Input({
                     labelClassName: "form__row_name",
@@ -37,7 +42,8 @@ export const PropsChangeProfile = {
                     label: "Имя",
                     type: "text",
                     name: "first_name",
-                    value: "Иван"
+                    value: "",
+                    valuePath: "profileProps.info.first_name"
                 }),
                 new Input({
                     labelClassName: "form__row_name",
@@ -45,7 +51,8 @@ export const PropsChangeProfile = {
                     label: "Фамилия",
                     type: "text",
                     name: "second_name",
-                    value: "Таранов"
+                    value: "",
+                    valuePath: "profileProps.info.second_name"
                 }),
                 new Input({
                     labelClassName: "form__row_name",
@@ -53,7 +60,8 @@ export const PropsChangeProfile = {
                     label: "Имя в чате",
                     type: "text",
                     name: "display_name",
-                    value: "taranov"
+                    value: "",
+                    valuePath: "profileProps.info.display_name"
                 }),
                 new Input({
                     labelClassName: "form__row_name",
@@ -61,7 +69,8 @@ export const PropsChangeProfile = {
                     label: "Телефон",
                     type: "tel",
                     name: "phone",
-                    value: "+7 (909) 967 30 30"
+                    value: "",
+                    valuePath: "profileProps.info.phone"
                 }),
             ]
         })),

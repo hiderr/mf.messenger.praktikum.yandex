@@ -78,7 +78,7 @@ export class Store {
             return a;
         }, value);
 
-        this.setProps(mergeDeep(obj, this.props));
+        this.setProps(mergeDeep(this.props, obj));
     }
 
     setProps = nextProps => {

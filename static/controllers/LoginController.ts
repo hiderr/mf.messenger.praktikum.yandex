@@ -1,6 +1,6 @@
-import {collectFormData} from "../../utils/collectFormData.js";
-import {AuthAPI} from "../../api/auth-api.js";
-import {Store} from "../../modules/Store.js";
+import {collectFormData} from "../utils/collectFormData.js";
+import {AuthAPI} from "../api/auth-api.js";
+import {Store} from "../modules/Store.js";
 
 const authAPI = new AuthAPI();
 const store = new Store();

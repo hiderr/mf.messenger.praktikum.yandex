@@ -1,6 +1,6 @@
 import {template} from "./template.js";
 import {Block} from "../../modules/Block.js";
-import {ChatController} from "./controller.js";
+import {ChatController} from "../../controllers/ChatController.js";
 
 interface TypeProps {
     chat_class?: string,
@@ -24,7 +24,7 @@ export class ChatPage extends Block {
     }
 
     componentDidMount(oldProps): void {
-        this.store.eventBus.on("dataReceived", () => {
+        this.store.eventBus.on("chatDataReceived", () => {
             this.setProps(this.store.get("chatProps"));
         });
         super.componentDidMount(oldProps);

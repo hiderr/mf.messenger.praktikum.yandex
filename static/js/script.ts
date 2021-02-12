@@ -20,7 +20,8 @@ import {PropsRemoveUser} from "../blocks/Chat/remove_user_props.js";
 import {PropsAddChat} from "../blocks/Chat/add_chat_props.js";
 import {PropsError404} from "../blocks/Error/404_props.js";
 import {PropsError500} from "../blocks/Error/500_props.js";
-import {ChatController} from "../blocks/Chat/controller.js";
+import {ChatController} from "../controllers/ChatController.js";
+import {ProfileController} from "../controllers/ProfileController.js";
 
 (() => {
     const router = new Router();
@@ -29,13 +30,10 @@ import {ChatController} from "../blocks/Chat/controller.js";
     router.use("/", LoginPage, Object.assign(PropsLogin, rootQuery));
     router.use("/signin", SigninPage, Object.assign(PropsSignin, rootQuery));
     router.use("/chat", ChatPage, Object.assign(PropsChat, rootQuery), ChatController.getChats);
-    router.use("/profile", ProfilePage, Object.assign(PropsProfile, rootQuery));
-    router.use("/change_profile", ProfilePage, Object.assign(PropsChangeProfile, rootQuery));
-    router.use("/change_password", ProfilePage, Object.assign(PropsChangePassword, rootQuery));
-    router.use("/change_photo", Wrapper, Object.assign(PropsChangePhoto, rootQuery));
-    router.use("/no_photo_picked", Wrapper, Object.assign(PropsNoPhotoPicked, rootQuery));
-    router.use("/photo_uploaded", Wrapper, Object.assign(PropsPhotoUploaded, rootQuery));
-    router.use("/photo_uploaded_error", Wrapper, Object.assign(PropsPhotoUploadedError, rootQuery));
+    router.use("/profile", ProfilePage, Object.assign(PropsProfile, rootQuery), ProfileController.getProfile);
+    router.use("/change_profile", ProfilePage, Object.assign(PropsChangeProfile, rootQuery), ProfileController.getProfile);
+    router.use("/change_password", ProfilePage, Object.assign(PropsChangePassword, rootQuery), ProfileController.getProfile);
+    router.use("/change_photo", Wrapper, Object.assign(PropsChangePhoto, rootQuery), ProfileController.getProfile);
     router.use("/add_user", Wrapper, Object.assign(PropsAddUser, rootQuery), ChatController.getChats);
     router.use("/remove_user", Wrapper, Object.assign(PropsRemoveUser, rootQuery), ChatController.getChats);
     router.use("/add_chat", Wrapper, Object.assign(PropsAddChat, rootQuery), ChatController.getChats);

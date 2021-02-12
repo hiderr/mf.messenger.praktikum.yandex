@@ -5,7 +5,7 @@ import {Input} from "../../components/Input/index.js";
 import {Button} from "../../components/Button/index.js";
 import {ChatPage} from "../Chat/index.js";
 import {PropsChat} from "../Chat/props.js";
-import {ChatController} from "./controller.js";
+import {ChatController} from "../../controllers/ChatController.js";
 
 export const PropsAddChat = {
     children: [

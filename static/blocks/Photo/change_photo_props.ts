@@ -13,7 +13,7 @@ import {PropsMessage} from "./message_props.js";
 import {Form} from "../../components/Form/index.js";
 import {merge} from "../../utils/merge.js";
 import {Input} from "../../components/Input/index.js";
-import {ProfileController} from "../Profile/controller.js";
+import {ProfileController} from "../../controllers/ProfileController.js";
 
 export const PropsChangePhoto = {
     className: "",
@@ -68,23 +68,24 @@ export const PropsChangePhoto = {
                     };
                 }
                 fileInput.click();
-                // Block.router.go("/photo_uploaded");
             }
         },
         {
             selector: "button", name: "click", handler: (event, Block) => {
                 event.preventDefault();
-                const uploadedFileLink = event.target.closest(".popup").querySelector(".popup__uploaded_link");
+                const popup = event.target.closest(".popup"),
+                    chooseFileLink = popup.querySelector(".select_photo"),
+                    uploadedFileLink = popup.querySelector(".popup__uploaded_link");
                 if (uploadedFileLink.classList.contains("hide")){
                     alert("Сначала необходимо выбрать файл");
                 } else {
                     ProfileController.uploadAvatar({
                         success: () => {
                             Block.router.go("/profile");
+                            chooseFileLink.classList.remove("hide");
                         }
                     });
                 }
-                // Block.router.go("/no_photo_picked");
             }
         },
     ]

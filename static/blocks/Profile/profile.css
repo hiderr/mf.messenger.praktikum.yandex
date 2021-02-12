@@ -35,15 +35,24 @@
     position: relative;
 }
 
-.profile__main .profile__avatar { /* have to increase specificity to overwrite property display of font-awesome */
+.profile__avatar_img, .profile__avatar_bg {
+    width: 130px;
+    border-radius: 65px;
+}
+
+.profile__main .profile__avatar_wrapper { /* have to increase specificity to overwrite property display of font-awesome */
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.profile__avatar:hover {
+.profile__avatar_bg:hover {
     color: rgba(0,0,0,0.5);
     background-color: rgba(0,0,0,0.5);
+}
+
+.profile__avatar_bg:hover .profile__avatar_img {
+    opacity: 0.3;
 }
 
 .profile__avatar_tooltip {
@@ -55,7 +64,7 @@
     visibility: hidden;
 }
 
-.profile__avatar:hover .profile__avatar_tooltip {
+.profile__avatar_bg:hover ~ .profile__avatar_tooltip {
     visibility: visible;
 }
 

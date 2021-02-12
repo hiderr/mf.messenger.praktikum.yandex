@@ -1,13 +1,30 @@
-import {collectFormData} from "../../utils/collectFormData.js";
-import {UserAPI} from "../../api/user-api.js";
-import {AuthAPI} from "../../api/auth-api.js";
-import {Store} from "../../modules/Store.js";
+import {collectFormData} from "../utils/collectFormData.js";
+import {UserAPI} from "../api/user-api.js";
+import {AuthAPI} from "../api/auth-api.js";
+import {Store} from "../modules/Store.js";
 
 const authAPI = new AuthAPI();
 const userAPI = new UserAPI();
 const store = new Store();
 
 export class ProfileController {
+    static getProfile(options): void {
+        if (store.get("profileProps.info")) {
+            store.eventBus.emit("profileDataReceived");
+            return;
+        }
+        authAPI.request(options).then((xhr: XMLHttpRequest) => {
+            if (xhr.status === 204) return;
+            if (xhr.status !== 200) {
+                alert(xhr.responseText);
+            }
+            if (xhr.status === 200) {
+                store.set("profileProps.info", JSON.parse(xhr.response));
+                store.eventBus.emit("profileDataReceived");
+            }
+        }).catch(userAPI.handleErrors);
+    }
+
     static updateProfile(options): void {
         userAPI.updateProfile({
             headers: {
@@ -16,9 +33,12 @@ export class ProfileController {
             data: collectFormData()
         }).then((xhr: XMLHttpRequest) => {
             if (xhr.status === 204) return;
-            alert(xhr.responseText);
+            if (xhr.status !== 200) {
+                alert(xhr.responseText);
+            }
             if (xhr.status === 200) {
-                store.set("user.info", JSON.parse(xhr.response));
+                store.set("profileProps.info", JSON.parse(xhr.response));
+                store.eventBus.emit("profileDataReceived");
                 options.success();
             }
         }).catch(userAPI.handleErrors);
@@ -44,14 +64,18 @@ export class ProfileController {
             data: collectFormData({returnFormData: true})
         }).then((xhr: XMLHttpRequest) => {
             if (xhr.status === 204) return;
-            alert(xhr.responseText);
+            if (xhr.status !== 200) {
+                alert(xhr.responseText);
+            }
             if (xhr.status === 200) {
+                store.set("profileProps.info", JSON.parse(xhr.response));
+                store.eventBus.emit("profileDataReceived");
                 options.success();
             }
         }).catch(userAPI.handleErrors);
     }
 
-    static logout(options):void {
+    static logout(options): void {
         authAPI.logout()
             .then((xhr: XMLHttpRequest) => {
                 if (xhr.status === 204) return;

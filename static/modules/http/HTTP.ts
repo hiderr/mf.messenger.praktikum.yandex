@@ -6,7 +6,8 @@ type Options = {
 };
 
 export class HTTP {
-    host = 'https://ya-praktikum.tech/';
+    static HOST = 'https://ya-praktikum.tech/';
+    urlPrefix = "";
 
     METHODS = {
         GET: 'GET',
@@ -16,7 +17,7 @@ export class HTTP {
     };
 
     constructor(urlPrefix) {
-        this.host = `${this.host}${urlPrefix}`
+        this.urlPrefix = urlPrefix;
     }
 
     get = (url: string, options: Options = {}) => {
@@ -52,7 +53,7 @@ export class HTTP {
 
         return new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
-            xhr.open(method, `${this.host}${url}`, true);
+            xhr.open(method, `${HTTP.HOST}${this.urlPrefix}${url}`, true);
 
             if (typeof headers === "object") {
                 Object.keys(headers).forEach(key => {

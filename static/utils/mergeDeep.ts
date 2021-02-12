@@ -10,7 +10,7 @@ export const mergeDeep = (target, source) => {
         const sourceValue = source[key];
 
         if (Array.isArray(targetValue) && Array.isArray(sourceValue)) {
-            target[key] = targetValue;
+            target[key] = sourceValue;
         } else if (isObject(targetValue) && isObject(sourceValue)) {
             target[key] = mergeDeep(Object.assign({}, targetValue), sourceValue);
         } else {

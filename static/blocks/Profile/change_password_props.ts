@@ -3,14 +3,17 @@ import {Button} from "../../components/Button/index.js";
 import {Form} from "../../components/Form/index.js";
 import {Input} from "../../components/Input/index.js";
 import {PropsForm} from "../../components/Form/props.js";
-import {ProfileController} from "./controller.js";
+import {ProfileController} from "../../controllers/ProfileController.js";
 
 export const PropsChangePassword = {
     back_button_link: "/chat",
     children: [
         new Avatar({
+            url: "",
+            urlPath: "profileProps.info.avatar",
             tooltip: "Поменять аватар",
-            title: ""
+            title: "",
+            titlePath: "profileProps.info.first_name"
         }),
         new Form(Object.assign(PropsForm, {
             children: [
