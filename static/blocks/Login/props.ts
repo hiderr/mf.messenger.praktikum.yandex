@@ -4,6 +4,7 @@ import {Title} from "../../components/Title/index.js";
 import {Wrapper} from "../../components/Wrapper/index.js";
 import {Button} from "../../components/Button/index.js";
 import {Link} from "../../components/Link/index.js";
+import {LoginController} from "./controller.js";
 
 export const PropsLogin = {
     children: [
@@ -14,7 +15,6 @@ export const PropsLogin = {
         new Form({
             className: "login_form",
             form_name: "form",
-            form_valid: true,
             children: [
                 new Input({
                     labelClassName: "login_form_label",
@@ -22,7 +22,7 @@ export const PropsLogin = {
                     name: "login",
                     type: "text",
                     label: "Логин",
-                    value: "ivanivanov",
+                    value: "hiderr",
                     placeholder: "Логин"
                 }),
                 new Input({
@@ -31,7 +31,7 @@ export const PropsLogin = {
                     name: "password",
                     type: "password",
                     label: "Пароль",
-                    value: "",
+                    value: "123456789",
                     placeholder: "Пароль"
                 }),
             ]
@@ -66,7 +66,11 @@ export const PropsLogin = {
                 const [event, Block] = args;
                 event.preventDefault();
                 if (Block.validation.validateFormOnSubmit()) {
-                    Block.router.go("/chat");
+                    LoginController.signin({
+                        success: () => {
+                            Block.router.go("/chat");
+                        }
+                    });
                 }
             }
         },

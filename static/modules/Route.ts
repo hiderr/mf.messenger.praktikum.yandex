@@ -5,12 +5,14 @@ export default class Route {
     private readonly _blockClass: any;
     private _block: any;
     private _props: any;
+    private _event: any;
 
-    constructor(pathname: string, view, props) {
+    constructor(pathname: string, view, props, event) {
         this._pathname = pathname;
         this._blockClass = view;
         this._block = null;
         this._props = props;
+        this._event = event;
     }
 
     navigate(pathname) {
@@ -20,9 +22,16 @@ export default class Route {
         }
     }
 
+    fireEvent(){
+        if (typeof(this._event) === "function"){
+            this._event();
+        }
+    }
+
     leave() {
         if (this._block) {
             this._block.hide();
+            this._block.unloadCSS();
         }
     }
 
@@ -32,7 +41,7 @@ export default class Route {
 
     render(): void {
         this._block = new this._blockClass(this._props);
-        this._block.setDOMElement(render(this._props.rootQuery, this._block));
-        this._block.initEvents();
+        this._block.loadCSS();
+        render(this._props.rootQuery, this._block);
     }
 }

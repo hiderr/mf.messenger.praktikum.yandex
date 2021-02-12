@@ -9,7 +9,7 @@ export class Validation {
     validateFormInputs(el): void {
         if (el.tagName === "INPUT") {
             const error_message = document.createElement("p");
-            error_message.classList.add("error_message", "error_message_bottom", "error_message_small");
+            error_message.classList.add("error_message", /*"error_message_bottom",*/ "error_message_small");
 
             if (el.value === "") {
                 error_message.textContent = "Поле не может быть пустым";

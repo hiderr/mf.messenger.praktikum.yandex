@@ -1,1 +1,1 @@
-export const template = `<form class="{{className}}" name="{{form_name}}">{{CHILDREN}}</form>`;
+export const template = `<form class="childrens {{className}}" name="{{form_name}}"></form>`;

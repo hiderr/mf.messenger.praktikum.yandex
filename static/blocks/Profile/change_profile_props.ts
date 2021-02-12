@@ -4,22 +4,24 @@ import {Form} from "../../components/Form/index.js";
 import {Input} from "../../components/Input/index.js";
 import {PropsForm} from "../../components/Form/props.js";
 import {merge} from "../../utils/merge.js";
+import {ProfileController} from "./controller.js";
 
 export const PropsChangeProfile = {
-    back_button_link: "profile",
+    back_button_link: "/chat",
     children: [
         new Avatar({
             tooltip: "Поменять аватар",
             title: ""
         }),
-        new Form(merge(PropsForm, {children: [
+        new Form(merge(PropsForm, {
+            children: [
                 new Input({
                     labelClassName: "form__row_name",
                     className: "form__row_value form__input form__input_align_right",
                     label: "Почта",
                     type: "email",
                     name: "email",
-                    value: "pochta"
+                    value: "pochta@mail.ru"
                 }),
                 new Input({
                     labelClassName: "form__row_name",
@@ -27,7 +29,7 @@ export const PropsChangeProfile = {
                     label: "Логин",
                     type: "text",
                     name: "login",
-                    value: "ivanivanov@"
+                    value: "hidegerr"
                 }),
                 new Input({
                     labelClassName: "form__row_name",
@@ -42,16 +44,16 @@ export const PropsChangeProfile = {
                     className: "form__row_value form__input form__input_align_right",
                     label: "Фамилия",
                     type: "text",
-                    name: "last_name",
-                    value: "Иванов"
+                    name: "second_name",
+                    value: "Таранов"
                 }),
                 new Input({
                     labelClassName: "form__row_name",
                     className: "form__row_value form__input form__input_align_right",
                     label: "Имя в чате",
                     type: "text",
-                    name: "nickname",
-                    value: "Иван"
+                    name: "display_name",
+                    value: "taranov"
                 }),
                 new Input({
                     labelClassName: "form__row_name",
@@ -61,7 +63,8 @@ export const PropsChangeProfile = {
                     name: "phone",
                     value: "+7 (909) 967 30 30"
                 }),
-            ]})),
+            ]
+        })),
         new Button({
             className: "link_button",
             text: "Сохранить",
@@ -70,10 +73,20 @@ export const PropsChangeProfile = {
     ],
     events: [
         {
+            selector: "[href='/chat']", name: "click", handler: (event, Block) => {
+                event.preventDefault();
+                Block.router.go("/chat");
+            }
+        },
+        {
             selector: "[href='/profile']", name: "click", handler: (event, Block) => {
                 event.preventDefault();
                 if (Block.validation.validateFormOnSubmit()) {
-                    Block.router.go("/profile");
+                    ProfileController.updateProfile({
+                        success: () => {
+                            Block.router.go("/profile")
+                        }
+                    });
                 }
             }
         },

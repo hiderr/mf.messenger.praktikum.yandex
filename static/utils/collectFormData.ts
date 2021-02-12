@@ -1,17 +1,14 @@
-export function collectFormData() {
+export function collectFormData(options?) {
     const form = document.forms.namedItem("form"),
-        formData = new FormData(form),
-        result = Array.from(formData.entries()).reduce((acc, item) => {
-            let [key, value] = item;
-            return acc[key] = value;
-        }, {});
+        formData = new FormData(form);
 
-    console.log(result);
-
-    /*const obj = {};
-    for (let entry of formData.entries()) {
-        let [key, value] = entry;
-        obj[key] = value;
+    if (options && options.returnFormData){
+        return formData;
     }
-    return obj;*/
+
+    return Array.from(formData.entries()).reduce((acc, item) => {
+        let [key, value] = item;
+        acc[key] = value;
+        return acc;
+    }, {});
 }

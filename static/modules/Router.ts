@@ -18,8 +18,8 @@ export class Router {
         Router.__instance = this;
     }
 
-    use(pathname, block, props) {
-        const route = new Route(pathname, block, props);
+    use(pathname, block, props, event?) {
+        const route = new Route(pathname, block, props, event);
         this.routes.push(route);
         return this;
     }
@@ -43,6 +43,7 @@ export class Router {
         }
 
         this._currentRoute = route;
+        route.fireEvent();
         route.render();
     }
 

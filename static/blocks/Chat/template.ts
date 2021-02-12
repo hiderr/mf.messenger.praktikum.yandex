@@ -7,16 +7,16 @@ export const template = `<div class="chat {{chat_class}}">
                 <input class="search contact__search" type="text" placeholder="&#128269; {{search_placeholder}}">
             </header>
             <ul class="contacts__main">
-                {{#each contacts}}
-                <li class="contact {{selectedClass}}">
+                {{#each chats}}
+                <li data-id="{{id}}" class="contact {{selectedClass}}">
                     <div class="contact__avatar"></div>
                     <div class="contact_info">
-                        <h2 class="contact__name">{{name}}</h2>
+                        <h2 class="contact__name">{{title}}</h2>
                         <span class="contact__preview">{{preview}}</span>
                     </div>
                     <div class="time_count">
                         <time class="contact__time time">{{time}}</time>
-                        <span class="contact__count">{{unread}}</span>
+<!--                        <span class="contact__count">{{unread}}</span>-->
                         <span />
                     </div>
                 </li>

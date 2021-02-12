@@ -1,1 +1,1 @@
-export const template = `<div class="login_box">{{CHILDREN}}</div>`;
+export const template = `<div class="login_box childrens"></div>`;

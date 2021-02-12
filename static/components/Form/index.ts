@@ -1,27 +1,28 @@
 import {template} from "./template.js";
 import {Group} from "../../modules/Group.js";
-import {compiler} from "../../utils/templator.js";
 
 interface TypeProps {
     className?: string,
     form_name?: string,
-    form_valid: boolean,
     children: object[],
-    events?: object[]
+    events?: object[],
+    template?: string
 }
 
 export class Form extends Group {
     constructor(props: TypeProps) {
+        props.template = template;
         super(props);
-        this.template = template;
     }
 
-    render(): string {
-        let result = '';
+    render(): HTMLElement {
+        super.render();
+
         for (let c of this.props.children) {
-            let childTemplate = `<div class="form__row">${c.render()}</div>`;
-            result += childTemplate;
+            let el = c.render();
+            el.classList.add("form__row");
+            this.element.querySelector(".childrens").appendChild(el);
         }
-        return compiler(this.template.replace("{{CHILDREN}}", result), this.props);
+        return this.element;
     };
 }

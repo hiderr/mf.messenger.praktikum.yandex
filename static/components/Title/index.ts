@@ -4,11 +4,12 @@ import {template} from "./template.js";
 interface TypeProps {
     className: string,
     text: string,
+    template?: string
 }
 
 export class Title extends Block {
     constructor(props: TypeProps) {
+        props.template = template;
         super("div", props);
-        this.template = template;
     }
 }

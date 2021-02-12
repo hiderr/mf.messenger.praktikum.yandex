@@ -5,13 +5,19 @@ type Options = {
     timeout?: number
 };
 
-export class HTTPTransport {
+export class HTTP {
+    host = 'https://ya-praktikum.tech/';
+
     METHODS = {
         GET: 'GET',
         PUT: 'PUT',
         POST: 'POST',
         DELETE: 'DELETE'
     };
+
+    constructor(urlPrefix) {
+        this.host = `${this.host}${urlPrefix}`
+    }
 
     get = (url: string, options: Options = {}) => {
         if (typeof options.data === "object") {
@@ -46,7 +52,7 @@ export class HTTPTransport {
 
         return new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
-            xhr.open(method, url, true);
+            xhr.open(method, `${this.host}${url}`, true);
 
             if (typeof headers === "object") {
                 Object.keys(headers).forEach(key => {
@@ -67,8 +73,10 @@ export class HTTPTransport {
 
             if (method === this.METHODS.GET || !data) {
                 xhr.send();
-            } else {
+            } else if (headers && headers["Content-Type"] === "application/json") {
                 xhr.send(JSON.stringify(data));
+            } else {
+                xhr.send(<FormData>data);
             }
         });
     };

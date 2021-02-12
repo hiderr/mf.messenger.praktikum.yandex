@@ -4,7 +4,7 @@ import {Title} from "../../components/Title/index.js";
 import {Wrapper} from "../../components/Wrapper/index.js";
 import {Button} from "../../components/Button/index.js";
 import {Link} from "../../components/Link/index.js";
-
+import {LoginController} from "../Login/controller.js";
 
 export const PropsSignin = {
     children: [
@@ -14,7 +14,6 @@ export const PropsSignin = {
         }),
         new Form({
             className: "login_form",
-            form_valid: true,
             form_name: "form",
             children: [
                 new Input({
@@ -23,7 +22,7 @@ export const PropsSignin = {
                     label: "Почта",
                     type: "email",
                     name: "email",
-                    value: "pochta",
+                    value: "mymail@gmail.com",
                     placeholder: "Почта"
                 }),
                 new Input({
@@ -32,7 +31,7 @@ export const PropsSignin = {
                     label: "Логин",
                     type: "text",
                     name: "login",
-                    value: "ivanivanov@",
+                    value: "hiderr",
                     placeholder: "Логин"
                 }),
                 new Input({
@@ -41,7 +40,7 @@ export const PropsSignin = {
                     label: "Имя",
                     type: "text",
                     name: "first_name",
-                    value: "Иван",
+                    value: "Хайдер",
                     placeholder: "Имя"
                 }),
                 new Input({
@@ -50,7 +49,7 @@ export const PropsSignin = {
                     label: "Фамилия",
                     type: "text",
                     name: "second_name",
-                    value: "Иванов",
+                    value: "Хайдарович",
                     placeholder: "Фамилия"
                 }),
                 new Input({
@@ -88,20 +87,7 @@ export const PropsSignin = {
                 new Button({
                     className: "link_button",
                     text: "Зарегистрироваться",
-                    link: "/chat",
-                    events: [
-                        {
-                            name: "click", handler: (...args) => {
-                                /*const e = args[1],
-                                    eventBus = form.eventBus();
-                                eventBus.emit("validate_form_on_submit", form.element, formProps, eventBus);
-                                if (formProps.form_valid === false) {
-                                    e.preventDefault();
-                                    return e;
-                                }*/
-                            }
-                        }
-                    ]
+                    link: "/chat"
                 }),
                 new Link({
                     className: "text_link",
@@ -125,7 +111,11 @@ export const PropsSignin = {
                 const [event, Block] = args;
                 event.preventDefault();
                 if (Block.validation.validateFormOnSubmit()) {
-                    Block.router.go("/chat");
+                    LoginController.signup({
+                        success: () => {
+                            Block.router.go("/chat");
+                        }
+                    });
                 }
             }
         },

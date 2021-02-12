@@ -2,7 +2,6 @@ import {Input} from "../Input/index.js";
 
 export const PropsForm = {
     className: "w100proc",
-    form_valid: true,
     form_name: "form",
     events: [
         {

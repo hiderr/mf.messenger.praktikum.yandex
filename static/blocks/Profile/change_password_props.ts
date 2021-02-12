@@ -3,9 +3,10 @@ import {Button} from "../../components/Button/index.js";
 import {Form} from "../../components/Form/index.js";
 import {Input} from "../../components/Input/index.js";
 import {PropsForm} from "../../components/Form/props.js";
+import {ProfileController} from "./controller.js";
 
 export const PropsChangePassword = {
-    back_button_link: "/profile",
+    back_button_link: "/chat",
     children: [
         new Avatar({
             tooltip: "Поменять аватар",
@@ -27,7 +28,7 @@ export const PropsChangePassword = {
                     label: "Новый пароль",
                     type: "password",
                     name: "newPassword",
-                    value: ""
+                    value: "LikeABo$$"
                 }),
                 new Input({
                     labelClassName: "form__row_name",
@@ -35,7 +36,7 @@ export const PropsChangePassword = {
                     label: "Повторите новый пароль",
                     type: "password",
                     name: "newPasswordRepeat",
-                    value: ""
+                    value: "LikeABo$$"
                 }),
             ]
         })),
@@ -50,7 +51,11 @@ export const PropsChangePassword = {
             selector: "[href='/profile']", name: "click", handler: (event, Block) => {
                 event.preventDefault();
                 if (Block.validation.validateFormOnSubmit()) {
-                    Block.router.go("/profile");
+                    ProfileController.updatePassword({
+                        success: () => {
+                            Block.router.go("/profile")
+                        }
+                    });
                 }
             }
         },

@@ -1,11 +1,14 @@
 import {template} from "./template.js";
 import {Block} from "../../modules/Block.js";
+import {ChatController} from "./controller.js";
 
 interface TypeProps {
     chat_class?: string,
+    template?: string,
+    pathCSS?: string,
     profile_link_text: string,
     search_placeholder: string,
-    contacts: object[],
+    chats: object[],
     messages_date: string,
     messages: object[],
     menu_actions: object[],
@@ -15,8 +18,15 @@ interface TypeProps {
 
 export class ChatPage extends Block {
     constructor(props: TypeProps) {
+        props.template = template;
+        props.pathCSS = "blocks/Chat/chat.css";
         super("div", props);
-        this.template = template;
-        this.pathCSS = "blocks/Chat/chat.css";
+    }
+
+    componentDidMount(oldProps): void {
+        this.store.eventBus.on("dataReceived", () => {
+            this.setProps(this.store.get("chatProps"));
+        });
+        super.componentDidMount(oldProps);
     }
 }
