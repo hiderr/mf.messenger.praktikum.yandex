@@ -1,9 +1,9 @@
-import {template} from "./template.js";
+import {signinTmpl} from "./signin.tmpl.js";
 import {Group} from "../../modules/Group.js";
 
 export class SigninPage extends Group {
     constructor(props) {
-        props.template = template;
+        props.template = signinTmpl;
         props.pathCSS = "blocks/Login/login.css";
         super(props);
     }

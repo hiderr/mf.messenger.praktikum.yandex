@@ -1,4 +1,4 @@
-import {template} from "./template.js";
+import {template} from "./wrapper.tmpl.js";
 import {Group} from "../../modules/Group.js";
 
 interface TypeProps {

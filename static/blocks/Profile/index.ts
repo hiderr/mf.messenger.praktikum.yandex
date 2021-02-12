@@ -1,5 +1,5 @@
 import {Group} from "../../modules/Group.js";
-import {template} from "./template.js";
+import {profileTmpl} from "./profile.tmpl.js";
 
 interface TypeProps {
     back_button_link: string,
@@ -10,7 +10,7 @@ interface TypeProps {
 
 export class ProfilePage extends Group {
     constructor(props: TypeProps) {
-        props.template = template;
+        props.template = profileTmpl;
         props.pathCSS = "blocks/Profile/profile.css";
         super(props);
     }

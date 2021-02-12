@@ -4,15 +4,15 @@ import {Form} from "../../components/Form/index.js";
 import {Input} from "../../components/Input/index.js";
 import {Button} from "../../components/Button/index.js";
 import {ChatPage} from "./index.js";
-import {PropsChat} from "./props.js";
+import {PropsChat} from "./chat.props.js";
 import {ChatController} from "../../controllers/ChatController.js";
 
-export const PropsAddUser = {
+export const PropsRemoveUser = {
     children: [
         new Popup({
             children: [
                 new Title({
-                    text: "Добавить пользователя",
+                    text: "Удалить пользователя",
                     className: "popup__header"
                 }),
                 new Form({
@@ -21,7 +21,7 @@ export const PropsAddUser = {
                         new Input({
                             labelClassName: "login_form_label",
                             className: "form__input",
-                            label: "IDs",
+                            label: "Логин",
                             type: "text",
                             name: "userId",
                             placeholder: "Введите id через ,",
@@ -31,7 +31,7 @@ export const PropsAddUser = {
                 }),
                 new Button({
                     className: "link_button",
-                    text: "Добавить",
+                    text: "Удалить",
                     link: "chat.html"
                 })
             ]
@@ -45,7 +45,7 @@ export const PropsAddUser = {
                 event.preventDefault();
                 if (Block.validation.validateFormOnSubmit()) {
                     if (Block.store.get("chatProps.selectedId")) {
-                        ChatController.addUsers({
+                        ChatController.removeUsers({
                             data: {
                                 chatId: Block.store.get("chatProps.selectedId")
                             },

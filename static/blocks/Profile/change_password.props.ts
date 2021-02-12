@@ -2,7 +2,7 @@ import {Avatar} from "../../components/Avatar/index.js";
 import {Button} from "../../components/Button/index.js";
 import {Form} from "../../components/Form/index.js";
 import {Input} from "../../components/Input/index.js";
-import {PropsForm} from "../../components/Form/props.js";
+import {PropsForm} from "../../components/Form/form.props.js";
 import {ProfileController} from "../../controllers/ProfileController.js";
 
 export const PropsChangePassword = {

@@ -1,4 +1,4 @@
-import {template} from "./template.js";
+import {template} from "./form.tmpl.js";
 import {Group} from "../../modules/Group.js";
 
 interface TypeProps {

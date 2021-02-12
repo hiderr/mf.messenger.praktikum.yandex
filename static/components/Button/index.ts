@@ -1,5 +1,5 @@
 import {Block} from "../../modules/Block.js";
-import {template} from "./template.js";
+import {buttonTmpl} from "./button.tmpl.js";
 
 interface TypeProps {
     className: string,
@@ -11,7 +11,7 @@ interface TypeProps {
 
 export class Button extends Block {
     constructor(props: TypeProps) {
-        props.template = template;
+        props.template = buttonTmpl;
         super("div", props);
     }
 }

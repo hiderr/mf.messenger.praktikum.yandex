@@ -1,1 +1,0 @@
-export const template = `<div class="login_box login_box__higher childrens"></div>`;

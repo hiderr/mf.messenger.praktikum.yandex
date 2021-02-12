@@ -1,6 +1,5 @@
-import {template} from "./template.js";
+import {template} from "./chat.tmpl.js";
 import {Block} from "../../modules/Block.js";
-import {ChatController} from "../../controllers/ChatController.js";
 
 interface TypeProps {
     chat_class?: string,

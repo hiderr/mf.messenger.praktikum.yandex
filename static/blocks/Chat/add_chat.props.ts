@@ -4,7 +4,7 @@ import {Form} from "../../components/Form/index.js";
 import {Input} from "../../components/Input/index.js";
 import {Button} from "../../components/Button/index.js";
 import {ChatPage} from "../Chat/index.js";
-import {PropsChat} from "../Chat/props.js";
+import {PropsChat} from "./chat.props.js";
 import {ChatController} from "../../controllers/ChatController.js";
 
 export const PropsAddChat = {

@@ -1,5 +1,5 @@
 import {Block} from "../../modules/Block.js";
-import {template} from "./template.js";
+import {avatarTmpl} from "./avatar.tmpl.js";
 import {HTTP} from "../../modules/http/HTTP.js";
 
 interface TypeProps {
@@ -14,7 +14,7 @@ interface TypeProps {
 
 export class Avatar extends Block {
     constructor(props: TypeProps) {
-        props.template = template;
+        props.template = avatarTmpl;
         super("div", props);
     }
 

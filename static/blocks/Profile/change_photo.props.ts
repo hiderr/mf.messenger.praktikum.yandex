@@ -1,17 +1,12 @@
-import {ProfilePage} from "../../blocks/Profile/index.js";
+import {ProfilePage} from "./index.js";
 import {Button} from "../../components/Button/index.js";
 import {Popup} from "../../components/Popup/index.js";
 import {Wrapper} from "../../components/Wrapper/index.js";
 import {Link} from "../../components/Link/index.js";
 import {Title} from "../../components/Title/index.js";
 import {Message} from "../../components/Message/index.js";
-import {PropsProfile} from "../../blocks/Profile/props.js";
-import {PropsTitle} from "./title_props.js";
-import {PropsLink} from "./link_props.js";
-import {PropsButton} from "./button_props.js";
-import {PropsMessage} from "./message_props.js";
+import {PropsProfile} from "./profile.props.js";
 import {Form} from "../../components/Form/index.js";
-import {merge} from "../../utils/merge.js";
 import {Input} from "../../components/Input/index.js";
 import {ProfileController} from "../../controllers/ProfileController.js";
 
@@ -20,10 +15,17 @@ export const PropsChangePhoto = {
     children: [
         new Popup({
             children: [
-                new Title(PropsTitle),
+                new Title({
+                    className: "popup__header",
+                    text: "Загрузите файл"
+                }),
                 new Wrapper({
                     children: [
-                        new Link(PropsLink),
+                        new Link({
+                            text: "Выбрать файл на компьютере",
+                            href: "",
+                            className: "popup__link select_photo"
+                        }),
                         new Form({
                             form_name: "form",
                             className: "hide avatar_form",
@@ -35,14 +37,25 @@ export const PropsChangePhoto = {
                                 })
                             ]
                         }),
-                        new Link(merge(PropsLink, {className: "popup__uploaded_link hide", text: "pic.jpg"})),
+                        new Link({
+                            href: "",
+                            className: "popup__uploaded_link hide",
+                            text: "pic.jpg"
+                        }),
                     ]
                 }),
                 new Wrapper({
                     className: "popup__footer align_center",
                     children: [
-                        new Button(PropsButton),
-                        new Message(PropsMessage)
+                        new Button({
+                            className: "link_button",
+                            link: "/no_photo_picked",
+                            text: 'Поменять'
+                        }),
+                        new Message({
+                            className: "error_message footer_error",
+                            text: ""
+                        })
                     ]
                 })
             ]

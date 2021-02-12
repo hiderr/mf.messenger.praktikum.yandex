@@ -1,4 +1,4 @@
-export const template = `<div>
+export const avatarTmpl = `<div>
                 <a class="link" href="/change_photo">
                     <div class="profile__avatar_wrapper">
                         <div class="profile__avatar_bg">

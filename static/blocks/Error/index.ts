@@ -1,4 +1,4 @@
-import {template} from "./template.js";
+import {template} from "./error.tmpl.js";
 import {Block} from "../../modules/Block.js";
 
 interface TypeProps {
