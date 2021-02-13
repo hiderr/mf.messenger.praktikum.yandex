@@ -5,7 +5,9 @@
     "module": "es2015",
     "sourceMap": true,
     "outDir": "static/dist",
-    "rootDir": "static"
+    "rootDir": "static",
+    "noEmit": true,
+    "skipLibCheck": true
   },
   "include": [
     "node_modules/handlebars/types",
