@@ -68,7 +68,7 @@ export class Block {
             const link = document.createElement('link');
             link.rel = 'stylesheet';
             link.type = 'text/css';
-            link.href = `/public/${this.props.pathCSS}`;
+            link.href = `/${this.props.pathCSS}`;
             head.appendChild(link);
         }
     }
