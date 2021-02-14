@@ -5,12 +5,13 @@
     "module": "es2015",
     "sourceMap": true,
     "outDir": "static/dist",
-    "rootDir": "static",
-    "noEmit": true,
-    "skipLibCheck": true
+    "rootDir": "static"
   },
   "include": [
     "node_modules/handlebars/types",
     "**/*"
+  ],
+  "exclude": [
+    "**/*.spec.ts"
   ]
 }

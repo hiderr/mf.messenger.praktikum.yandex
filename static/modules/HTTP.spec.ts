@@ -1,7 +1,6 @@
 const {expect} = require("chai");
 const sinon = require("sinon");
-const assert = require('assert');
-const {HTTP} = require("../static/dist/modules/http/HTTP");
+const {HTTP} = require("../dist/modules/http/HTTP");
 
 let inputParams, server;
 const http = new HTTP("api/v2");
@@ -40,23 +39,23 @@ describe("Test HTTP module", () => {
         expect(server.requests[1].requestHeaders["Content-Type"]).to.equal("application/json;charset=utf-8");
     });
 
-  it("should send request type GET", () => {
-    http.get("/test");
-    expect(server.requests[2].method).to.equal("GET");
-  });
+    it("should send request type GET", () => {
+        http.get("/test");
+        expect(server.requests[2].method).to.equal("GET");
+    });
 
-  it("should send request type POST", () => {
-    http.post("/test");
-    expect(server.requests[3].method).to.equal("POST");
-  });
+    it("should send request type POST", () => {
+        http.post("/test");
+        expect(server.requests[3].method).to.equal("POST");
+    });
 
-  it("should send request type PUT", () => {
-    http.put("/test");
-    expect(server.requests[4].method).to.equal("PUT");
-  });
+    it("should send request type PUT", () => {
+        http.put("/test");
+        expect(server.requests[4].method).to.equal("PUT");
+    });
 
-  it("should send request type DELETE", () => {
-    http.delete("/test");
-    expect(server.requests[5].method).to.equal("DELETE");
-  });
+    it("should send request type DELETE", () => {
+        http.delete("/test");
+        expect(server.requests[5].method).to.equal("DELETE");
+    });
 });
