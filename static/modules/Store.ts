@@ -1,5 +1,5 @@
 import {EventBus} from "./EventBus.js";
-import {mergeDeep} from "../utils/mergeDeep.js";
+import {Utils} from "../utils/Utils.js";
 
 export class Store {
     props = null;
@@ -78,7 +78,7 @@ export class Store {
             return a;
         }, value);
 
-        this.setProps(mergeDeep(this.props, obj));
+        this.setProps(Utils.mergeDeep(this.props, obj));
     }
 
     setProps = nextProps => {

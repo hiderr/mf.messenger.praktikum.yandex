@@ -3,11 +3,11 @@ import {Button} from "../../components/Button/index.js";
 import {Form} from "../../components/Form/index.js";
 import {Input} from "../../components/Input/index.js";
 import {PropsForm} from "../../components/Form/form.props.js";
-import {merge} from "../../utils/merge.js";
+import {Utils} from "../../utils/Utils.js";
 import {ProfileController} from "../../controllers/ProfileController.js";
 
 export const PropsChangeProfile = {
-    back_button_link: "/chat",
+    back_button_link: "",
     children: [
         new Avatar({
             url: "",
@@ -16,7 +16,7 @@ export const PropsChangeProfile = {
             title: "",
             titlePath: "profileProps.info.first_name"
         }),
-        new Form(merge(PropsForm, {
+        new Form(Utils.mergeObjects(PropsForm, {
             children: [
                 new Input({
                     labelClassName: "form__row_name",
@@ -82,9 +82,9 @@ export const PropsChangeProfile = {
     ],
     events: [
         {
-            selector: "[href='/chat']", name: "click", handler: (event, Block) => {
+            selector: ".back_button", name: "click", handler: (event, Block) => {
                 event.preventDefault();
-                Block.router.go("/chat");
+                Block.router.go("/profile");
             }
         },
         {

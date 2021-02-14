@@ -6,7 +6,7 @@ import {PropsForm} from "../../components/Form/form.props.js";
 import {ProfileController} from "../../controllers/ProfileController.js";
 
 export const PropsChangePassword = {
-    back_button_link: "/chat",
+    back_button_link: "",
     children: [
         new Avatar({
             url: "",
@@ -51,9 +51,9 @@ export const PropsChangePassword = {
     ],
     events: [
         {
-            selector: "[href='/chat']", name: "click", handler: (event, Block) => {
+            selector: ".back_button", name: "click", handler: (event, Block) => {
                 event.preventDefault();
-                Block.router.go("/chat");
+                Block.router.go("/profile");
             }
         },
         {

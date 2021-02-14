@@ -26,7 +26,7 @@ export class Validation {
                 el.parentElement.append(error_message);
             }
 
-            if (el.name === "newPasswordRepeat" && el.value !== (<HTMLInputElement>document.querySelector("[name='newPassword']")).value) {
+            if ((el.name === "newPasswordRepeat" && el.value !== (<HTMLInputElement>document.querySelector("[name='newPassword']")).value) || (el.name === "password_repeat" && el.value !== (<HTMLInputElement>document.querySelector("[name='password']")).value)) {
                 error_message.textContent = "Пароли не совпадают";
                 el.parentElement.append(error_message);
             }

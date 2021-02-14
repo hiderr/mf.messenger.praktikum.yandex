@@ -22,7 +22,7 @@ export const PropsLogin = {
                     name: "login",
                     type: "text",
                     label: "Логин",
-                    value: "hider",
+                    value: "hiderr",
                     placeholder: "Логин"
                 }),
                 new Input({
