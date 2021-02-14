@@ -1,7 +1,5 @@
-global.Handlebars = require("../../../node_modules/handlebars/dist/handlebars.js");
 const {Avatar} = require("../../dist/components/Avatar/index.js");
 const chai = require("chai");
-require('global-jsdom')();
 
 chai.use(require('chai-dom'));
 
