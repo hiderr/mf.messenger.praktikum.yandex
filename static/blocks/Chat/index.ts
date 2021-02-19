@@ -1,5 +1,6 @@
-import {template} from "./chat.tmpl.js";
-import {Block} from "../../modules/Block.js";
+import "./chat.sass";
+import {template} from "./chat.tmpl";
+import {Block} from "../../modules/Block";
 
 interface TypeProps {
     chat_class?: string,

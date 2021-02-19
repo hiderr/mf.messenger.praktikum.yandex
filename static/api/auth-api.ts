@@ -1,5 +1,5 @@
-import {HTTP} from '../modules/http/HTTP.js';
-import {BaseAPI} from '../modules/http/BaseAPI.js';
+import {HTTP} from '../modules/http/HTTP';
+import {BaseAPI} from '../modules/http/BaseAPI';
 
 const authAPIInstance = new HTTP('https://ya-praktikum.tech/api/v2/auth');
 

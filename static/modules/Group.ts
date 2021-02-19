@@ -1,4 +1,4 @@
-import {Block} from "./Block.js";
+import {Block} from "./Block";
 
 export class Group extends Block {
     public template: string;

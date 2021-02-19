@@ -1,4 +1,4 @@
-const {Popup} = require("../../dist/components/Popup/index.js");
+const {Popup} = require("../../dist/components/Popup/index");
 const chai = require("chai");
 
 chai.use(require('chai-dom'));

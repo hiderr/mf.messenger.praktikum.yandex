@@ -1,10 +1,10 @@
-import {Form} from "../../components/Form/index.js";
-import {Input} from "../../components/Input/index.js";
-import {Title} from "../../components/Title/index.js";
-import {Wrapper} from "../../components/Wrapper/index.js";
-import {Button} from "../../components/Button/index.js";
-import {Link} from "../../components/Link/index.js";
-import {LoginController} from "../../controllers/LoginController.js";
+import {Form} from "../../components/Form/index";
+import {Input} from "../../components/Input/index";
+import {Title} from "../../components/Title/index";
+import {Wrapper} from "../../components/Wrapper/index";
+import {Button} from "../../components/Button/index";
+import {Link} from "../../components/Link/index";
+import {LoginController} from "../../controllers/LoginController";
 
 export const PropsLogin = {
     children: [

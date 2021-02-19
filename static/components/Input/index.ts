@@ -1,5 +1,6 @@
-import {Block} from "../../modules/Block.js";
-import {template} from "./input.tmpl.js";
+import "./input.sass";
+import {Block} from "../../modules/Block";
+import {template} from "./input.tmpl";
 
 interface TypeProps {
     labelClassName?: string,

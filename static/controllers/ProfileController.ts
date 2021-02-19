@@ -1,7 +1,7 @@
-import {Utils} from "../utils/Utils.js";
-import {UserAPI} from "../api/user-api.js";
-import {AuthAPI} from "../api/auth-api.js";
-import {Store} from "../modules/Store.js";
+import {Utils} from "../utils/Utils";
+import {UserAPI} from "../api/user-api";
+import {AuthAPI} from "../api/auth-api";
+import {Store} from "../modules/Store";
 
 const authAPI = new AuthAPI();
 const userAPI = new UserAPI();

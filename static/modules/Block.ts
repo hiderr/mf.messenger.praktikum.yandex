@@ -1,8 +1,8 @@
-import {EventBus} from "./EventBus.js";
-import {Validation} from "./Validation.js";
-import {Router} from "./Router.js";
-import {compiler} from "../utils/templator.js";
-import {Store} from "./Store.js";
+import {EventBus} from "./EventBus";
+import {Validation} from "./Validation";
+import {Router} from "./Router";
+import {compiler} from "../utils/templator";
+import {Store} from "./Store";
 
 export class Block {
     static EVENTS = {

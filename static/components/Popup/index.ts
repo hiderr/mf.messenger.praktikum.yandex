@@ -1,5 +1,6 @@
-import {template} from "./popup.tmpl.js";
-import {Group} from "../../modules/Group.js";
+import "./popup.sass";
+import {template} from "./popup.tmpl";
+import {Group} from "../../modules/Group";
 
 interface TypeProps {
     children?: any[],

@@ -1,6 +1,6 @@
-import {ChatAPI} from "../api/chat-api.js";
-import {Store} from "../modules/Store.js";
-import {Utils} from "../utils/Utils.js";
+import {ChatAPI} from "../api/chat-api";
+import {Store} from "../modules/Store";
+import {Utils} from "../utils/Utils";
 
 const chatAPI = new ChatAPI();
 const store = new Store();

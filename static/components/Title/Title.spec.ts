@@ -1,4 +1,4 @@
-const {Title} = require("../../dist/components/Title/index.js");
+const {Title} = require("../../dist/components/Title/index");
 const chai = require("chai");
 
 chai.use(require('chai-dom'));

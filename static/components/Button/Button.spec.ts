@@ -1,4 +1,4 @@
-const {Button} = require("../../dist/components/Button/index.js");
+const {Button} = require("../../dist/components/Button/index");
 const chai = require("chai");
 
 chai.use(require('chai-dom'));

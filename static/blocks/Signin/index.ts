@@ -1,5 +1,5 @@
-import {signinTmpl} from "./signin.tmpl.js";
-import {Group} from "../../modules/Group.js";
+import {signinTmpl} from "./signin.tmpl";
+import {Group} from "../../modules/Group";
 
 export class SigninPage extends Group {
     constructor(props) {

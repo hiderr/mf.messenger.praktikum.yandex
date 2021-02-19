@@ -1,4 +1,4 @@
-const {Avatar} = require("../../dist/components/Avatar/index.js");
+const {Avatar} = require("../../dist/components/Avatar/index");
 const chai = require("chai");
 
 chai.use(require('chai-dom'));

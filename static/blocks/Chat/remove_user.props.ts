@@ -1,11 +1,11 @@
-import {Popup} from "../../components/Popup/index.js";
-import {Title} from "../../components/Title/index.js";
-import {Form} from "../../components/Form/index.js";
-import {Input} from "../../components/Input/index.js";
-import {Button} from "../../components/Button/index.js";
-import {ChatPage} from "./index.js";
-import {PropsChat} from "./chat.props.js";
-import {ChatController} from "../../controllers/ChatController.js";
+import {Popup} from "../../components/Popup/index";
+import {Title} from "../../components/Title/index";
+import {Form} from "../../components/Form/index";
+import {Input} from "../../components/Input/index";
+import {Button} from "../../components/Button/index";
+import {ChatPage} from "./index";
+import {PropsChat} from "./chat.props";
+import {ChatController} from "../../controllers/ChatController";
 
 export const PropsRemoveUser = {
     children: [

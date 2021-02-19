@@ -1,5 +1,5 @@
-import {EventBus} from "./EventBus.js";
-import {Utils} from "../utils/Utils.js";
+import {EventBus} from "./EventBus";
+import {Utils} from "../utils/Utils";
 
 export class Store {
     props = null;

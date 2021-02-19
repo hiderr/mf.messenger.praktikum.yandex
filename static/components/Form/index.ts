@@ -1,5 +1,5 @@
-import {template} from "./form.tmpl.js";
-import {Group} from "../../modules/Group.js";
+import {template} from "./form.tmpl";
+import {Group} from "../../modules/Group";
 
 interface TypeProps {
     className?: string,

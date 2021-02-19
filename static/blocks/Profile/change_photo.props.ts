@@ -1,14 +1,14 @@
-import {ProfilePage} from "./index.js";
-import {Button} from "../../components/Button/index.js";
-import {Popup} from "../../components/Popup/index.js";
-import {Wrapper} from "../../components/Wrapper/index.js";
-import {Link} from "../../components/Link/index.js";
-import {Title} from "../../components/Title/index.js";
-import {Message} from "../../components/Message/index.js";
-import {PropsProfile} from "./profile.props.js";
-import {Form} from "../../components/Form/index.js";
-import {Input} from "../../components/Input/index.js";
-import {ProfileController} from "../../controllers/ProfileController.js";
+import {ProfilePage} from "./index";
+import {Button} from "../../components/Button/index";
+import {Popup} from "../../components/Popup/index";
+import {Wrapper} from "../../components/Wrapper/index";
+import {Link} from "../../components/Link/index";
+import {Title} from "../../components/Title/index";
+import {Message} from "../../components/Message/index";
+import {PropsProfile} from "./profile.props";
+import {Form} from "../../components/Form/index";
+import {Input} from "../../components/Input/index";
+import {ProfileController} from "../../controllers/ProfileController";
 
 export const PropsChangePhoto = {
     className: "",

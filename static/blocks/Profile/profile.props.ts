@@ -1,8 +1,8 @@
-import {Avatar} from "../../components/Avatar/index.js";
-import {Form} from "../../components/Form/index.js";
-import {Input} from "../../components/Input/index.js";
-import {Link} from "../../components/Link/index.js";
-import {ProfileController} from "../../controllers/ProfileController.js";
+import {Avatar} from "../../components/Avatar/index";
+import {Form} from "../../components/Form/index";
+import {Input} from "../../components/Input/index";
+import {Link} from "../../components/Link/index";
+import {ProfileController} from "../../controllers/ProfileController";
 
 export const PropsProfile = {
     className: "w100proc",

@@ -1,5 +1,5 @@
-global.Handlebars = require("../../../node_modules/handlebars/dist/handlebars.js");
-const {ProfilePage} = require("../../dist/blocks/Profile/index.js");
+global.Handlebars = require("../../../node_modules/handlebars/dist/handlebars");
+const {ProfilePage} = require("../../dist/blocks/Profile/index");
 const chai = require("chai");
 const { JSDOM } = require("jsdom");
 const dom = new JSDOM(`<!DOCTYPE html><body><div id="root"></div></body>`);

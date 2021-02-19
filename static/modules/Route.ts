@@ -1,4 +1,4 @@
-import {render} from '../utils/renderDOM.js';
+import {render} from '../utils/renderDOM';
 
 export default class Route {
     private _pathname: string;

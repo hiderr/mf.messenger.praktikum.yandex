@@ -1,5 +1,6 @@
-import {Group} from "../../modules/Group.js";
-import {profileTmpl} from "./profile.tmpl.js";
+import "./profile.sass";
+import {Group} from "../../modules/Group";
+import {profileTmpl} from "./profile.tmpl";
 
 interface TypeProps {
     back_button_link: string,

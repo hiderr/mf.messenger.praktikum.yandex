@@ -1,5 +1,5 @@
-import {Block} from "../../modules/Block.js";
-import {template} from "./link.tmpl.js";
+import {Block} from "../../modules/Block";
+import {template} from "./link.tmpl";
 
 interface TypeProps {
     className: string,

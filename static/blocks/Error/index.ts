@@ -1,5 +1,6 @@
-import {template} from "./error.tmpl.js";
-import {Block} from "../../modules/Block.js";
+import "./error.sass";
+import {template} from "./error.tmpl";
+import {Block} from "../../modules/Block";
 
 interface TypeProps {
     error_code: string,

@@ -1,5 +1,5 @@
-import {template} from "./wrapper.tmpl.js";
-import {Group} from "../../modules/Group.js";
+import {template} from "./wrapper.tmpl";
+import {Group} from "../../modules/Group";
 
 interface TypeProps {
     children: any[],

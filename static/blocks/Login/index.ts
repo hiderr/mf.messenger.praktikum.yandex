@@ -1,5 +1,6 @@
-import {template} from "./login.tmpl.js";
-import {Group} from "../../modules/Group.js";
+import "./login.sass";
+import {template} from "./login.tmpl";
+import {Group} from "../../modules/Group";
 
 interface TypeProps {
     children: any[],

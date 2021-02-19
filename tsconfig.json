@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    "target": "es2016",
+    "target": "es5",
     "lib": ["es5", "es2016", "dom", "dom.iterable"],
-    "module": "es2015",
+    "module": "esnext",
     "sourceMap": true,
-    "outDir": "static/dist",
+    "outDir": "dist",
     "rootDir": "static"
   },
   "include": [
@@ -12,6 +12,7 @@
     "**/*"
   ],
   "exclude": [
-    "**/*.spec.ts"
+    "**/*.spec.ts",
+    "dist"
   ]
 }

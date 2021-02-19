@@ -1,5 +1,5 @@
-import {Block} from "../../modules/Block.js";
-import {avatarTmpl} from "./avatar.tmpl.js";
+import {Block} from "../../modules/Block";
+import {avatarTmpl} from "./avatar.tmpl";
 
 const HOST = 'https://ya-praktikum.tech/';
 interface TypeProps {
