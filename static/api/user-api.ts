@@ -1,7 +1,7 @@
 import {HTTP} from '../modules/http/HTTP.js';
 import {BaseAPI} from '../modules/http/BaseAPI.js';
 
-const userAPIInstance = new HTTP('api/v2/user');
+const userAPIInstance = new HTTP('https://ya-praktikum.tech/api/v2/user');
 
 export class UserAPI extends BaseAPI {
     updateProfile(options) {

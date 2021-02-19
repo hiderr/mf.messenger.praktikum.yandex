@@ -3,44 +3,40 @@ type Options = {
     headers?: object,
     data?: object,
     timeout?: number
-};
+}
+
+enum METHODS {
+    GET = 'GET',
+    PUT = 'PUT',
+    POST = 'POST',
+    DELETE = 'DELETE'
+}
 
 export class HTTP {
-    static HOST = 'https://ya-praktikum.tech/';
-    urlPrefix = "";
+    baseUrl = "";
 
-    METHODS = {
-        GET: 'GET',
-        PUT: 'PUT',
-        POST: 'POST',
-        DELETE: 'DELETE'
-    };
-
-    constructor(urlPrefix) {
-        this.urlPrefix = urlPrefix;
+    constructor(baseUrl) {
+        this.baseUrl = baseUrl;
     }
 
     get = (url: string, options: Options = {}) => {
-        if (typeof options.data === "object") {
-            url = url + this.queryStringify(options.data);
-        }
-        return this.request(url, {...options, method: this.METHODS.GET}, options.timeout);
+        return this.request(`${url}${this.queryStringify(options.data)}`, {...options, method: METHODS.GET}, options.timeout);
     };
 
     put = (url: string, options: Options = {}) => {
-        return this.request(url, {...options, method: this.METHODS.PUT}, options.timeout);
+        return this.request(url, {...options, method: METHODS.PUT}, options.timeout);
     };
 
     post = (url: string, options: Options = {}) => {
-        return this.request(url, {...options, method: this.METHODS.POST}, options.timeout);
+        return this.request(url, {...options, method: METHODS.POST}, options.timeout);
     };
 
     delete = (url: string, options: Options = {}) => {
-        return this.request(url, {...options, method: this.METHODS.DELETE}, options.timeout);
+        return this.request(url, {...options, method: METHODS.DELETE}, options.timeout);
     };
 
     queryStringify(data: object) {
-        return "?" + Object.keys(data).map(key => key + '=' + data[key]).join('&');
+        return (data instanceof Object) ? "?" + Object.keys(data).map(key => key + '=' + data[key]).join('&') : "";
     }
 
     // PUT, POST, DELETE
@@ -53,7 +49,7 @@ export class HTTP {
 
         return new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
-            xhr.open(method, `${HTTP.HOST}${this.urlPrefix}${url}`, true);
+            xhr.open(method, `${this.baseUrl}${url}`, true);
 
             if (typeof headers === "object") {
                 Object.keys(headers).forEach(key => {
@@ -72,7 +68,7 @@ export class HTTP {
             xhr.onerror = reject;
             xhr.ontimeout = reject;
 
-            if (method === this.METHODS.GET || !data) {
+            if (method === METHODS.GET || !data) {
                 xhr.send();
             } else if (headers && headers["Content-Type"] === "application/json") {
                 xhr.send(JSON.stringify(data));

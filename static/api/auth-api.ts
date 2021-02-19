@@ -1,7 +1,7 @@
 import {HTTP} from '../modules/http/HTTP.js';
 import {BaseAPI} from '../modules/http/BaseAPI.js';
 
-const authAPIInstance = new HTTP('api/v2/auth');
+const authAPIInstance = new HTTP('https://ya-praktikum.tech/api/v2/auth');
 
 export class AuthAPI extends BaseAPI {
     create(options) {

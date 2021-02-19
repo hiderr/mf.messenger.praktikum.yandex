@@ -34,7 +34,7 @@ import {ProfileController} from "../controllers/ProfileController.js";
     router.use("/add_user", Wrapper, Object.assign(PropsAddUser, rootQuery), ChatController.getChats);
     router.use("/remove_user", Wrapper, Object.assign(PropsRemoveUser, rootQuery), ChatController.getChats);
     router.use("/add_chat", Wrapper, Object.assign(PropsAddChat, rootQuery), ChatController.getChats);
-    router.use("/404", ErrorPage, Object.assign(PropsError404, rootQuery));
+    router.use("/*", ErrorPage, Object.assign(PropsError404, rootQuery));
     router.use("/500", ErrorPage, Object.assign(PropsError500, rootQuery));
     router.start();
 })();

@@ -3,7 +3,7 @@ const sinon = require("sinon");
 const {HTTP} = require("../dist/modules/http/HTTP");
 
 let inputParams, server;
-const http = new HTTP("api/v2");
+const http = new HTTP("https://ya-praktikum.tech/api/v2");
 
 describe("Test HTTP module", () => {
 
@@ -17,7 +17,7 @@ describe("Test HTTP module", () => {
     });
 
     it("should save url prefix to variable", () => {
-        expect(http.urlPrefix).to.equal("api/v2");
+        expect(http.baseUrl).to.equal("https://ya-praktikum.tech/api/v2");
     });
 
     it("should convert object to query params", () => {
@@ -27,7 +27,7 @@ describe("Test HTTP module", () => {
                 param2: 2
             }
         });
-        expect(server.requests[0].url).to.equal(`${HTTP.HOST}${http.urlPrefix}/test?param1=1&param2=2`);
+        expect(server.requests[0].url).to.equal(`${http.baseUrl}/test?param1=1&param2=2`);
     });
 
     it("should set header application/json", () => {

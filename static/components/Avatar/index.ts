@@ -1,7 +1,7 @@
 import {Block} from "../../modules/Block.js";
 import {avatarTmpl} from "./avatar.tmpl.js";
-import {HTTP} from "../../modules/http/HTTP.js";
 
+const HOST = 'https://ya-praktikum.tech/';
 interface TypeProps {
     tooltip: string,
     title: string,
@@ -24,7 +24,7 @@ export class Avatar extends Block {
             if (this.props.titlePath && this.store.get(this.props.titlePath) && this.props.urlPath && this.store.get(this.props.urlPath)){
                 this.setProps({
                     title: this.store.get(this.props.titlePath),
-                    url: `${HTTP.HOST}${this.store.get(this.props.urlPath)}`,
+                    url: `${HOST}${this.store.get(this.props.urlPath)}`,
                 });
             }
         });

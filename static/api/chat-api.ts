@@ -1,7 +1,7 @@
 import {HTTP} from '../modules/http/HTTP.js';
 import {BaseAPI} from '../modules/http/BaseAPI.js';
 
-const chatAPIInstance = new HTTP('api/v2/chats');
+const chatAPIInstance = new HTTP('https://ya-praktikum.tech/api/v2/chats');
 
 export class ChatAPI extends BaseAPI {
     request() {
