@@ -11,7 +11,6 @@ export class Group extends Block {
         super.render();
 
         for (let c of this.props.children) {
-            c.loadCSS();
             this.element.querySelector(".childrens").appendChild(c.render());
         }
         return this.element;

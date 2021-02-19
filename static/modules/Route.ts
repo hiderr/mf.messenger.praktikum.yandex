@@ -31,7 +31,6 @@ export default class Route {
     leave() {
         if (this._block) {
             this._block.hide();
-            this._block.unloadCSS();
         }
     }
 
@@ -41,7 +40,6 @@ export default class Route {
 
     render(): void {
         this._block = new this._blockClass(this._props);
-        this._block.loadCSS();
         render(this._props.rootQuery, this._block);
     }
 }

@@ -4,7 +4,7 @@
   "description": "Даже законченный проект остаётся только заготовкой, пока им не начнут пользоваться. Но сначала пользователь должен понять, зачем ему пользоваться вашим кодом. В этом помогает файл README.",
   "main": "server.js",
   "scripts": {
-    "start": "npm run build && webpack serve --mode=development --progress",
+    "start": "webpack serve --mode=development --progress",
     "check-types": "tsc",
     "build": "webpack --mode=development --config webpack.config.js",
     "compile": "babel static -d lib --extensions '.ts,.tsx'",

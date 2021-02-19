@@ -17,6 +17,7 @@ export const PropsChangeProfile = {
             titlePath: "profileProps.info.first_name"
         }),
         new Form(Utils.mergeObjects(PropsForm, {
+            className: "profile__form",
             children: [
                 new Input({
                     labelClassName: "form__row_name",

@@ -16,7 +16,7 @@ export const PropsProfile = {
             titlePath: "profileProps.info.first_name"
         }),
         new Form({
-            className: "profile_form w100proc",
+            className: "profile__form w100proc",
             form_name: "form",
             children: [
                 new Input({

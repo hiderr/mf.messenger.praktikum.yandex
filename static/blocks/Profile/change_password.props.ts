@@ -6,6 +6,7 @@ import {PropsForm} from "../../components/Form/form.props";
 import {ProfileController} from "../../controllers/ProfileController";
 
 export const PropsChangePassword = {
+    className: "profile__form",
     back_button_link: "",
     children: [
         new Avatar({
