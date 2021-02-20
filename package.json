@@ -11,7 +11,8 @@
     "prepublish": "npm run check-types && npm run compile",
     "test": "mocha",
     "lint": "eslint static --fix",
-    "prettier": "prettier --write static"
+    "prettier": "prettier --write static",
+    "precommit": "npm-run-all test lint prettier"
   },
   "husky": {
     "hooks": {
