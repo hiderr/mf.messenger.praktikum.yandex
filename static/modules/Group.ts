@@ -1,18 +1,18 @@
-import {Block} from "./Block";
+import { Block } from './Block';
 
 export class Group extends Block {
-    public template: string;
+  public template: string;
 
-    constructor(props) {
-        super("div", props);
+  constructor(props) {
+    super('div', props);
+  }
+
+  render(): HTMLElement {
+    super.render();
+
+    for (const c of this.props.children) {
+      this.element.querySelector('.childrens').appendChild(c.render());
     }
-
-    render(): HTMLElement {
-        super.render();
-
-        for (let c of this.props.children) {
-            this.element.querySelector(".childrens").appendChild(c.render());
-        }
-        return this.element;
-    }
+    return this.element;
+  }
 }

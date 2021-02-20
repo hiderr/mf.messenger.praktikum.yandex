@@ -1,1 +1,1 @@
-export const template = `<span class="{{className}}">{{text}}</span>`;
+export const template = '<span class="{{className}}">{{text}}</span>';

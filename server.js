@@ -10,9 +10,9 @@ app.use('/blocks', express.static('./static/blocks'));
 app.use('/components', express.static('./static/components'));
 
 app.get('/*', (req, res) => {
-    res.sendFile(__dirname + '/static/index.html');
+  res.sendFile(`${__dirname}/static/index.html`);
 });
 
-app.listen(PORT, function () {
-    console.log(`Example app listening on port ${PORT}!`);
+app.listen(PORT, () => {
+  console.log(`Example app listening on port ${PORT}!`);
 });

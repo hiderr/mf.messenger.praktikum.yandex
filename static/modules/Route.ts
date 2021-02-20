@@ -1,45 +1,49 @@
-import {render} from '../utils/renderDOM';
+import { render } from '../utils/renderDOM';
 
 export default class Route {
-    private _pathname: string;
-    private readonly _blockClass: any;
-    private _block: any;
-    private _props: any;
-    private _event: any;
+  private _pathname: string;
 
-    constructor(pathname: string, view, props, event) {
-        this._pathname = pathname;
-        this._blockClass = view;
-        this._block = null;
-        this._props = props;
-        this._event = event;
-    }
+  private readonly _blockClass: any;
 
-    navigate(pathname) {
-        if (this.match(pathname)) {
-            this._pathname = pathname;
-            this.render();
-        }
-    }
+  private _block: any;
 
-    fireEvent(){
-        if (typeof(this._event) === "function"){
-            this._event();
-        }
-    }
+  private _props: any;
 
-    leave() {
-        if (this._block) {
-            this._block.hide();
-        }
-    }
+  private _event: any;
 
-    match(pathname) {
-        return pathname === this._pathname;
-    }
+  constructor(pathname: string, view, props, event) {
+    this._pathname = pathname;
+    this._blockClass = view;
+    this._block = null;
+    this._props = props;
+    this._event = event;
+  }
 
-    render(): void {
-        this._block = new this._blockClass(this._props);
-        render(this._props.rootQuery, this._block);
+  navigate(pathname) {
+    if (this.match(pathname)) {
+      this._pathname = pathname;
+      this.render();
     }
+  }
+
+  fireEvent() {
+    if (typeof this._event === 'function') {
+      this._event();
+    }
+  }
+
+  leave() {
+    if (this._block) {
+      this._block.hide();
+    }
+  }
+
+  match(pathname) {
+    return pathname === this._pathname;
+  }
+
+  render(): void {
+    this._block = new this._blockClass(this._props);
+    render(this._props.rootQuery, this._block);
+  }
 }

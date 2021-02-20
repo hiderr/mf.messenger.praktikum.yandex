@@ -1,58 +1,62 @@
-import Route from "./Route";
+import Route from './Route';
+import { Block } from './Block';
 
 export class Router {
-    private static __instance: any;
-    private routes: Route[];
-    history: History;
-    private _currentRoute: Route;
+  private static __instance: any;
 
-    constructor() {
-        if (Router.__instance) {
-            return Router.__instance;
-        }
+  private routes: Route[];
 
-        this.routes = [];
-        this.history = window.history;
-        this._currentRoute = null;
+  history: History;
 
-        Router.__instance = this;
+  private _currentRoute: Route;
+
+  constructor() {
+    if (Router.__instance) {
+      return Router.__instance;
     }
 
-    use(pathname: string, block: object, props: object, event?) {
-        const route = new Route(pathname, block, props, event);
-        this.routes.push(route);
-        return this;
+    this.routes = [];
+    this.history = window.history;
+    this._currentRoute = null;
+
+    Router.__instance = this;
+  }
+
+  use(pathname: string, block: Block, props: any, event?) {
+    const route = new Route(pathname, block, props, event);
+    this.routes.push(route);
+    return this;
+  }
+
+  start() {
+    window.onpopstate = (event) => {
+      this._onRoute(event.currentTarget.location.pathname);
+    };
+
+    this._onRoute(window.location.pathname);
+  }
+
+  _onRoute(pathname: string) {
+    const route = this.getRoute(pathname);
+    if (!route) {
+      return;
     }
 
-    start() {
-        window.onpopstate = event => {
-            this._onRoute(event.currentTarget.location.pathname);
-        };
-
-        this._onRoute(window.location.pathname);
+    if (this._currentRoute) {
+      this._currentRoute.leave();
     }
 
-    _onRoute(pathname: string) {
-        const route = this.getRoute(pathname);
-        if (!route) {
-            return;
-        }
+    this._currentRoute = route;
+    route.fireEvent();
+    route.render();
+  }
 
-        if (this._currentRoute) {
-            this._currentRoute.leave();
-        }
+  go(pathname: string) {
+    this.history.pushState({}, '', pathname);
+    this._onRoute(pathname);
+  }
 
-        this._currentRoute = route;
-        route.fireEvent();
-        route.render();
-    }
-
-    go(pathname: string) {
-        this.history.pushState({}, "", pathname);
-        this._onRoute(pathname);
-    }
-
-    getRoute(pathname: string) {
-        return this.routes.find(route => route.match(pathname));
-    }
+  getRoute(pathname: string) {
+    return this.routes.find((route) => route.match(pathname));
+  }
 }

@@ -1,1 +1,2 @@
-export const buttonTmpl = `<a class="link" href="{{link}}"><button class="{{className}}">{{text}}</button></a>`;
+export const buttonTmpl =
+  '<a class="link" href="{{link}}"><button class="{{className}}">{{text}}</button></a>';

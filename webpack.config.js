@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   context: path.resolve(__dirname, 'static'),
-  entry: "./js/script.ts",
+  entry: './js/script.ts',
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
   },
@@ -36,7 +36,7 @@ module.exports = {
           'css-loader',
           'sass-loader',
         ],
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
     ],
   },
@@ -54,6 +54,6 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: 'style-[hash].css',
-    })
+    }),
   ],
 };

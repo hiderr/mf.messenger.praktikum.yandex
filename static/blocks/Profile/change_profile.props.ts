@@ -1,110 +1,118 @@
-import {Avatar} from "../../components/Avatar/index";
-import {Button} from "../../components/Button/index";
-import {Form} from "../../components/Form/index";
-import {Input} from "../../components/Input/index";
-import {PropsForm} from "../../components/Form/form.props";
-import {Utils} from "../../utils/Utils";
-import {ProfileController} from "../../controllers/ProfileController";
+import { Avatar } from '../../components/Avatar/index';
+import { Button } from '../../components/Button/index';
+import { Form } from '../../components/Form/index';
+import { Input } from '../../components/Input/index';
+import { PropsForm } from '../../components/Form/form.props';
+import { Utils } from '../../utils/Utils';
+import { ProfileController } from '../../controllers/ProfileController';
 
 export const PropsChangeProfile = {
-    back_button_link: "",
-    children: [
-        new Avatar({
-            url: "",
-            urlPath: "profileProps.info.avatar",
-            tooltip: "Поменять аватар",
-            title: "",
-            titlePath: "profileProps.info.first_name"
-        }),
-        new Form(Utils.mergeObjects(PropsForm, {
-            className: "profile__form",
-            children: [
-                new Input({
-                    labelClassName: "form__row_name",
-                    className: "form__row_value form__input form__input_align_right",
-                    label: "Почта",
-                    type: "email",
-                    name: "email",
-                    value: "",
-                    valuePath: "profileProps.info.email"
-                }),
-                new Input({
-                    labelClassName: "form__row_name",
-                    className: "form__row_value form__input form__input_align_right",
-                    label: "Логин",
-                    type: "text",
-                    name: "login",
-                    value: "",
-                    valuePath: "profileProps.info.login"
-                }),
-                new Input({
-                    labelClassName: "form__row_name",
-                    className: "form__row_value form__input form__input_align_right",
-                    label: "Имя",
-                    type: "text",
-                    name: "first_name",
-                    value: "",
-                    valuePath: "profileProps.info.first_name"
-                }),
-                new Input({
-                    labelClassName: "form__row_name",
-                    className: "form__row_value form__input form__input_align_right",
-                    label: "Фамилия",
-                    type: "text",
-                    name: "second_name",
-                    value: "",
-                    valuePath: "profileProps.info.second_name"
-                }),
-                new Input({
-                    labelClassName: "form__row_name",
-                    className: "form__row_value form__input form__input_align_right",
-                    label: "Имя в чате",
-                    type: "text",
-                    name: "display_name",
-                    value: "",
-                    valuePath: "profileProps.info.display_name"
-                }),
-                new Input({
-                    labelClassName: "form__row_name",
-                    className: "form__row_value form__input form__input_align_right",
-                    label: "Телефон",
-                    type: "tel",
-                    name: "phone",
-                    value: "",
-                    valuePath: "profileProps.info.phone"
-                }),
-            ]
-        })),
-        new Button({
-            className: "link_button",
-            text: "Сохранить",
-            link: "/profile"
-        })
-    ],
-    events: [
-        {
-            selector: ".back_button", name: "click", handler: (event, Block) => {
-                event.preventDefault();
-                Block.router.go("/profile");
-            }
-        },
-        {
-            selector: "[href='/profile']", name: "click", handler: (event, Block) => {
-                event.preventDefault();
-                if (Block.validation.validateFormOnSubmit()) {
-                    ProfileController.updateProfile({
-                        success: () => {
-                            Block.router.go("/profile")
-                        }
-                    });
-                }
-            }
-        },
-        {
-            selector: "[href='/change_photo']", name: "click", handler: (event, Block) => {
-                event.preventDefault();
-                Block.router.go("/change_photo");
-            }
+  back_button_link: '',
+  children: [
+    new Avatar({
+      url: '',
+      urlPath: 'profileProps.info.avatar',
+      tooltip: 'Поменять аватар',
+      title: '',
+      titlePath: 'profileProps.info.first_name',
+    }),
+    new Form(
+      Utils.mergeObjects(PropsForm, {
+        className: 'profile__form',
+        children: [
+          new Input({
+            labelClassName: 'form__row_name',
+            className: 'form__row_value form__input form__input_align_right',
+            label: 'Почта',
+            type: 'email',
+            name: 'email',
+            value: '',
+            valuePath: 'profileProps.info.email',
+          }),
+          new Input({
+            labelClassName: 'form__row_name',
+            className: 'form__row_value form__input form__input_align_right',
+            label: 'Логин',
+            type: 'text',
+            name: 'login',
+            value: '',
+            valuePath: 'profileProps.info.login',
+          }),
+          new Input({
+            labelClassName: 'form__row_name',
+            className: 'form__row_value form__input form__input_align_right',
+            label: 'Имя',
+            type: 'text',
+            name: 'first_name',
+            value: '',
+            valuePath: 'profileProps.info.first_name',
+          }),
+          new Input({
+            labelClassName: 'form__row_name',
+            className: 'form__row_value form__input form__input_align_right',
+            label: 'Фамилия',
+            type: 'text',
+            name: 'second_name',
+            value: '',
+            valuePath: 'profileProps.info.second_name',
+          }),
+          new Input({
+            labelClassName: 'form__row_name',
+            className: 'form__row_value form__input form__input_align_right',
+            label: 'Имя в чате',
+            type: 'text',
+            name: 'display_name',
+            value: '',
+            valuePath: 'profileProps.info.display_name',
+          }),
+          new Input({
+            labelClassName: 'form__row_name',
+            className: 'form__row_value form__input form__input_align_right',
+            label: 'Телефон',
+            type: 'tel',
+            name: 'phone',
+            value: '',
+            valuePath: 'profileProps.info.phone',
+          }),
+        ],
+      }),
+    ),
+    new Button({
+      className: 'link_button',
+      text: 'Сохранить',
+      link: '/profile',
+    }),
+  ],
+  events: [
+    {
+      selector: '.back_button',
+      name: 'click',
+      handler: (event, Block) => {
+        event.preventDefault();
+        Block.router.go('/profile');
+      },
+    },
+    {
+      selector: "[href='/profile']",
+      name: 'click',
+      handler: (event, Block) => {
+        event.preventDefault();
+        if (Block.validation.validateFormOnSubmit()) {
+          ProfileController.updateProfile({
+            success: () => {
+              Block.router.go('/profile');
+            },
+          });
         }
-    ]
+      },
+    },
+    {
+      selector: "[href='/change_photo']",
+      name: 'click',
+      handler: (event, Block) => {
+        event.preventDefault();
+        Block.router.go('/change_photo');
+      },
+    },
+  ],
 };

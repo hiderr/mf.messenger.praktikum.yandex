@@ -1,1 +1,1 @@
-export const template = `<div class="childrens {{className}}"></div>`;
+export const template = '<div class="childrens {{className}}"></div>';
