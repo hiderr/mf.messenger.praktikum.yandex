@@ -16,7 +16,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm-run-all test lint prettier"
+      "pre-commit": "echo `[Husky] pre-commit`"
     }
   },
   "repository": {
