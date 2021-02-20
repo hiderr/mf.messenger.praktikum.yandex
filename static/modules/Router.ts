@@ -1,5 +1,4 @@
 import Route from './Route';
-import { Block } from './Block';
 
 export class Router {
   private static __instance: any;
@@ -22,7 +21,7 @@ export class Router {
     Router.__instance = this;
   }
 
-  use(pathname: string, block: Block, props: any, event?) {
+  use(pathname: string, block: object, props: object, event?) {
     const route = new Route(pathname, block, props, event);
     this.routes.push(route);
     return this;
