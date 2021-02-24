@@ -55,7 +55,7 @@ export class ChatController {
               'Content-Type': 'application/json',
             },
             data: {
-              users: Utils.collectFormData().userId.replaceAll(' ', '').split(',').map(parseInt),
+              users: Utils.collectFormData()['userId'].replaceAll(' ', '').split(',').map(parseInt),
             },
           },
           options,
@@ -83,7 +83,7 @@ export class ChatController {
               'Content-Type': 'application/json',
             },
             data: {
-              users: Utils.collectFormData().userId.replaceAll(' ', '').split(',').map(parseInt),
+              users: Utils.collectFormData()['userId'].replaceAll(' ', '').split(',').map(parseInt),
             },
           },
           options,

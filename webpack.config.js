@@ -16,6 +16,7 @@ module.exports = {
   devServer: {
     contentBase: 'static',
     historyApiFallback: true,
+    host: '0.0.0.0',
     compress: true,
     port: 3000,
   },
