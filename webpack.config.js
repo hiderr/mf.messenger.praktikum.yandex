@@ -10,15 +10,16 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js'],
   },
   output: {
-    filename: 'bundle-[hash].js',
+    filename: 'bundle-[fullhash].js',
     path: path.resolve(__dirname, 'dist'),
   },
   devServer: {
     contentBase: 'static',
+    public: 'hiderr-messenger.herokuapp.com',
     historyApiFallback: true,
     host: '0.0.0.0',
     compress: true,
-    port: 3000,
+    port: process.env.PORT || 3000,
   },
   module: {
     rules: [
@@ -54,7 +55,7 @@ module.exports = {
       },
     }),
     new MiniCssExtractPlugin({
-      filename: 'style-[hash].css',
+      filename: 'style-[fullhash].css',
     }),
   ],
 };

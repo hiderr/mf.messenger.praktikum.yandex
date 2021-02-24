@@ -17,4 +17,4 @@ RUN npm install
 EXPOSE 3000
 
 # При старте контейнер выполнит эту команду – запустит наше приложение
-CMD npm run start
+CMD npm start
