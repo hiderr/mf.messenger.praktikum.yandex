@@ -19,4 +19,8 @@ export class ChatAPI extends BaseAPI {
   deleteUsers(options) {
     return chatAPIInstance.delete('/users', options);
   }
+
+  getToken(options) {
+    return chatAPIInstance.post(`/token/${options.data.id}`, options);
+  }
 }

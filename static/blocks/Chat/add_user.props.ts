@@ -6,6 +6,7 @@ import { Button } from '../../components/Button/index';
 import { ChatPage } from './index';
 import { PropsChat } from './chat.props';
 import { ChatController } from '../../controllers/ChatController';
+import { Utils } from '../../utils/Utils';
 
 export const PropsAddUser = {
   children: [

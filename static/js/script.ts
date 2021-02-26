@@ -27,7 +27,10 @@ import { ProfileController } from '../controllers/ProfileController';
 
   router.use('/', LoginPage, Object.assign(PropsLogin, rootQuery));
   router.use('/signin', SigninPage, Object.assign(PropsSignin, rootQuery));
-  router.use('/chat', ChatPage, Object.assign(PropsChat, rootQuery), ChatController.getChats);
+  router.use('/chat', ChatPage, Object.assign(PropsChat, rootQuery), () => {
+    ChatController.getChats();
+    ProfileController.getProfile();
+  });
   router.use(
     '/profile',
     ProfilePage,
