@@ -165,6 +165,8 @@ $light-gray: #EFEFEF
 .messages__main
   position: relative
   height: calc(100vh - 54px - 54px - 12px)
+  overflow: auto
+  padding: 10px
 
 .messages__footer
   width: 100%
@@ -191,16 +193,21 @@ $light-gray: #EFEFEF
   padding: 0 20px
   border-radius: 30px
 
-.messages__date
+.messages__center
   text-align: center
   font-size: 12px
   color: #999999
+
+.messages__body
+  display: flex
+  flex-direction: column
 
 .messages__menu
   border-radius: 12px
   position: absolute
   background-color: white
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5)
+  z-index: 100
 
 .messages__menu_users
   top: 0
@@ -243,15 +250,18 @@ $light-gray: #EFEFEF
 
 .message__text_from
   background-color: #F8F8F8
-  width: 400px
+  position: relative
+  width: max-content
   color: #1E1E1E
+  margin-top: auto
 
 .message__text_to
   background-color: #E4EDFD
-  position: absolute
-  right: 0
-  bottom: 0
-  width: 114px
+  position: relative
+  width: max-content
+  margin-top: auto
+  margin-right: 5px
+  align-self: flex-end
 
 .message__text_inner
   margin: 0
@@ -260,7 +270,7 @@ $light-gray: #EFEFEF
   color: base.$primary-color
   position: absolute
   right: 15px
-  bottom: 9px
+  bottom: 1px
 
 .error_message_bottom
   position: absolute
@@ -271,8 +281,8 @@ $light-gray: #EFEFEF
   color: base.$primary-color
   font-size: 8px
   position: absolute
-  right: 41px
-  bottom: 10px
+  right: 55px
+  bottom: 2px
 
 .fa-file
   margin-right: 14px

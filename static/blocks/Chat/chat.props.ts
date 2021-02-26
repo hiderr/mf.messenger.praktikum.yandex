@@ -1,3 +1,4 @@
+import { ChatController } from '../../controllers/ChatController';
 export const PropsChat = {
   chat_class: 'w100proc',
   profile_link_text: 'Профиль',
@@ -7,7 +8,7 @@ export const PropsChat = {
   ],
   messages_date: '19 июня',
   messages: [
-    {
+    /*{
       class: 'message__text message__text_from',
       content:
         'Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.',
@@ -22,7 +23,7 @@ export const PropsChat = {
       content: 'Ясно',
       to: true,
       time: '12:51',
-    },
+    },*/
   ],
   menu_actions: [
     { icon: 'fa-user-plus', link: 'add_user', text: 'Добавить пользователя' },
@@ -36,6 +37,15 @@ export const PropsChat = {
     { icon: 'fa-location-arrow', text: 'Локация' },
   ],
   events: [
+    {
+      selector: '.messages__search',
+      name: 'keyup',
+      handler: event => {
+        if (event.keyCode === 13) {
+          (<HTMLButtonElement>document.querySelector('.send')).click();
+        }
+      }
+    },
     {
       selector: '.chat',
       name: 'click',
@@ -56,11 +66,33 @@ export const PropsChat = {
           }
           el.closest('li').classList.add('contact_selected');
           Block.store.set('chatProps.selectedId', parseInt(el.closest('li').dataset.id));
-        }
-        if (el.parentElement.matches('.send')) {
-          Block.validation.validateMessage(document.querySelector('.messages__search'));
+          ChatController.getToken({
+            data: {
+              id: parseInt(el.closest('li').dataset.id)
+            },
+            success: (xhr) => {
+              Block.store.set('chatProps.token', JSON.parse(xhr.response).token);
+              ChatController.initSocket({
+                data: {
+                  userId: Block.store.get('profileProps.info.id'),
+                  chatId: Block.store.get('chatProps.selectedId'),
+                  token: Block.store.get('chatProps.token')
+                }
+              });
+            },
+          });
         }
       },
+    },
+    {
+      selector: '.send',
+      name: 'click',
+      handler: () => {
+        const messageInput = document.querySelector('.messages__search');
+        if ((<HTMLInputElement>messageInput).value){
+          ChatController.sendMessage((<HTMLInputElement>messageInput).value);
+        }
+      }
     },
     {
       selector: "[href='add_user']",

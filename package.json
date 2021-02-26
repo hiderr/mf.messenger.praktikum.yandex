@@ -4,7 +4,7 @@
   "description": "Даже законченный проект остаётся только заготовкой, пока им не начнут пользоваться. Но сначала пользователь должен понять, зачем ему пользоваться вашим кодом. В этом помогает файл README.",
   "main": "server.js",
   "scripts": {
-    "start": "webpack serve --mode=production --progress",
+    "start": "webpack serve --mode=development --progress",
     "build": "webpack --mode=development --config webpack.config.js",
     "test": "mocha",
     "lint": "eslint static --fix",

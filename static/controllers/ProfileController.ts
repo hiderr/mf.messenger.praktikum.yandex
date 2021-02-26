@@ -8,7 +8,7 @@ const userAPI = new UserAPI();
 const store = new Store();
 
 export class ProfileController {
-  static getProfile(options): void {
+  static getProfile(options?): void {
     if (store.get('profileProps.info')) {
       store.eventBus.emit('profileDataReceived');
       return;
