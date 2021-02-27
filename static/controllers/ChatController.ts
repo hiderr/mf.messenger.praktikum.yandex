@@ -1,8 +1,10 @@
 import { ChatAPI } from '../api/chat-api';
+import { UserAPI } from '../api/user-api';
 import { Store } from '../modules/Store';
 import { Utils } from '../utils/Utils';
 
 const chatAPI = new ChatAPI();
+const userAPI = new UserAPI();
 const store = new Store();
 
 export class ChatController {
@@ -46,24 +48,46 @@ export class ChatController {
       .catch(chatAPI.handleErrors);
   }
 
-  static addUsers(options): void {
+  static getUserIdByLogin(options): void {
     Utils.preventDOS(
       store,
-      chatAPI.addUsers.bind(
-        chatAPI,
+      userAPI.searchUser.bind(
+        userAPI,
         Utils.mergeDeep(
           {
             headers: {
               'Content-Type': 'application/json',
             },
             data: {
-              users: Utils.collectFormData()['userId'].replaceAll(' ', '').split(',').map(parseInt),
+              login: Utils.collectFormData()['login'].trim(),
             },
           },
           options,
         ),
       ),
     )
+      .then((xhr: XMLHttpRequest) => {
+        if (xhr.status === 204) return;
+        alert(xhr.responseText);
+        if (xhr.status === 200) {
+          options.success(xhr.responseText);
+        }
+      })
+      .catch(chatAPI.handleErrors);
+  }
+
+  static addUsers(options): void {
+    chatAPI
+      .addUsers(
+        Utils.mergeDeep(
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          },
+          options,
+        ),
+      )
       .then((xhr: XMLHttpRequest) => {
         if (xhr.status === 204) return;
         alert(xhr.responseText);
@@ -75,23 +99,17 @@ export class ChatController {
   }
 
   static removeUsers(options): void {
-    Utils.preventDOS(
-      store,
-      chatAPI.deleteUsers.bind(
-        chatAPI,
+    chatAPI
+      .deleteUsers(
         Utils.mergeDeep(
           {
             headers: {
               'Content-Type': 'application/json',
             },
-            data: {
-              users: Utils.collectFormData()['userId'].replaceAll(' ', '').split(',').map(parseInt),
-            },
           },
           options,
         ),
-      ),
-    )
+      )
       .then((xhr: XMLHttpRequest) => {
         if (xhr.status === 204) return;
         alert(xhr.responseText);
@@ -134,7 +152,6 @@ export class ChatController {
 
     this.socket.addEventListener('open', () => {
       console.log('Соединение установлено');
-      alert('Соединение установлено! Пишите сообщение :-)');
     });
 
     this.socket.addEventListener('close', (event) => {
@@ -150,6 +167,7 @@ export class ChatController {
     this.socket.addEventListener('message', (event) => {
       const message = JSON.parse(event.data);
       if (message.type === 'message') {
+        message.icon = true;
         message.time = new Date(message.time).toTimeString().split(' ')[0];
         if (message.userId === store.get('profileProps.info.id')) {
           message.class = 'message__text_to';

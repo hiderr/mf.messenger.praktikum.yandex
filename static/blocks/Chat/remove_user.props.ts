@@ -23,8 +23,8 @@ export const PropsRemoveUser = {
               className: 'form__input',
               label: 'Логин',
               type: 'text',
-              name: 'userId',
-              placeholder: 'Введите id через ,',
+              name: 'login',
+              placeholder: 'Введите login пользователя',
               value: '',
             }),
           ],
@@ -47,16 +47,21 @@ export const PropsRemoveUser = {
         event.preventDefault();
         if (Block.validation.validateFormOnSubmit()) {
           if (Block.store.get('chatProps.selectedId')) {
-            ChatController.removeUsers({
-              data: {
-                chatId: Block.store.get('chatProps.selectedId'),
-              },
-              success: () => {
-                Block.router.go('/chat');
+            ChatController.getUserIdByLogin({
+              success: (data) => {
+                ChatController.removeUsers({
+                  data: {
+                    chatId: Block.store.get('chatProps.selectedId'),
+                    users: JSON.parse(data).map((item) => item.id),
+                  },
+                  success: () => {
+                    Block.router.go('/chat');
+                  },
+                });
               },
             });
           } else {
-            alert('Для добавления пользователя необходимо выделить чат в списке слева');
+            alert('Для удаления пользователя необходимо выделить чат в списке слева');
             Block.router.go('/chat');
           }
         }

@@ -22,10 +22,10 @@ export const PropsAddUser = {
             new Input({
               labelClassName: 'login_form_label',
               className: 'form__input',
-              label: 'IDs',
+              label: 'Логин',
               type: 'text',
-              name: 'userId',
-              placeholder: 'Введите id через ,',
+              name: 'login',
+              placeholder: 'Введите login пользователя',
               value: '',
             }),
           ],
@@ -48,12 +48,17 @@ export const PropsAddUser = {
         event.preventDefault();
         if (Block.validation.validateFormOnSubmit()) {
           if (Block.store.get('chatProps.selectedId')) {
-            ChatController.addUsers({
-              data: {
-                chatId: Block.store.get('chatProps.selectedId'),
-              },
-              success: () => {
-                Block.router.go('/chat');
+            ChatController.getUserIdByLogin({
+              success: (data) => {
+                ChatController.addUsers({
+                  data: {
+                    chatId: Block.store.get('chatProps.selectedId'),
+                    users: JSON.parse(data).map((item) => item.id),
+                  },
+                  success: () => {
+                    Block.router.go('/chat');
+                  },
+                });
               },
             });
           } else {

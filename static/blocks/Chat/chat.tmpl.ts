@@ -58,7 +58,7 @@ export const template = `<div class="chat {{chat_class}}">
 <!--                <p class="messages__center">{{messages_date}}</p>-->
                 <div class="messages__body">
                 {{#each messages}}
-                  <div class="message message__text {{class}}"><p class="message__text_inner">{{content}}</p><i class="fas fa-check-double"></i><time class="message__time time">{{time}}</time></div>
+                  <div class="message message__text {{class}}"><p class="message__text_inner">{{content}}</p>{{#if icon}}<i class="fas fa-check-double"></i>{{/if}}<time class="message__time time">{{time}}</time></div>
                 {{/each}}
                 </div>
             </main>

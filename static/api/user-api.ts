@@ -19,4 +19,8 @@ export class UserAPI extends BaseAPI {
   request(id) {
     return userAPIInstance.get(`/${id}`);
   }
+
+  searchUser(options) {
+    return userAPIInstance.post('/search', options);
+  }
 }
