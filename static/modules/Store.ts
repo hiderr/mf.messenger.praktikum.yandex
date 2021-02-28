@@ -101,4 +101,8 @@ export class Store {
       },
     });
   }
+
+  clear() {
+    this.props = {};
+  }
 }

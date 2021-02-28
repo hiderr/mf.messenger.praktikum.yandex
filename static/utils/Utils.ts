@@ -40,7 +40,7 @@ export class Utils {
   };
 
   static preventDOS = (store, func) => {
-    const PAUSE_BETWEEN_REQUESTS = 3000;
+    const PAUSE_BETWEEN_REQUESTS = 1000;
     if (
       store.get('lastRequestTimestamp') &&
       Date.now() - store.get('lastRequestTimestamp') < PAUSE_BETWEEN_REQUESTS

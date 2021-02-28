@@ -22,7 +22,7 @@ export const PropsLogin = {
           name: 'login',
           type: 'text',
           label: 'Логин',
-          value: 'hiderr',
+          value: '',
           placeholder: 'Логин',
         }),
         new Input({
@@ -31,7 +31,7 @@ export const PropsLogin = {
           name: 'password',
           type: 'password',
           label: 'Пароль',
-          value: '123456789',
+          value: '',
           placeholder: 'Пароль',
         }),
       ],

@@ -8,7 +8,6 @@ interface TypeProps {
   titlePath: string;
   url: string;
   urlPath: string;
-  hide_title?: boolean;
   template?: string;
 }
 
