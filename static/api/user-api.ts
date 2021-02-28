@@ -2,7 +2,7 @@ import { HTTP } from '../modules/http/HTTP';
 import { BaseAPI } from '../modules/http/BaseAPI';
 import { Constants } from '../modules/Constants';
 
-const userAPIInstance = new HTTP(`${Constants.HOST}/api/v2/user`);
+const userAPIInstance = new HTTP(`https://${Constants.HOST}/api/v2/user`);
 
 export class UserAPI extends BaseAPI {
   updateProfile(options) {

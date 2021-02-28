@@ -1,3 +1,3 @@
 export class Constants {
-  static HOST = 'https://ya-praktikum.tech';
+  static HOST = 'ya-praktikum.tech';
 }

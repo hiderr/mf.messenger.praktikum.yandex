@@ -2,7 +2,7 @@ import { HTTP } from '../modules/http/HTTP';
 import { BaseAPI } from '../modules/http/BaseAPI';
 import { Constants } from '../modules/Constants';
 
-const chatAPIInstance = new HTTP(`${Constants.HOST}/api/v2/chats`);
+const chatAPIInstance = new HTTP(`https://${Constants.HOST}/api/v2/chats`);
 
 export class ChatAPI extends BaseAPI {
   request() {
