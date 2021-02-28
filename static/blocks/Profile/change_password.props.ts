@@ -25,7 +25,7 @@ export const PropsChangePassword = {
             label: 'Старый пароль',
             type: 'password',
             name: 'oldPassword',
-            value: '123456789',
+            value: '',
           }),
           new Input({
             labelClassName: 'form__row_name',
@@ -33,7 +33,7 @@ export const PropsChangePassword = {
             label: 'Новый пароль',
             type: 'password',
             name: 'newPassword',
-            value: 'LikeABo$$',
+            value: '',
           }),
           new Input({
             labelClassName: 'form__row_name',
@@ -41,7 +41,7 @@ export const PropsChangePassword = {
             label: 'Повторите новый пароль',
             type: 'password',
             name: 'newPasswordRepeat',
-            value: 'LikeABo$$',
+            value: '',
           }),
         ],
       }),

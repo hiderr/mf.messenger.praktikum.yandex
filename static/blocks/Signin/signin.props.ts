@@ -22,7 +22,7 @@ export const PropsSignin = {
           label: 'Почта',
           type: 'email',
           name: 'email',
-          value: 'mymail@gmail.com',
+          value: '',
           placeholder: 'Почта',
         }),
         new Input({
@@ -31,7 +31,7 @@ export const PropsSignin = {
           label: 'Логин',
           type: 'text',
           name: 'login',
-          value: 'hiderr',
+          value: '',
           placeholder: 'Логин',
         }),
         new Input({
@@ -40,7 +40,7 @@ export const PropsSignin = {
           label: 'Имя',
           type: 'text',
           name: 'first_name',
-          value: 'Хайдер',
+          value: '',
           placeholder: 'Имя',
         }),
         new Input({
@@ -49,7 +49,7 @@ export const PropsSignin = {
           label: 'Фамилия',
           type: 'text',
           name: 'second_name',
-          value: 'Хайдарович',
+          value: '',
           placeholder: 'Фамилия',
         }),
         new Input({
@@ -58,7 +58,7 @@ export const PropsSignin = {
           label: 'Телефон',
           type: 'tel',
           name: 'phone',
-          value: '+7 (909) 967 30 30',
+          value: '',
           placeholder: 'Телефон',
         }),
         new Input({
@@ -67,7 +67,7 @@ export const PropsSignin = {
           label: 'Пароль',
           type: 'password',
           name: 'password',
-          value: '123456789',
+          value: '',
           placeholder: 'Пароль',
         }),
         new Input({
@@ -76,7 +76,7 @@ export const PropsSignin = {
           label: 'Пароль (ещё раз)',
           type: 'password',
           name: 'password_repeat',
-          value: '123456789',
+          value: '',
           placeholder: 'Пароль (ещё раз)',
         }),
       ],

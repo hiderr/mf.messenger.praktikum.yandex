@@ -139,6 +139,7 @@ export const PropsProfile = {
         event.preventDefault();
         ProfileController.logout({
           success: () => {
+            Block.store.clear();
             Block.router.go('/');
           },
         });

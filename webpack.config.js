@@ -15,7 +15,6 @@ module.exports = {
   },
   devServer: {
     contentBase: 'static',
-    public: 'hiderr-messenger.herokuapp.com',
     historyApiFallback: true,
     host: '0.0.0.0',
     compress: true,

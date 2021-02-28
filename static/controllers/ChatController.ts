@@ -2,6 +2,7 @@ import { ChatAPI } from '../api/chat-api';
 import { UserAPI } from '../api/user-api';
 import { Store } from '../modules/Store';
 import { Utils } from '../utils/Utils';
+import { Constants } from '../modules/Constants';
 
 const chatAPI = new ChatAPI();
 const userAPI = new UserAPI();
@@ -147,7 +148,7 @@ export class ChatController {
 
   static initSocket(options): void {
     this.socket = new WebSocket(
-      `wss://ya-praktikum.tech/ws/chats/${options.data.userId}/${options.data.chatId}/${options.data.token}`,
+      `wss://${Constants.HOST}/ws/chats/${options.data.userId}/${options.data.chatId}/${options.data.token}`,
     );
 
     this.socket.addEventListener('open', () => {

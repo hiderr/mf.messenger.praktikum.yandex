@@ -7,5 +7,5 @@ export const avatarTmpl = `<div>
                          <span class="profile__avatar_tooltip">{{tooltip}}</span>
                     </div>
                 </a>
-                <p class="profile__name {{#if hide_title}}hide{{/if}}">{{title}}</p>
+                <p class="profile__name">{{title}}</p>
             </div>`;

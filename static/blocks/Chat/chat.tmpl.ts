@@ -6,17 +6,17 @@ export const template = `<div class="chat {{chat_class}}">
                 </div>
                 <input class="search contact__search" type="text" placeholder="&#128269; {{search_placeholder}}">
             </header>
-            <ul class="contacts__main">
+            <ul class="chats__main">
                 {{#each chats}}
-                <li data-id="{{id}}" class="contact {{selectedClass}}">
-                    <div class="contact__avatar"></div>
-                    <div class="contact_info">
-                        <h2 class="contact__name">{{title}}</h2>
-                        <span class="contact__preview">{{preview}}</span>
+                <li data-id="{{id}}" class="contact {{#if selected}}contact_selected{{/if}}">
+                    <div class="chat_avatar"></div>
+                    <div class="chat_info">
+                        <h2 class="chat_name">{{title}}</h2>
+                        <span class="chat_preview">{{preview}}</span>
                     </div>
                     <div class="time_count">
-                        <time class="contact__time time">{{time}}</time>
-<!--                        <span class="contact__count">{{unread}}</span>-->
+                        <time class="chat_time time">{{time}}</time>
+                        <!--<span class="unread_count">{{unread}}</span>-->
                         <span />
                     </div>
                 </li>
@@ -26,7 +26,7 @@ export const template = `<div class="chat {{chat_class}}">
         <div class="messages">
             <header class="messages__header">
                 <div class="messages__avatar"></div>
-                <h2 class="messages__name">Андрей</h2>
+                <h2 class="messages__name">{{selectedChatName}}</h2>
                 <div class="messages__menu_wrapper">
                     <button class="messages__menu_button button"></button>
                 </div>
