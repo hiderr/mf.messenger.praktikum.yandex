@@ -20,7 +20,7 @@ export class ChatController {
           alert(xhr.responseText);
         }
         if (xhr.status === 200) {
-          store.set('chatProps', { chats: JSON.parse(xhr.response) });
+          store.set('chatProps', { chats: JSON.parse(xhr.response), messages: [] });
           store.eventBus.emit('chatDataReceived');
         }
       })
