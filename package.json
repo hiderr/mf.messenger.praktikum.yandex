@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack serve --mode=development --progress",
     "build": "webpack --mode=development --config webpack.config.js",
-    "test": "mocha",
+    "test": "mocha -r ignore-styles",
     "lint": "eslint static --fix",
     "prettier": "prettier --write static",
     "precommit": "npm-run-all lint prettier"
@@ -52,6 +52,7 @@
     "express": "4.17.1",
     "html-webpack-plugin": "5.1.0",
     "husky": "4.2.3",
+    "ignore-styles": "^5.0.1",
     "jsdom": "16.4.0",
     "mini-css-extract-plugin": "1.3.8",
     "mocha": "8.3.0",

@@ -1,4 +1,4 @@
-const { Avatar } = require('../../dist/components/Avatar/index');
+const { Avatar } = require('../Avatar/index');
 const chai = require('chai');
 
 chai.use(require('chai-dom'));

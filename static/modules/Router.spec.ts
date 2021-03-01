@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { Router } = require('../dist/modules/Router');
+const { Router } = require('./Router');
 
 describe('Test Router module', () => {
   const router = new Router();

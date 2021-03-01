@@ -1,4 +1,4 @@
-const { Message } = require('../../dist/components/Message/index');
+const { Message } = require('../Message/index');
 const chai = require('chai');
 
 chai.use(require('chai-dom'));

@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 const sinon = require('sinon');
-const { HTTP } = require('../dist/modules/http/HTTP');
+const { HTTP } = require('./http/HTTP');
 
 let inputParams, server;
 const http = new HTTP('https://ya-praktikum.tech/api/v2');
